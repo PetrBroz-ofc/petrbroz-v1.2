@@ -1,0 +1,1496 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petr Brož | Marketing • Digitální tvorba • Branding</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2ecc71;
+            --dark-color: #0a0a1a;
+            --light-color: #f5f5f7;
+            --gray-color: #cccccc;
+            --accent-color: #3498db;
+            --overlay-color: rgba(10, 10, 26, 0.7);
+            --card-bg: rgba(255, 255, 255, 0.08);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--dark-color);
+            color: var(--light-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 5px;
+        }
+
+        /* Header - pouze navigace */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 25px 0;
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            background-color: rgba(10, 10, 26, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .main-nav {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .main-nav a {
+            color: var(--light-color);
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .main-nav a:hover {
+            color: var(--primary-color);
+        }
+
+        .main-nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .main-nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section - Úvodní fotka přes celou obrazovku */
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('umore.jpg') no-repeat center center/cover;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(10, 10, 26, 0.7) 0%, rgba(10, 10, 26, 0.9) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero-title {
+            font-size: 5.5rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            color: var(--light-color);
+            text-transform: uppercase;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--gray-color);
+            margin-bottom: 40px;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        /* Animovaná myška místo šipky */
+        .mouse-scroll {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            text-align: center;
+        }
+
+        .mouse {
+            width: 30px;
+            height: 50px;
+            border: 2px solid var(--light-color);
+            border-radius: 20px;
+            margin: 0 auto 10px;
+            position: relative;
+        }
+
+        .wheel {
+            width: 4px;
+            height: 10px;
+            background: var(--light-color);
+            border-radius: 2px;
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: wheel 1.5s infinite;
+        }
+
+        @keyframes wheel {
+            0% {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+            100% {
+                opacity: 0;
+                transform: translateX(-50%) translateY(20px);
+            }
+        }
+
+        .scroll-text {
+            color: var(--light-color);
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+
+        /* Sections */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+            color: var(--light-color);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* My Journey */
+        .journey-container {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .journey-images {
+            flex: 1;
+            position: relative;
+            height: 500px;
+        }
+
+        .image-stack {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .stack-image {
+            position: absolute;
+            width: 80%;
+            height: 70%;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: var(--transition);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+        }
+
+        .stack-image-1 {
+            top: 0;
+            left: 0;
+            z-index: 3;
+            transform: rotate(-3deg);
+        }
+
+        .stack-image-2 {
+            top: 15%;
+            right: 0;
+            z-index: 2;
+            transform: rotate(2deg);
+        }
+
+        .stack-image-1:hover, .stack-image-2:hover {
+            transform: scale(1.05) rotate(0deg);
+            z-index: 5;
+        }
+
+        .journey-text {
+            flex: 1;
+        }
+
+        .journey-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: var(--light-color);
+        }
+
+        .journey-text p {
+            font-size: 1.1rem;
+            color: var(--gray-color);
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        /* My Companies Section */
+        .companies-section {
+            background: linear-gradient(to bottom, rgba(10, 10, 26, 0.9) 0%, rgba(15, 25, 40, 0.9) 100%);
+            padding: 80px 0;
+        }
+
+        .companies-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+
+        .company-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        .company-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(52, 152, 219, 0.3);
+            box-shadow: 0 15px 40px rgba(52, 152, 219, 0.1);
+        }
+
+        .company-logo {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .company-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--light-color);
+        }
+
+        .company-card p {
+            color: var(--gray-color);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .company-link {
+            display: inline-block;
+            background: transparent;
+            color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .company-link:hover {
+            background: var(--primary-color);
+            color: var(--dark-color);
+        }
+
+        /* Services */
+        .services-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 40px 30px;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(52, 152, 219, 0.3);
+            box-shadow: 0 15px 40px rgba(52, 152, 219, 0.1);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--light-color);
+        }
+
+        .service-card p {
+            color: var(--gray-color);
+            margin-bottom: 25px;
+            min-height: 80px;
+        }
+
+        .service-features {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+
+        .service-features li {
+            color: var(--gray-color);
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .service-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .service-price {
+            font-size: 1.8rem;
+            color: var(--light-color);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .service-btn {
+            display: inline-block;
+            background: transparent;
+            color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .service-btn:hover {
+            background: var(--primary-color);
+            color: var(--dark-color);
+        }
+
+        /* Portfolio */
+        .portfolio-container {
+            margin-bottom: 60px;
+        }
+
+        .portfolio-item {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .portfolio-image {
+            height: 250px;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--light-color);
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .portfolio-content {
+            padding: 30px;
+        }
+
+        .portfolio-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--light-color);
+        }
+
+        .portfolio-content p {
+            color: var(--gray-color);
+            margin-bottom: 20px;
+        }
+
+        .portfolio-stats {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .stat {
+            background: rgba(52, 152, 219, 0.1);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+
+        /* Testimonials */
+        .testimonials-section {
+            background: linear-gradient(to bottom, rgba(10, 10, 26, 0.9) 0%, rgba(15, 25, 40, 0.9) 100%);
+            padding: 80px 0;
+        }
+
+        .testimonials-container {
+            overflow: hidden;
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .testimonials-track {
+            display: flex;
+            gap: 30px;
+            animation: scroll 30s linear infinite;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(calc(-350px * 4 - 30px * 4));
+            }
+        }
+
+        .testimonial-card {
+            min-width: 350px;
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .testimonial-rating {
+            font-size: 1.8rem;
+            color: gold;
+            margin-bottom: 20px;
+            letter-spacing: 5px;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            color: var(--light-color);
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .author-info h4 {
+            color: var(--light-color);
+            margin-bottom: 5px;
+        }
+
+        .author-info p {
+            color: var(--gray-color);
+            font-size: 0.9rem;
+        }
+
+        /* Contact - Upravený formulář */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+
+        .contact-form {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 40px;
+        }
+
+        .contact-form h3 {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: var(--light-color);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--gray-color);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: var(--light-color);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+        }
+
+        .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Styly pro select element - tmavý design */
+        select.form-control {
+            background: rgba(20, 30, 48, 0.8);
+            border: 1px solid rgba(52, 152, 219, 0.3);
+            color: var(--light-color);
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233498db' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 15px;
+            padding-right: 45px;
+        }
+
+        select.form-control option {
+            background-color: var(--dark-color);
+            color: var(--light-color);
+            padding: 10px;
+        }
+
+        select.form-control option:hover,
+        select.form-control option:focus,
+        select.form-control option:active,
+        select.form-control option:checked {
+            background: rgba(52, 152, 219, 0.2);
+            color: var(--light-color);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .submit-btn:hover {
+            background: #2980b9;
+        }
+
+        .submit-btn:disabled {
+            background: #7f8c8d;
+            cursor: not-allowed;
+        }
+
+        .contact-info {
+            padding: 20px 0;
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            color: var(--light-color);
+        }
+
+        .contact-details {
+            list-style: none;
+            margin-bottom: 40px;
+        }
+
+        .contact-details li {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            color: var(--light-color);
+        }
+
+        .contact-details i {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            width: 30px;
+        }
+
+        .contact-guarantee {
+            background: rgba(52, 152, 219, 0.1);
+            border-radius: 10px;
+            padding: 25px;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .contact-guarantee h4 {
+            color: var(--light-color);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .contact-guarantee p {
+            color: var(--gray-color);
+        }
+
+        /* Success message */
+        .success-message {
+            background: rgba(46, 204, 113, 0.1);
+            border: 1px solid rgba(46, 204, 113, 0.3);
+            color: #2ecc71;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            text-align: center;
+            display: none;
+        }
+
+        .error-message {
+            background: rgba(231, 76, 60, 0.1);
+            border: 1px solid rgba(231, 76, 60, 0.3);
+            color: #e74c3c;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            text-align: center;
+            display: none;
+        }
+
+        /* Message status */
+        .message-status {
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            text-align: center;
+            display: none;
+        }
+
+        .message-status.sending {
+            background: rgba(241, 196, 15, 0.1);
+            border: 1px solid rgba(241, 196, 15, 0.3);
+            color: #f1c40f;
+        }
+
+        .message-status.success {
+            background: rgba(46, 204, 113, 0.1);
+            border: 1px solid rgba(46, 204, 113, 0.3);
+            color: #2ecc71;
+        }
+
+        .message-status.error {
+            background: rgba(231, 76, 60, 0.1);
+            border: 1px solid rgba(231, 76, 60, 0.3);
+            color: #e74c3c;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(5, 5, 15, 0.95);
+            padding: 60px 0 30px;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .footer-tagline {
+            color: var(--gray-color);
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+            max-width: 600px;
+        }
+
+        .footer-copyright {
+            color: var(--gray-color);
+            font-size: 0.9rem;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            width: 100%;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .journey-container {
+                flex-direction: column;
+            }
+            
+            .journey-images {
+                width: 100%;
+                height: 400px;
+            }
+            
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-title {
+                font-size: 4rem;
+            }
+            
+            .companies-container {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-nav {
+                gap: 20px;
+            }
+            
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .services-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .testimonial-card {
+                min-width: 300px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .main-nav {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            section {
+                padding: 70px 0;
+            }
+            
+            .contact-form {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section - Úvodní fotka přes celou obrazovku -->
+    <section class="hero" id="home">
+        <div class="hero-background"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">PETR BROŽ</h1>
+            <p class="hero-subtitle">Marketing - Digitální tvorba - Branding</p>
+        </div>
+        <!-- Animovaná myška místo šipky -->
+        <div class="mouse-scroll">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <div class="scroll-text">Scrollujte</div>
+        </div>
+    </section>
+
+    <!-- Header - až po hero sekci -->
+    <header id="main-header">
+        <div class="container">
+            <div class="nav-container">
+                <ul class="main-nav">
+                    <li><a href="#home">Domů</a></li>
+                    <li><a href="#journey">Moje cesta</a></li>
+                    <li><a href="#companies">Moje firmy</a></li>
+                    <li><a href="#services">Služby</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#testimonials">Reference</a></li>
+                    <li><a href="#contact">Kontakt</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- My Journey Section -->
+    <section id="journey">
+        <div class="container">
+            <h2 class="section-title">Moje cesta</h2>
+            <div class="journey-container">
+                <div class="journey-images">
+                    <div class="image-stack">
+                        <img src="zezadu u kaplicky.jpg" alt="Petr Brož" class="stack-image stack-image-1">
+                        <img src="v bandi.jpg" alt="Petr Brož pracuje" class="stack-image stack-image-2">
+                    </div>
+                </div>
+                <div class="journey-text">
+                    <h2>Můj příběh</h2>
+                    <p>Petr Brož se narodil 26. prosince 2006 v Liberci, v obyčejné české rodině. Už od mala měl jasno v jedné věci: nechce čekat, až mu někdo něco dá, ale chce si to vybudovat sám. Jakmile to bylo možné, začal pracovat. Začínal v kuchyni McDonaldu, později si vyzkoušel i práci na stavbě, u výrobní linky, v Tescu i jako pomocná síla při větších akcích.</p>
+                    <p>Každá zkušenost pro něj byla cenná – nešlo jen o peníze, ale hlavně o disciplínu, zodpovědnost a pochopení skutečné hodnoty práce. Současně se při studiu strojírenství a CAD/CAM technologií začal intenzivně zajímat o podnikání, digitální svět a možnosti, které dnes nabízí online prostředí.</p>
+                    <p>Petr věří, že i bez kontaktů nebo výjimečných podmínek může člověk uspět – pokud má silný důvod, disciplínu a odvahu tvořit vlastní cestu.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- My Companies Section -->
+    <section id="companies" class="companies-section">
+        <div class="container">
+            <h2 class="section-title">Moje firmy</h2>
+            <div class="companies-container">
+                <div class="company-card">
+                    <div class="company-logo">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <h3>PEB Media</h3>
+                    <p>Firma specializující se na tvorbu a správu webových stránek, digitální marketing, sociální sítě a branding pro moderní podnikatele a firmy.</p>
+                    <a href="#contact" class="company-link">Spolupracovat</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" style="background: rgba(10, 10, 26, 0.7);">
+        <div class="container">
+            <h2 class="section-title">Co nabízím</h2>
+            <div class="services-container">
+                <!-- Service 1 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Správa sociálních sítí</h3>
+                    <p>Od tvorby obsahu, přes plánování až k analýze. Vaše sítě budou žít.</p>
+                    <ul class="service-features">
+                        <li>Tvorba obsahu</li>
+                        <li>Plánování příspěvků</li>
+                        <li>Analytika & reporting</li>
+                    </ul>
+                    <div class="service-price">od 1 000 Kč/měsíc</div>
+                    <a href="#contact" class="service-btn">Více informací</a>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-ad"></i>
+                    </div>
+                    <h3>Meta Ads (FB & IG)</h3>
+                    <p>Reklamy s cílením a reálnými výsledky.</p>
+                    <ul class="service-features">
+                        <li>Nastavení kampaní</li>
+                        <li>Optimalizace rozpočtu</li>
+                        <li>Měsíční reporting</li>
+                    </ul>
+                    <div class="service-price">od 1 000 Kč/měsíc</div>
+                    <a href="#contact" class="service-btn">Více informací</a>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3>Střih videí</h3>
+                    <p>Reels, TikTok, Shorts — videa, která chytí pozornost a mají dosah.</p>
+                    <ul class="service-features">
+                        <li>Kreativní střih</li>
+                        <li>Úprava zvuku</li>
+                        <li>Optimalizace pro platformy</li>
+                    </ul>
+                    <div class="service-price">od 500 Kč/video</div>
+                    <a href="#contact" class="service-btn">Více informací</a>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>Branding & Identita</h3>
+                    <p>Logo, barvy, styl. Značka, která zaujme.</p>
+                    <ul class="service-features">
+                        <li>Logo design</li>
+                        <li>Vizuální styl</li>
+                        <li>Nastavení podle psyhologie zákazníku</li>
+                    </ul>
+                    <div class="service-price">od 5 000 Kč</div>
+                    <a href="#contact" class="service-btn">Více informací</a>
+                </div>
+                
+                <!-- Service 5 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Tvorba webových stránek</h3>
+                    <p>Od nuly, nebo redesign. Moderní weby, které prodávají.</p>
+                    <ul class="service-features">
+                        <li>Responsivní design</li>
+                        <li>Rychlý web</li>
+                        <li>Správa obsahu</li>
+                    </ul>
+                    <div class="service-price">od 3 000 Kč</div>
+                    <a href="#contact" class="service-btn">Více informací</a>
+                </div>
+                
+                <!-- Service 6 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3>Osobní Branding</h3>
+                    <p>Vytvářím exkluzivní osobní značky pro vůdce v byznysu a veřejné osobnosti.</p>
+                    <ul class="service-features">
+                        <li>Strategie osobní značky</li>
+                        <li>Prezentační dovednosti</li>
+                        <li>Online reputace</li>
+                    </ul>
+                    <div class="service-price">od 5 000 Kč</div>
+                    <a href="#contact" class="service-btn">Více informací</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio">
+        <div class="container">
+            <h2 class="section-title">Ukázky práce</h2>
+            <div class="services-container portfolio-container">
+                <!-- Portfolio Item 1 -->
+                <div class="portfolio-item">
+                    <div class="portfolio-image" style="background: url('kvetinarstvi-kamila.jpg') no-repeat center center/cover;"> 
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Web pro Květinářství Kamila</h3>
+                        <p>Kompletní tvorba webových stránek pro místní květinářství s funkcí online objednání</p>
+                        <div class="portfolio-stats">
+                            <div class="stat">+35% konverzí</div>
+                            <div class="stat">Moderní design</div>
+                        </div>
+                        <a href="https://www.kvetinarstvikamila.cz" target="_blank" class="service-btn" style="margin-top: 15px;">Navštívit web</a>
+                    </div>
+                </div>
+                
+                <!-- Portfolio Item 2 -->
+                <div class="portfolio-item">
+                    <div class="portfolio-image" style="background: url('olio.jpg') no-repeat center center/cover;">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Návrh webu pro pizzerii Olio</h3>
+                        <p>Navrhl jsem moderní web pro pizzerii Olio, protože jejich momentální web nefuguje a tudíž ztrací průměrně 60% zákazníků</p>
+                        <div class="portfolio-stats">
+                            <div class="stat"> +60% dosah</div>
+                            <div class="stat"> 53% zhlédnutí</div>
+                        </div>
+                        <a href="https://petrbroz-ofc.github.io/olio-website-test-v1.0/" target="_blank" class="service-btn" style="margin-top: 15px;">Navštívit web</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section" id="testimonials">
+        <div class="container">
+            <h2 class="section-title">Co říkají klienti</h2>
+            <div class="testimonials-container">
+                <div class="testimonials-track">
+                    <!-- Testimonial 1 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">★★★★★</div>
+                        <p class="testimonial-text">"Petr mi pomohl dostat můj e-shop na úplně jinou úroveň. Výsledky mluví za vše."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">MK</div>
+                            <div class="author-info">
+                                <h4>Martin K.</h4>
+                                <p>Majitel e-shopu</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 2 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">★★★★★</div>
+                        <p class="testimonial-text">"Konečně někdo, kdo rozumí sociálním sítím a dodává reálné výsledky."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">TN</div>
+                            <div class="author-info">
+                                <h4>Tereza N.</h4>
+                                <p>Fitness trenérka</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 3 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">★★★★★</div>
+                        <p class="testimonial-text">"Profesionální přístup a kreativita, kterou jsme hledali. Doporučuji."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">JP</div>
+                            <div class="author-info">
+                                <h4>Jan P.</h4>
+                                <p>CEO startupu</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 4 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">★★★★★</div>
+                        <p class="testimonial-text">"Spolupráce s Petrem byla skvělá. Přinesl nové nápady a výsledky se dostavily rychle."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">AS</div>
+                            <div class="author-info">
+                                <h4>Anna S.</h4>
+                                <p>Marketing manager</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Duplicate for infinite scroll effect -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">★★★★★</div>
+                        <p class="testimonial-text">"Petr mi pomohl dostat můj e-shop na úplně jinou úroveň. Výsledky mluví za vše."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">MK</div>
+                            <div class="author-info">
+                                <h4>Martin K.</h4>
+                                <p>Majitel e-shopu</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">★★★★★</div>
+                        <p class="testimonial-text">"Konečně někdo, kdo rozumí sociálním sítím a dodává reálné výsledky."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">TN</div>
+                            <div class="author-info">
+                                <h4>Tereza N.</h4>
+                                <p>Fitness trenérka</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Pojďme spolupracovat</h2>
+            <div class="contact-container">
+                <div class="contact-form">
+                    <h3>Napište mi</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Vaše jméno *</label>
+                            <input type="text" id="name" class="form-control" placeholder="Zadejte vaše jméno" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Váš email *</label>
+                            <input type="email" id="email" class="form-control" placeholder="Zadejte váš email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Váš telefon *</label>
+                            <input type="tel" id="phone" class="form-control" placeholder="Zadejte váš telefon">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Vaše zpráva *</label>
+                            <textarea id="message" class="form-control" placeholder="Napište mi o vašem projektu..." required minlength="10"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-method">Preferovaný způsob kontaktu</label>
+                            <select id="contact-method" class="form-control">
+                                <option value="whatsapp">WhatsApp</option>
+                                <option value="email">E-mail</option>
+                                <option value="phone">Telefon</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="submit-btn" id="submitButton">
+                            <i class="fab fa-whatsapp"></i> Odeslat zprávu
+                        </button>
+                    </form>
+                    <div id="messageStatus" class="message-status"></div>
+                </div>
+                <div class="contact-info">
+                    <h3>Kontaktní informace</h3>
+                    <ul class="contact-details">
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>brozpetr.bp@gmail.com</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>+420 778 478 642</span>
+                        </li>
+                        <li>
+                            <i class="fab fa-instagram"></i>
+                            <span>@__p.brozz__</span>
+                        </li>
+                        <li>
+                            <i class="fab fa-whatsapp"></i>
+                            <span>WhatsApp: +420 778 478 642</span>
+                        </li>
+                    </ul>
+                    <div class="contact-guarantee">
+                        <h4>Garantuji rychlou odpověď</h4>
+                        <p>Obvykle odpovídám do 24 hodin. Na urgentní dotazy pište SMS.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">Petr Brož</div>
+                <p class="footer-tagline">Marketing • Digitální tvorba • Branding</p>
+                <div class="footer-copyright">
+                    © 2025 Petr Brož. Všechna práva vyhrazena.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('main-header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Image hover effect
+        document.querySelectorAll('.stack-image').forEach(img => {
+            img.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.05) rotate(0deg)';
+                this.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.4)';
+            });
+            
+            img.addEventListener('mouseleave', function() {
+                if (this.classList.contains('stack-image-1')) {
+                    this.style.transform = 'rotate(-3deg)';
+                } else {
+                    this.style.transform = 'rotate(2deg)';
+                }
+                this.style.boxShadow = '0 15px 30px rgba(0, 0, 0, 0.3)';
+            });
+        });
+
+        // Update submit button text based on contact method selection
+        const contactMethodSelect = document.getElementById('contact-method');
+        const submitButton = document.getElementById('submitButton');
+        
+        contactMethodSelect.addEventListener('change', function() {
+            const method = this.value;
+            const buttonIcon = submitButton.querySelector('i');
+            
+            if (method === 'whatsapp') {
+                buttonIcon.className = 'fab fa-whatsapp';
+                submitButton.innerHTML = '<i class="fab fa-whatsapp"></i> Odeslat přes WhatsApp';
+            } else if (method === 'email') {
+                buttonIcon.className = 'fas fa-envelope';
+                submitButton.innerHTML = '<i class="fas fa-envelope"></i> Odeslat na E-mail';
+            } else {
+                buttonIcon.className = 'fas fa-phone';
+                submitButton.innerHTML = '<i class="fas fa-phone"></i> Odeslat kontaktní údaje';
+            }
+        });
+
+        // Form submission handler
+        document.getElementById('contactForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const message = document.getElementById('message').value;
+            const contactMethod = document.getElementById('contact-method').value;
+            
+            // Validate form
+            if (!name || !email || !message) {
+                showMessage('Vyplňte všechna povinná pole (označená *).', 'error');
+                return;
+            }
+            
+            // Disable submit button and show sending status
+            submitButton.disabled = true;
+            showMessage('Odesílám zprávu...', 'sending');
+            
+            try {
+                // Prepare data
+                const formData = {
+                    name: name,
+                    email: email,
+                    phone: phone || 'Nevyplněno',
+                    message: message,
+                    contactMethod: contactMethod,
+                    timestamp: new Date().toISOString()
+                };
+                
+                // Based on selected contact method, handle differently
+                let result;
+                if (contactMethod === 'whatsapp') {
+                    result = await sendViaWhatsApp(formData);
+                } else if (contactMethod === 'email') {
+                    result = await sendViaEmail(formData);
+                } else {
+                    result = await sendForPhoneCall(formData);
+                }
+                
+                if (result.success) {
+                    // Show success message
+                    showMessage('Zpráva byla úspěšně odeslána! Ozvu se vám co nejdříve.', 'success');
+                    
+                    // Reset form after success
+                    setTimeout(() => {
+                        this.reset();
+                        submitButton.disabled = false;
+                        // Reset button to WhatsApp default
+                        submitButton.innerHTML = '<i class="fab fa-whatsapp"></i> Odeslat zprávu';
+                    }, 3000);
+                } else {
+                    throw new Error('Odesílání se nezdařilo');
+                }
+                
+            } catch (error) {
+                showMessage('Chyba při odesílání zprávy. Zkuste to prosím znovu.', 'error');
+                submitButton.disabled = false;
+            }
+        });
+
+        // Function to show status messages
+        function showMessage(text, type) {
+            const messageStatus = document.getElementById('messageStatus');
+            messageStatus.textContent = text;
+            messageStatus.className = `message-status ${type}`;
+            messageStatus.style.display = 'block';
+            
+            // Auto-hide success messages after 5 seconds
+            if (type === 'success') {
+                setTimeout(() => {
+                    messageStatus.style.display = 'none';
+                }, 5000);
+            }
+            
+            // Auto-hide error messages after 5 seconds
+            if (type === 'error') {
+                setTimeout(() => {
+                    messageStatus.style.display = 'none';
+                }, 5000);
+            }
+        }
+
+        // WhatsApp sending function (simulated - would need backend for actual sending)
+        async function sendViaWhatsApp(formData) {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    console.log('WhatsApp message prepared:', formData);
+                    // Note: In a real implementation, this would:
+                    // 1. Send data to backend server
+                    // 2. Backend would use WhatsApp Business API
+                    // 3. Return success/error response
+                    resolve({ success: true, message: 'WhatsApp zpráva připravena' });
+                }, 1500);
+            });
+        }
+
+        // Email sending function (simulated - would need backend for actual sending)
+        async function sendViaEmail(formData) {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    console.log('Email prepared:', formData);
+                    // Note: In a real implementation, this would:
+                    // 1. Send data to backend server
+                    // 2. Backend would send email via SMTP
+                    // 3. Return success/error response
+                    resolve({ success: true, message: 'Email připraven' });
+                }, 1500);
+            });
+        }
+
+        // Phone call request function (simulated)
+        async function sendForPhoneCall(formData) {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    console.log('Phone call request:', formData);
+                    // Note: In a real implementation, this would:
+                    // 1. Store request in database
+                    // 2. Send notification to your phone/email
+                    resolve({ success: true, message: 'Žádost o telefonát uložena' });
+                }, 1500);
+            });
+        }
+
+        // Initialize testimonial scroll animation
+        const testimonialsTrack = document.querySelector('.testimonials-track');
+        const testimonials = document.querySelectorAll('.testimonial-card');
+        
+        // Duplicate testimonials for seamless scroll
+        testimonials.forEach(card => {
+            const clone = card.cloneNode(true);
+            testimonialsTrack.appendChild(clone);
+        });
+    </script>
+</body>
+</html>
