@@ -826,5 +826,202 @@
             if (type === 'success' || type === 'error') setTimeout(() => el.style.display = 'none', 5000);
         }
     </script>
+
+    <!-- ==========================================
+     COOKIE LIŠTA (Vložte těsně před </body>)
+     ========================================== -->
+<style>
+    /* Styly pro cookie lištu - ladí s vaším černým designem */
+    .cookie-banner {
+        position: fixed;
+        bottom: -100%; /* Schovaná mimo obrazovku */
+        left: 0;
+        width: 100%;
+        background-color: rgba(15, 15, 15, 0.98);
+        backdrop-filter: blur(12px);
+        box-shadow: 0 -5px 30px rgba(0,0,0,0.7);
+        z-index: 9999;
+        padding: 25px 0;
+        transition: bottom 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+        border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .cookie-banner.show {
+        bottom: 0; /* Vysunutí lišty */
+    }
+    .cookie-container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    @media (min-width: 768px) {
+        .cookie-container {
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+        }
+    }
+    .cookie-text {
+        flex: 1;
+    }
+    .cookie-text h3 {
+        font-size: 1.2rem;
+        margin-bottom: 8px;
+        color: #ffffff;
+        font-weight: 600;
+    }
+    .cookie-text p {
+        font-size: 0.9rem;
+        color: #cccccc;
+        line-height: 1.5;
+    }
+    .cookie-text a {
+        color: var(--primary-color);
+        text-decoration: underline;
+    }
+    .cookie-text a:hover {
+        color: #fff;
+    }
+    .cookie-buttons {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+    .cookie-btn {
+        padding: 12px 24px;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        border: none;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    .cookie-btn-accept {
+        background-color: var(--primary-color);
+        color: #fff;
+    }
+    .cookie-btn-accept:hover {
+        background-color: #2980b9;
+        transform: translateY(-2px);
+    }
+    .cookie-btn-reject {
+        background-color: transparent;
+        color: #cccccc;
+        border: 1px solid rgba(255,255,255,0.2);
+    }
+    .cookie-btn-reject:hover {
+        background-color: rgba(255,255,255,0.05);
+        color: #fff;
+    }
+    
+    /* Trvalé malé tlačítko pro změnu nastavení (vlevo dole) */
+    .cookie-reopen {
+        position: fixed;
+        bottom: 15px;
+        left: 15px;
+        width: 40px;
+        height: 40px;
+        background: rgba(30,30,30,0.8);
+        border: 1px solid rgba(255,255,255,0.2);
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #cccccc;
+        z-index: 9998;
+        transition: all 0.2s ease;
+    }
+    .cookie-reopen:hover {
+        color: var(--primary-color);
+        background: #fff;
+        transform: scale(1.1);
+    }
+</style>
+
+<!-- HTML struktura lišty -->
+<div id="cookieBanner" class="cookie-banner">
+    <div class="cookie-container">
+        <div class="cookie-text">
+            <h3>Nastavení ochrany soukromí</h3>
+            <p>Používám cookies, abych zajistil správné fungování webu a mohl analyzovat návštěvnost. Kliknutím na „Přijmout vše“ souhlasíte s jejich využitím. Podrobné informace najdete v mých <a href="/zasady-cookies.html">Zásadách cookies</a>.</p>
+        </div>
+        <div class="cookie-buttons">
+            <button id="cookieReject" class="cookie-btn cookie-btn-reject">Odmítnout vše</button>
+            <button id="cookieAccept" class="cookie-btn cookie-btn-accept">Přijmout vše</button>
+        </div>
+    </div>
+</div>
+
+<!-- Trvalá ikona pro zpětné odvolání souhlasu -->
+<button id="cookieReopenBtn" class="cookie-reopen" title="Upravit nastavení cookies">
+    <i class="fas fa-cookie-bite"></i>
+</button>
+
+<!-- JavaScript ovládající logiku a ukládání do prohlížeče -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const banner = document.getElementById("cookieBanner");
+        const acceptBtn = document.getElementById("cookieAccept");
+        const rejectBtn = document.getElementById("cookieReject");
+        const reopenBtn = document.getElementById("cookieReopenBtn");
+
+        // Kontrola, zda uživatel již dříve vybral možnost
+        const cookieConsent = localStorage.getItem("cookieConsent");
+
+        if (!cookieConsent) {
+            // Pokud nerozhodl, ukážeme lištu s mírným zpožděním
+            setTimeout(() => {
+                banner.classList.add("show");
+            }, 1000);
+        } else if (cookieConsent === "accepted") {
+            // Pokud již dříve přijal, rovnou spouštíme měřící kódy
+            runTrackingScripts();
+        }
+
+        // Akce: Přijmout vše
+        acceptBtn.addEventListener("click", function () {
+            localStorage.setItem("cookieConsent", "accepted");
+            banner.classList.remove("show");
+            runTrackingScripts();
+        });
+
+        // Akce: Odmítnout vše
+        rejectBtn.addEventListener("click", function () {
+            localStorage.setItem("cookieConsent", "rejected");
+            banner.classList.remove("show");
+            // Zde případně můžete smazat stávající cookies, pokud existují
+        });
+
+        // Akce: Kliknutí na ikonu sušenky (znovu otevře lištu)
+        reopenBtn.addEventListener("click", function () {
+            banner.classList.add("show");
+        });
+
+        // FUNKCE: Sem vložte své analytické/marketingové skripty
+        function runTrackingScripts() {
+            console.log("Cookies schváleny. Spouštím měřící kódy...");
+            
+            /* 
+               Příklad pro Google Analytics (odkomentujte a vložte své ID, až ho budete mít):
+               
+               (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+               new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+               j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+               'https://googletagmanager.com;
+               })(window,document,'script','dataLayer','GTM-XXXXXXX');
+            */
+        }
+    });
+</script>
+
+    
 </body>
 </html>
