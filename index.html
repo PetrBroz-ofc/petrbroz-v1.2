@@ -827,24 +827,40 @@
         }
     </script>
 
-  <!-- ========================================================================= -->
-<!-- START: PREMIUM COOKIE LIŠTA PRO WWW.KVETINARSTVIKAMILA.CZ -->
+    <!-- ========================================================================= -->
+<!-- LEGÁLNÍ COOKIE LIŠTA PRO WWW.KVETINARSTVIKAMILA.CZ -->
 <!-- ========================================================================= -->
 <div id="cookie-bar-container" style="display: none; position: fixed; bottom: 0; left: 0; width: 100%; background-color: #111111; box-shadow: 0 -4px 20px rgba(0,0,0,0.3); padding: 25px 40px; z-index: 999999; font-family: sans-serif; box-sizing: border-box; border-top: 1px solid #222;">
     <div style="max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
         
-        <!-- Levá strana: Text podle obrázku -->
-        <div style="flex: 1; min-width: 300px; max-width: 800px;">
-            <h3 style="margin-top: 0; margin-bottom: 8px; color: #ffffff; font-size: 18px; font-weight: bold; letter-spacing: 0.5px;">Nastavení ochrany soukromí</h3>
-            <p style="margin: 0; font-size: 14px; color: #bbbbbb; line-height: 1.5;">
-                Používám cookies, abych zajistil správné fungování webu a mohl analyzovat návštěvnost. Kliknutím na „Přijmout vše“ souhlasíte s jejich využitím. Podrobné informace najdete v mých <a href="/cookies" style="color: #3b82f6; text-decoration: none; border-bottom: 1px solid #3b82f6;">Zásadách cookies</a>.
-            </p>
+        <!-- Hlavní pohled (Text a tlačítka z obrázku) -->
+        <div id="cookie-main-view" style="width: 100%; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+            <div style="flex: 1; min-width: 300px; max-width: 800px;">
+                <h3 style="margin-top: 0; margin-bottom: 8px; color: #ffffff; font-size: 18px; font-weight: bold; letter-spacing: 0.5px;">Nastavení ochrany soukromí</h3>
+                <p style="margin: 0; font-size: 14px; color: #bbbbbb; line-height: 1.5;">
+                    Používám cookies, abych zajistil správné fungování webu (objednávky), pamatoval si vaše nastavení (překlad webu) a mohl analyzovat návštěvnost. Kliknutím na „Přijmout vše“ souhlasíte s jejich využitím. Podrobné informace najdete v mých <a href="/cookies" style="color: #3b82f6; text-decoration: none; border-bottom: 1px solid #3b82f6;">Zásadách cookies</a>.
+                </p>
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 15px; flex-wrap: wrap;">
+                <button onclick="cookieManager.showSettings()" style="background-color: transparent; color: #bbbbbb; border: none; padding: 12px 15px; font-size: 13px; font-weight: bold; text-transform: uppercase; cursor: pointer; text-decoration: underline;">Nastavit</button>
+                <button onclick="cookieManager.rejectAll()" style="background-color: transparent; color: #ffffff; border: 1px solid #333333; padding: 12px 24px; font-size: 13px; font-weight: bold; text-transform: uppercase; border-radius: 4px; cursor: pointer; letter-spacing: 0.5px;">Odmítnout vše</button>
+                <button onclick="cookieManager.acceptAll()" style="background-color: #3a9ced; color: #ffffff; border: none; padding: 12px 28px; font-size: 13px; font-weight: bold; text-transform: uppercase; border-radius: 4px; cursor: pointer; letter-spacing: 0.5px;">PŘIJMOUT VŠE</button>
+            </div>
         </div>
 
-        <!-- Pravá strana: Tlačítka přesně podle obrázku -->
-        <div style="display: flex; align-items: center; gap: 15px; flex-wrap: wrap;">
-            <button onclick="cookieManager.rejectAll()" style="background-color: transparent; color: #ffffff; border: 1px solid #333333; padding: 12px 24px; font-size: 13px; font-weight: bold; text-transform: uppercase; border-radius: 4px; cursor: pointer; transition: all 0.2s; letter-spacing: 0.5px;">Odmítnout vše</button>
-            <button onclick="cookieManager.acceptAll()" style="background-color: #3a9ced; color: #ffffff; border: none; padding: 12px 28px; font-size: 13px; font-weight: bold; text-transform: uppercase; border-radius: 4px; cursor: pointer; transition: background 0.2s; letter-spacing: 0.5px;">Přijmout vše</button>
+        <!-- Skrytý panel pro detailní nastavení (vyskočí jen po kliknutí na "Nastavit") -->
+        <div id="cookie-settings-view" style="display: none; width: 100%; color: #fff;">
+            <h4 style="margin-top: 0; color: #fff;">Podrobné nastavení cookies</h4>
+            <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 15px; font-size: 13px;">
+                <label><input type="checkbox" checked disabled> Funkční (Košík a objednávky - nutné)</label>
+                <label><input type="checkbox" id="chk-pref" checked> Preferenční (Překlad webu)</label>
+                <label><input type="checkbox" id="chk-anal" checked> Analytické (Měření návštěvnosti)</label>
+            </div>
+            <div style="display: flex; gap: 10px;">
+                <button onclick="cookieManager.hideSettings()" style="background: #333; color: #fff; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer;">Zpět</button>
+                <button onclick="cookieManager.saveCustom()" style="background: #3a9ced; color: #fff; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer;">Uložit výběr</button>
+            </div>
         </div>
 
     </div>
@@ -852,34 +868,39 @@
 
 <script>
     const cookieManager = {
-        // Nastaveno tak, aby se lišta zobrazila VŽDY při každém načtení/obnovení stránky
+        // Používáme sessionStorage - lišta si pamatuje volbu, dokud zákazník nezavře kartu/prohlížeč.
+        // Při dalším otevření webu se ho zeptá znovu (přesně kompromis pro zákon a pohodlí).
         init: function() {
-            document.getElementById('cookie-bar-container').style.display = 'block';
+            if (!sessionStorage.getItem('cookie_checked')) {
+                document.getElementById('cookie-bar-container').style.display = 'block';
+            }
         },
-        
-        acceptAll: function() {
-            console.log('Uživatel přijal vše: Košík, Překlad i Návštěvnost jsou AKTIVNÍ.');
-            this.closeBar();
+        acceptAll: function() { this.save(true, true); },
+        rejectAll: function() { this.save(false, false); },
+        showSettings: function() {
+            document.getElementById('cookie-main-view').style.display = 'none';
+            document.getElementById('cookie-settings-view').style.display = 'block';
         },
-        
-        rejectAll: function() {
-            console.log('Uživatel odmítl: Funguje pouze nezbytný košík. Překlad a analytika jsou VYPNUTÉ.');
-            this.closeBar();
+        hideSettings: function() {
+            document.getElementById('cookie-settings-view').style.display = 'none';
+            document.getElementById('cookie-main-view').style.display = 'flex';
         },
-        
-        closeBar: function() {
+        saveCustom: function() {
+            const pref = document.getElementById('chk-pref').checked;
+            const anal = document.getElementById('chk-anal').checked;
+            this.save(pref, anal);
+        },
+        save: function(pref, anal) {
+            sessionStorage.setItem('cookie_checked', '1');
             document.getElementById('cookie-bar-container').style.display = 'none';
+            console.log('Nastaveno: Překlad=' + pref + ', Návštěvnost=' + anal);
         }
     };
-
-    // Spuštění lišty ihned po načtení stránky
-    document.addEventListener('DOMContentLoaded', function() {
-        cookieManager.init();
-    });
+    document.addEventListener('DOMContentLoaded', function() { cookieManager.init(); });
 </script>
 <!-- ========================================================================= -->
-<!-- END: PREMIUM COOKIE LIŠTA PRO WWW.KVETINARSTVIKAMILA.CZ -->
+<!-- KONEC COOKIE LIŠTY -->
 <!-- ========================================================================= -->
-    
+  
 </body>
 </html>
