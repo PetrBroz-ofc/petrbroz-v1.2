@@ -382,6 +382,52 @@
         .message-status.success { background: rgba(46,204,113,0.1); border: 1px solid rgba(46,204,113,0.3); color: #2ecc71; }
         .message-status.error { background: rgba(231,76,60,0.1); border: 1px solid rgba(231,76,60,0.3); color: #e74c3c; }
 
+        /* NOVÝ MARKETINGOVÝ BANNER MÍSTO FORMULÁŘE */
+        .contact-notice-box {
+            background: rgba(231, 76, 60, 0.08);
+            backdrop-filter: blur(10px);
+            border-radius: 16px; padding: 40px;
+            border: 2px dashed #e74c3c;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(231, 76, 60, 0.1);
+        }
+        .notice-icon {
+            font-size: 3.5rem;
+            color: #e74c3c;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .contact-notice-box h3 { font-size: 2rem; margin-bottom: 15px; color: #fff; font-weight: 700; }
+        .contact-notice-box p { color: var(--gray-color); margin-bottom: 30px; font-size: 1.1rem; line-height: 1.6; }
+        .marketing-call-btn {
+            background: #e74c3c;
+            color: #fff;
+            text-decoration: none;
+            padding: 16px 35px;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+        }
+        .marketing-call-btn:hover {
+            background: #c0392b;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(231, 76, 60, 0.6);
+        }
+
         /* FOOTER */
         footer { background: #000; padding: 60px 0 30px; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); }
         .footer-content { display: flex; flex-direction: column; align-items: center; }
@@ -632,36 +678,16 @@
             <h2 class="section-title">Pojďme spolupracovat</h2>
             <div class="contact-container">
                 <div class="contact-form">
-                    <h3>Napište mi</h3>
-                    <form id="contactForm" novalidate>
-                        <div class="form-group">
-                            <label for="name">Vaše jméno *</label>
-                            <input type="text" id="name" class="form-control" placeholder="Zadejte vaše jméno" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Váš email *</label>
-                            <input type="email" id="email" class="form-control" placeholder="Zadejte váš email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Váš telefon</label>
-                            <input type="tel" id="phone" class="form-control" placeholder="Zadejte váš telefon">
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Vaše zpráva *</label>
-                            <textarea id="message" class="form-control" placeholder="Napište mi o vašem projektu..." required minlength="10"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="contact-method">Preferovaný způsob kontaktu</label>
-                            <select id="contact-method" class="form-control">
-                                <option value="email">E-mail</option>
-                                <option value="whatsapp">WhatsApp</option>
-                                
-                                
-                            </select>
-                        </div>
-                        <button type="submit" class="submit-btn" id="submitButton">
-                            <i class="fab fa-e-mail"></i> Odeslat zprávu
-                        </button>
+                    
+                   <!-- Červený box s marketingovým textem místo nefunkčního formuláře -->
+                <div class="contact-notice-box">
+                    <div class="notice-icon"><i class="fas fa-circle-xmark"></i></div>
+                    <h3>Kapacita formuláře je momentálně plná</h3>
+                    <p>Omlouvám se, ale kvůli extrémnímu vytížení a probíhající údržbě systémů je odesílání přes formulář dočasně mimo provoz. Pokud chcete svůj projekt začít řešit hned a získat náskok před konkurencí, nečekejte a zavolejte mi přímo!</p>
+                    <a href="tel:+420778478642" class="marketing-call-btn">
+                        <i class="fas fa-phone-volume"></i> VOLEJTE HNED: +420 778 478 642
+                    </a>
+                </div>
                     </form>
                     <div id="messageStatus" class="message-status"></div>
                 </div>
@@ -773,69 +799,7 @@
             });
         });
 
-        // CONTACT METHOD BUTTON
-        document.getElementById('contact-method').addEventListener('change', function() {
-            const btn = document.getElementById('submitButton');
-            if (this.value === 'whatsapp') btn.innerHTML = '<i class="fab fa-whatsapp"></i> Odeslat přes WhatsApp';
-            else if (this.value === 'email') btn.innerHTML = '<i class="fas fa-envelope"></i> Odeslat na E-mail';
-            else btn.innerHTML = '<i class="fas fa-phone"></i> Odeslat kontaktní údaje';
-        });
-
-        // FORM — FORMSPREE
-        document.getElementById('contactForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            const name    = document.getElementById('name').value.trim();
-            const email   = document.getElementById('email').value.trim();
-            const phone   = document.getElementById('phone').value.trim();
-            const message = document.getElementById('message').value.trim();
-            const method  = document.getElementById('contact-method').value;
-            const btn     = document.getElementById('submitButton');
-
-            if (!name || !email || !message) {
-                showMessage('Vyplňte všechna povinná pole (označená *).', 'error');
-                return;
-            }
-
-            btn.disabled = true;
-            showMessage('Odesílám zprávu...', 'sending');
-
-            try {
-                const res = await fetch('https://formspree.io/f/mzdawaza', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-                    body: JSON.stringify({
-                        'Jméno': name,
-                        'Email': email,
-                        'Telefon': phone || 'Nevyplněno',
-                        'Zpráva': message,
-                        'Kontakt přes': method === 'whatsapp' ? 'WhatsApp' : method === 'email' ? 'E-mail' : 'Telefon'
-                    })
-                });
-
-                if (res.ok) {
-                    showMessage('✓ Zpráva odeslána! Ozvu se co nejdříve.', 'success');
-                    setTimeout(() => {
-                        this.reset();
-                        btn.disabled = false;
-                        btn.innerHTML = '<i class="fab fa-whatsapp"></i> Odeslat zprávu';
-                    }, 3000);
-                } else {
-                    const data = await res.json();
-                    throw new Error(data.error || 'Chyba serveru');
-                }
-            } catch (err) {
-                showMessage('Chyba při odesílání. Zkuste to prosím znovu.', 'error');
-                btn.disabled = false;
-            }
-        });
-
-        function showMessage(text, type) {
-            const el = document.getElementById('messageStatus');
-            el.textContent = text;
-            el.className = 'message-status ' + type;
-            el.style.display = 'block';
-            if (type === 'success' || type === 'error') setTimeout(() => el.style.display = 'none', 5000);
-        }
+        
     </script>
 
  <!-- ========================================================================= -->
