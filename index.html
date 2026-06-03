@@ -138,93 +138,70 @@
             .mobile-nav ul li a:hover, .mobile-nav ul li a:active { color: var(--primary-color); }
 
             /* HERO */
-            /* HERO SEKCE S REFEKTY INTERAKTIVNÍ BATERKY */
+           /* HERO SEKCE S REFEKTY INTERAKTIVNÍ BATERKY */
         .hero {
             height: 100vh; min-height: 600px; position: relative;
             display: flex; align-items: center; justify-content: center; overflow: hidden;
             background-color: #000;
         }
-        /* Spodní vrstva: Tvoje fotka tak, jak je teď (ztmavená) */
+        /* Spodní vrstva: Fotka ztmavená filtrem přímo v CSS */
         .hero-background {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background: url('umore.jpg') no-repeat center center/cover;
-            filter: brightness(45%); /* Základní ztmavení fotky */
+            filter: brightness(25%) contrast(90%); /* Hodně tmavé pozadí pro super kontrast */
         }
-        /* Horní vrstva: Výrazně rozsvícená fotka, kterou odkrýváme myší */
+        /* Horní vrstva: Absolutní 100% jasný a barevný originál fotky */
         .hero-background-reveal {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background: url('umore.jpg') no-repeat center center/cover;
-            /* Zde je přidaný extra jas (150%) a kontrast (120%) pro silný zářivý efekt */
-            filter: brightness(150%) contrast(120%) saturate(110%); 
+            filter: none; /* Žádné filtry ani ztmavení, čistý originál */
             pointer-events: none;
+            /* Na začátku je maska skrytá */
             mask-image: radial-gradient(circle 0px at 0px 0px, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
             -webkit-mask-image: radial-gradient(circle 0px at 0px 0px, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
         }
+        /* Jemný spodní stín pro lepší čitelnost textu a plynulý přechod do další sekce */
         .hero-overlay {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.7) 100%);
+            background: linear-gradient(to bottom, rgba(0,0,0,0) 60%, rgba(0,0,0,0.8) 100%);
             pointer-events: none;
+            z-index: 1;
         }
         .hero-content {
             position: relative; z-index: 10;
             text-align: center; max-width: 800px; padding: 0 20px;
-            pointer-events: none; /* Aby myš propadala skrz text přímo na pozadí */
+            pointer-events: none; /* Myš propadává skrz text přímo na pozadí */
         }
         .hero-title {
             font-size: 5.5rem; font-weight: 700; letter-spacing: 3px;
             margin-bottom: 20px; color: var(--light-color);
-            text-transform: uppercase; text-shadow: 0 5px 25px rgba(0,0,0,0.8);
+            text-transform: uppercase; text-shadow: 0 5px 25px rgba(0,0,0,0.9);
         }
         .hero-subtitle {
             font-size: 1.4rem; color: var(--gray-color);
             margin-bottom: 40px; font-weight: 300; letter-spacing: 2px;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+            text-shadow: 0 2px 10px rgba(0,0,0,0.9);
         }
-            .hero {
-                height: 100vh; min-height: 600px; position: relative;
-                display: flex; align-items: center; justify-content: center; overflow: hidden;
-            }
-            .hero-background {
-                position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-                background: url('umore.jpg') no-repeat center center/cover;
-            }
-            .hero-overlay {
-                position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-                background: linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.85) 100%);
-            }
-            .hero-content {
-                position: relative; z-index: 10;
-                text-align: center; max-width: 800px; padding: 0 20px;
-            }
-            .hero-title {
-                font-size: 5.5rem; font-weight: 700; letter-spacing: 3px;
-                margin-bottom: 20px; color: var(--light-color);
-                text-transform: uppercase; text-shadow: 0 5px 25px rgba(0,0,0,0.6);
-            }
-            .hero-subtitle {
-                font-size: 1.4rem; color: var(--gray-color);
-                margin-bottom: 40px; font-weight: 300; letter-spacing: 2px;
-            }
-            .mouse-scroll {
-                position: absolute; bottom: 40px; left: 50%;
-                transform: translateX(-50%); z-index: 10; text-align: center;
-            }
-            .mouse {
-                width: 30px; height: 50px;
-                border: 2px solid rgba(255,255,255,0.6);
-                border-radius: 20px; margin: 0 auto 10px; position: relative;
-            }
-            .wheel {
-                width: 4px; height: 10px; background: var(--light-color);
-                border-radius: 2px; position: absolute; top: 10px; left: 50%;
-                transform: translateX(-50%); animation: wheel 1.5s infinite;
-            }
-            @keyframes wheel {
-                0% { opacity: 1; transform: translateX(-50%) translateY(0); }
-                100% { opacity: 0; transform: translateX(-50%) translateY(20px); }
-            }
-            .scroll-text { color: rgba(255,255,255,0.6); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; }
-
+        .mouse-scroll {
+            position: absolute; bottom: 40px; left: 50%;
+            transform: translateX(-50%); z-index: 10; text-align: center;
+        }
+        .mouse {
+            width: 30px; height: 50px;
+            border: 2px solid rgba(255,255,255,0.6);
+            border-radius: 20px; margin: 0 auto 10px; position: relative;
+        }
+        .wheel {
+            width: 4px; height: 10px; background: var(--light-color);
+            border-radius: 2px; position: absolute; top: 10px; left: 50%;
+            transform: translateX(-50%); animation: wheel 1.5s infinite;
+        }
+        @keyframes wheel {
+            0% { opacity: 1; transform: translateX(-50%) translateY(0); }
+            100% { opacity: 0; transform: translateX(-50%) translateY(20px); }
+        }
+        .scroll-text { color: rgba(255,255,255,0.6); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; }
+        
             /* SECTIONS */
             section { padding: 100px 0; }
             .section-title {
@@ -923,7 +900,7 @@
     // Spustit jednou i při načtení, kdyby byl uživatel už odscrollovaný
     document.addEventListener('DOMContentLoaded', revealElements);
 
-// JAVASCRIPT PRO MENŠÍ JASNÝ KUŽEL BATERKY A PRÁŠEK
+// JAVASCRIPT PRO OSTRÝ KUŽEL BATERKY UKAZUJÍCÍ ORIGINÁL FOTKY
         const heroSection = document.getElementById('home');
         const heroReveal = document.getElementById('heroReveal');
         const canvas = document.getElementById('dustCanvas');
@@ -931,8 +908,8 @@
 
         let mouse = { x: -1000, y: -1000, active: false };
         
-        // ZMENŠENO: Poloměr baterky je teď 120px (průměr 240px), což dělá menší, přesnější kruh
-        const spotlightRadius = 120; 
+        // Velikost kruhu baterky (130px dává ideální přesný kužel)
+        const spotlightRadius = 130; 
 
         function resizeCanvas() {
             canvas.width = heroSection.offsetWidth;
@@ -948,8 +925,8 @@
                 mouse.y = e.clientY - rect.top;
                 mouse.active = true;
 
-                // Ostřejší přechod masky: světlo je uvnitř kruhu maximálně jasné a rychleji se vytrácí na krajích
-                const maskStyle = `radial-gradient(circle ${spotlightRadius}px at ${mouse.x}px ${mouse.y}px, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 70%, rgba(0,0,0,0) 100%)`;
+                // Maska upravená pro maximální jas (čistý originál) ve středu kužele
+                const maskStyle = `radial-gradient(circle ${spotlightRadius}px at ${mouse.x}px ${mouse.y}px, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 100%)`;
                 heroReveal.style.maskImage = maskStyle;
                 heroReveal.style.webkitMaskImage = maskStyle;
             });
@@ -964,15 +941,15 @@
 
         // --- LOGIKA PRO ČÁSTICE PRACHU ---
         const particlesArray = [];
-        const numberOfParticles = 30; // Sníženo pro menší kruh, aby to vypadalo čistě
+        const numberOfParticles = 35;
 
         class Particle {
             constructor() {
                 this.x = Math.random() * canvas.width;
                 this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 1.8 + 0.5; // Drobná zrnka prachu
+                this.size = Math.random() * 1.8 + 0.5;
                 this.speedX = Math.random() * 0.3 - 0.15;
-                this.speedY = Math.random() * -0.4 - 0.1; // Pomalu stoupá nahoru
+                this.speedY = Math.random() * -0.4 - 0.1;
             }
             update() {
                 this.x += this.speedX;
@@ -1003,10 +980,9 @@
                 let dy = this.y - mouse.y;
                 let distance = Math.sqrt(dx * dx + dy * dy);
 
-                // Kreslíme částice POUZE uvnitř zmenšeného světla
                 if (distance < spotlightRadius) {
                     let lightFactor = (spotlightRadius - distance) / spotlightRadius;
-                    let opacity = lightFactor * 0.85; // Prach bude v jasném světle také o něco viditelnější
+                    let opacity = lightFactor * 0.8; 
 
                     ctx.fillStyle = `rgba(255, 255, 255, ${opacity})`;
                     ctx.beginPath();
