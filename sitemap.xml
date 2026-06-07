@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- ═══════════════════════════════════════════
+       HLAVNÍ STRÁNKA (aktuálně jediná URL)
+       ═══════════════════════════════════════════ -->
+  <url>
+    <loc>https://broz-petr.cz/</loc>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+
+    <!-- Fotografie Petra Brože -->
+    <image:image>
+      <image:loc>https://broz-petr.cz/petr-broz-webdesigner-liberec.jpg</image:loc>
+      <image:title>Petr Brož – Freelance Webdesigner Liberec</image:title>
+      <image:caption>Petr Brož, freelance webdesigner z Liberce specializující se na tvorbu webů na míru pro firmy a podnikatele.</image:caption>
+      <image:geo_location>Liberec, Česká republika</image:geo_location>
+      <image:license>https://broz-petr.cz/</image:license>
+    </image:image>
+
+    <image:image>
+      <image:loc>https://broz-petr.cz/petr-broz-pri-praci.jpg</image:loc>
+      <image:title>Petr Brož při práci na webovém projektu</image:title>
+      <image:caption>Petr Brož pracuje na tvorbě webové stránky na míru pro klienta.</image:caption>
+      <image:geo_location>Liberec, Česká republika</image:geo_location>
+      <image:license>https://broz-petr.cz/</image:license>
+    </image:image>
+
+    <!-- Portfolio – náhledy projektů -->
+    <image:image>
+      <image:loc>https://broz-petr.cz/portfolio-kvetinarstvi-kamila.jpg</image:loc>
+      <image:title>Web pro Květinářství Kamila – tvorba webu Liberec</image:title>
+      <image:caption>Kompletní tvorba webových stránek pro místní květinářství s funkcí online objednání. Výsledek: +35 % konverzí.</image:caption>
+      <image:geo_location>Liberec, Česká republika</image:geo_location>
+      <image:license>https://broz-petr.cz/</image:license>
+    </image:image>
+
+    <image:image>
+      <image:loc>https://broz-petr.cz/portfolio-studio-chilli.jpg</image:loc>
+      <image:title>Web pro Studio Chilli – webdesign na míru</image:title>
+      <image:caption>Kompletní tvorba webových stránek pro Studio Chilli. Výsledek: +60 % dosah, 53 % zhlédnutí.</image:caption>
+      <image:license>https://broz-petr.cz/</image:license>
+    </image:image>
+
+    <image:image>
+      <image:loc>https://broz-petr.cz/portfolio-crystal-valley.jpg</image:loc>
+      <image:title>Web pro CHS Crystal Valley – chovatelská stanice norských lesních koček</image:title>
+      <image:caption>Tvorba webových stránek pro CHS Crystal Valley. Výsledek: +60 % návštěvnost.</image:caption>
+      <image:license>https://broz-petr.cz/</image:license>
+    </image:image>
+
+    <image:image>
+      <image:loc>https://broz-petr.cz/og-image.jpg</image:loc>
+      <image:title>Petr Brož – Webdesigner Liberec | Tvorba webů na míru</image:title>
+      <image:caption>Freelance webdesigner Petr Brož z Liberce – tvorba webových stránek na míru pro firmy a podnikatele.</image:caption>
+      <image:license>https://broz-petr.cz/</image:license>
+    </image:image>
+
+    <!-- Hreflang -->
+    <xhtml:link rel="alternate" hreflang="cs" href="https://broz-petr.cz/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://broz-petr.cz/"/>
+  </url>
+
+  <!-- ═══════════════════════════════════════════
+       BUDOUCÍ STRÁNKY – odkomentovat po vytvoření
+       ═══════════════════════════════════════════ -->
+
+  <!--
+  <url>
+    <loc>https://broz-petr.cz/webdesigner-liberec</loc>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://broz-petr.cz/webdesigner-liberec"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://broz-petr.cz/webdesigner-liberec"/>
+  </url>
+
+  <url>
+    <loc>https://broz-petr.cz/tvorba-webu-jablonec</loc>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://broz-petr.cz/webdesigner-praha</loc>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://broz-petr.cz/o-mne</loc>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://broz-petr.cz/jak-pracuji</loc>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://broz-petr.cz/cenik</loc>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://broz-petr.cz/portfolio</loc>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://broz-petr.cz/portfolio/kvetinarstvi-kamila</loc>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://broz-petr.cz/portfolio/studio-chilli</loc>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://broz-petr.cz/portfolio/crystal-valley</loc>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://broz-petr.cz/blog</loc>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://broz-petr.cz/blog/jak-jsem-vytvoril-web-za-48-hodin</loc>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://broz-petr.cz/blog/5-chyb-na-firemnich-webech</loc>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://broz-petr.cz/blog/freelancer-vs-agentura</loc>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://broz-petr.cz/blog/kolik-stoji-tvorba-webu-2026</loc>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://broz-petr.cz/kontakt</loc>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  -->
+
+</urlset>
