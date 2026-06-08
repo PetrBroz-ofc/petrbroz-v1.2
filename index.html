@@ -1,4 +1,4 @@
-        <!DOCTYPE html>
+  <!DOCTYPE html>
         <html lang="cs">
         <head>
             <!-- Google tag (gtag.js) -->
@@ -301,29 +301,311 @@
                 }
                 .service-btn:hover { background: var(--primary-color); color: #000; }
 
-                /* PORTFOLIO */
-                .portfolio-container { margin-bottom: 60px; }
-                .portfolio-item {
-                    background: var(--card-bg); border-radius: 16px;
-                    overflow: hidden; transition: var(--transition);
-                    border: 1px solid rgba(255,255,255,0.06);
-                    display: flex; flex-direction: column;
-                }
-                .portfolio-item:hover { transform: translateY(-8px); box-shadow: 0 18px 45px rgba(0,0,0,0.3); }
-                .portfolio-image {
-                    height: 250px; background: linear-gradient(135deg, #111, #1a1a2e);
-                    display: flex; align-items: center; justify-content: center;
-                    color: var(--light-color); font-size: 1.5rem; font-weight: 600; flex-shrink: 0;
-                }
-                .portfolio-content { padding: 30px; flex: 1; display: flex; flex-direction: column; }
-                .portfolio-content h3 { font-size: 1.4rem; margin-bottom: 10px; color: var(--light-color); }
-                .portfolio-content p { color: var(--gray-color); margin-bottom: 18px; flex: 1; }
-                .portfolio-stats { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 15px; }
-                .stat {
-                    background: rgba(52,152,219,0.12); padding: 6px 14px;
-                    border-radius: 20px; font-size: 0.85rem;
-                    color: var(--primary-color); font-weight: 500;
-                }
+                /* ===================================================
+   PORTFOLIO CAROUSEL — nahrazuje staré .portfolio-*
+   =================================================== */
+
+/* Skryj starý grid layout */
+.portfolio-container { display: none !important; }
+
+/* Wrapper celé sekce carouselu */
+.pf-carousel-section {
+    position: relative;
+    padding: 20px 0 60px;
+    overflow: hidden;
+}
+
+/* Relativní wrapper — šipky jsou uvnitř */
+.pf-carousel-wrapper {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 540px;
+}
+
+/* Track — kontejner karet */
+.pf-track {
+    position: relative;
+    width: 100%;
+    height: 480px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Jednotlivá karta */
+.pf-card {
+    position: absolute;
+    width: 320px;
+    height: 440px;
+    border-radius: 22px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.09);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    overflow: visible;
+    display: flex;
+    flex-direction: column;
+    will-change: transform, opacity, filter;
+    /* Transition — spring-like pomocí cubic-bezier */
+    transition:
+        transform 0.6s cubic-bezier(0.34, 1.4, 0.64, 1),
+        opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1),
+        filter 0.5s ease,
+        box-shadow 0.5s ease;
+}
+
+.pf-card.pf-active {
+    box-shadow:
+        0 30px 80px rgba(0,0,0,0.6),
+        0 0 0 1px rgba(255,255,255,0.13),
+        inset 0 1px 0 rgba(255,255,255,0.08);
+    z-index: 10;
+}
+
+.pf-card.pf-side {
+    z-index: 5;
+    cursor: pointer;
+}
+
+.pf-card.pf-hidden {
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Logo klienta — překrývá horní hranu */
+.pf-logo-wrap {
+    position: absolute;
+    top: -26px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: #0d0d0d;
+    border: 1.5px solid rgba(255,255,255,0.14);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    box-shadow:
+        0 4px 20px rgba(0,0,0,0.5),
+        0 0 0 1px rgba(255,255,255,0.06);
+    flex-shrink: 0;
+}
+
+.pf-logo-wrap img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    border-radius: 50%;
+}
+
+.pf-logo-initials {
+    font-size: 13px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 0.5px;
+    display: none;
+}
+
+/* Iframe / preview area */
+.pf-preview {
+    margin: 44px 10px 0;
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    background: #080808;
+    border: 1px solid rgba(255,255,255,0.06);
+}
+
+.pf-preview iframe {
+    width: 1280px;
+    height: 900px;
+    border: none;
+    transform: scale(0.234375); /* 300 / 1280 */
+    transform-origin: top left;
+    pointer-events: none;
+    display: block;
+}
+
+/* Fallback screenshot pokud iframe blokovaný */
+.pf-preview .pf-fallback {
+    display: none;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+}
+
+.pf-preview.pf-blocked iframe { display: none; }
+.pf-preview.pf-blocked .pf-fallback { display: block; }
+
+/* Shimmer loading state */
+.pf-preview::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        90deg,
+        rgba(255,255,255,0) 0%,
+        rgba(255,255,255,0.03) 50%,
+        rgba(255,255,255,0) 100%
+    );
+    background-size: 200% 100%;
+    animation: pf-shimmer 2s ease infinite;
+    z-index: 2;
+    pointer-events: none;
+    border-radius: 12px;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+.pf-preview.pf-loaded::before { opacity: 0; }
+
+@keyframes pf-shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+/* Footer karty */
+.pf-footer {
+    padding: 12px 14px 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 9px;
+    flex-shrink: 0;
+}
+
+.pf-client-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.88);
+    letter-spacing: 0.04em;
+    text-align: center;
+}
+
+.pf-visit-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 7px 18px;
+    border-radius: 100px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.13);
+    color: rgba(255,255,255,0.75);
+    font-size: 11.5px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.2s;
+    font-family: inherit;
+}
+
+.pf-visit-btn:hover {
+    background: rgba(255,255,255,0.13);
+    border-color: rgba(255,255,255,0.28);
+    color: #fff;
+    transform: translateY(-1px);
+}
+
+.pf-visit-btn svg {
+    width: 11px;
+    height: 11px;
+    opacity: 0.65;
+    flex-shrink: 0;
+}
+
+/* Šipky navigace */
+.pf-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 30;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.2s;
+    backdrop-filter: blur(10px);
+    padding: 0;
+}
+
+.pf-arrow:hover {
+    background: rgba(255,255,255,0.12);
+    border-color: rgba(255,255,255,0.22);
+    color: #fff;
+    transform: translateY(-50%) scale(1.08);
+}
+
+.pf-arrow svg { width: 16px; height: 16px; }
+.pf-arrow-left { left: clamp(10px, 3vw, 40px); }
+.pf-arrow-right { right: clamp(10px, 3vw, 40px); }
+
+/* Dots */
+.pf-dots {
+    display: flex;
+    justify-content: center;
+    gap: 7px;
+    margin-top: 32px;
+}
+
+.pf-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.18);
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.pf-dot.pf-dot-active {
+    background: rgba(255,255,255,0.8);
+    transform: scale(1.4);
+}
+
+/* Mobil */
+@media (max-width: 768px) {
+    .pf-card {
+        width: 270px;
+        height: 390px;
+    }
+
+    .pf-preview iframe {
+        width: 1280px;
+        height: 900px;
+        transform: scale(0.195); /* 250 / 1280 */
+    }
+
+    .pf-track {
+        height: 420px;
+    }
+
+    .pf-arrow-left { left: 6px; }
+    .pf-arrow-right { right: 6px; }
+}
+
+@media (max-width: 480px) {
+    .pf-card {
+        width: 240px;
+        height: 360px;
+    }
+
+    .pf-preview iframe {
+        transform: scale(0.172);
+    }
+}
 
             /* NOVÝ LUXUSNÍ REFERENCE SLIDER */
                 .testimonials-section { 
@@ -1039,6 +1321,28 @@
                             </div>
                         </div>
                     </div>
+                    <!-- ===== PORTFOLIO CAROUSEL ===== -->
+<div class="pf-carousel-section" id="pfCarouselSection">
+    <div class="pf-carousel-wrapper">
+        
+        <button class="pf-arrow pf-arrow-left" id="pfPrev" aria-label="Předchozí projekt">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M15 18l-6-6 6-6"/>
+            </svg>
+        </button>
+
+        <div class="pf-track" id="pfTrack"></div>
+
+        <button class="pf-arrow pf-arrow-right" id="pfNext" aria-label="Další projekt">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 18l6-6-6-6"/>
+            </svg>
+        </button>
+
+    </div>
+    <div class="pf-dots" id="pfDots"></div>
+</div>
+<!-- ===== KONEC PORTFOLIO CAROUSEL ===== -->
                 </div>
             </section>
 
@@ -1352,6 +1656,302 @@
             animateDust();
 
             </script>
+
+        <script>
+/* ============================================================
+   PORTFOLIO CAROUSEL
+   ============================================================ */
+(function () {
+
+    /* ---------- DATA — uprav dle potřeby ---------- */
+    const PROJECTS = [
+        {
+            name:       'Květinářství Kamila',
+            url:        'https://www.kvetinarstvikamila.cz',
+            logo:       'KvetinartsviKamilalogo.png',  /* lokální soubor z repo */
+            initials:   'KK'
+        },
+        {
+            name:       'Studio Chilli',
+            url:        'https://www.studiochilli.cz',
+            logo:       'studiochillilogo.png',
+            initials:   'SC'
+        },
+        {
+            name:       'CHS Crystal Valley',
+            url:        'https://www.crystalvalley.cat',
+            logo:       'CHScrystalvalleylogo.png',
+            initials:   'CV'
+        }
+        /* Sem přidej další projekty stejnou syntaxí */
+    ];
+
+    /* ---------- CONFIG ---------- */
+    const AUTOPLAY_MS   = 5000;
+    /* Offset vedlejší karty od středu (px) — zvětši pokud se překrývají */
+    const SIDE_OFFSET   = 290;
+    /* Scale vedlejší karty */
+    const SIDE_SCALE    = 0.80;
+    /* Opacity vedlejší karty */
+    const SIDE_OPACITY  = 0.50;
+    /* Blur vedlejší karty (px) */
+    const SIDE_BLUR     = 3;
+
+    /* ---------- STATE ---------- */
+    let current     = 0;
+    let autoTimer   = null;
+    let hovered     = false;
+    let dragging    = false;
+    let dragStartX  = 0;
+    let dragDelta   = 0;
+    const total     = PROJECTS.length;
+
+    /* ---------- DOM ---------- */
+    const track     = document.getElementById('pfTrack');
+    const dotsWrap  = document.getElementById('pfDots');
+    const btnPrev   = document.getElementById('pfPrev');
+    const btnNext   = document.getElementById('pfNext');
+    const section   = document.getElementById('pfCarouselSection');
+
+    if (!track) return;
+
+    /* ---------- VYTVOŘ KARTY ---------- */
+    PROJECTS.forEach((p, i) => {
+        const card = document.createElement('div');
+        card.className = 'pf-card';
+        card.dataset.index = i;
+
+        card.innerHTML = `
+            <div class="pf-logo-wrap">
+                <img 
+                    src="${p.logo}" 
+                    alt="${p.name} logo"
+                    onerror="this.style.display='none';this.nextElementSibling.style.display='block'"
+                />
+                <span class="pf-logo-initials">${p.initials}</span>
+            </div>
+
+            <div class="pf-preview" id="pfPreview_${i}">
+                <iframe
+                    src="${p.url}"
+                    title="${p.name} — náhled webu"
+                    loading="lazy"
+                    scrolling="no"
+                    sandbox="allow-scripts allow-same-origin"
+                    onload="pfIframeLoaded(this, ${i})"
+                    onerror="pfIframeError(this, ${i})"
+                ></iframe>
+                <img 
+                    class="pf-fallback"
+                    src="assets/screenshots/${p.initials.toLowerCase()}.jpg"
+                    alt="${p.name} screenshot"
+                    onerror="this.style.display='none'"
+                />
+            </div>
+
+            <div class="pf-footer">
+                <span class="pf-client-name">${p.name}</span>
+                <a class="pf-visit-btn" href="${p.url}" target="_blank" rel="noopener noreferrer">
+                    Navštívit web
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+                        <polyline points="15 3 21 3 21 9"/>
+                        <line x1="10" y1="14" x2="21" y2="3"/>
+                    </svg>
+                </a>
+            </div>
+        `;
+
+        track.appendChild(card);
+    });
+
+    /* ---------- IFRAME CALLBACKS ---------- */
+    window.pfIframeLoaded = function (iframe, idx) {
+        /* Zkusíme detekovat X-Frame-Options blok */
+        try {
+            /* Cross-origin = načetlo se OK (dostaneme security error) */
+            const doc = iframe.contentDocument;
+            /* Stejná doména — zkontrolujeme prázdný title jako signál chyby */
+            if (doc && !doc.title && doc.body && doc.body.innerHTML === '') {
+                pfIframeError(iframe, idx);
+                return;
+            }
+        } catch (e) {
+            /* Cross-origin = iframe se načetl, vše OK */
+        }
+        const wrap = document.getElementById('pfPreview_' + idx);
+        if (wrap) wrap.classList.add('pf-loaded');
+    };
+
+    window.pfIframeError = function (iframe, idx) {
+        const wrap = document.getElementById('pfPreview_' + idx);
+        if (wrap) {
+            wrap.classList.add('pf-blocked', 'pf-loaded');
+        }
+    };
+
+    /* ---------- DOTS ---------- */
+    PROJECTS.forEach((_, i) => {
+        const dot = document.createElement('button');
+        dot.className = 'pf-dot' + (i === 0 ? ' pf-dot-active' : '');
+        dot.setAttribute('aria-label', 'Projekt ' + (i + 1));
+        dot.addEventListener('click', () => goTo(i));
+        dotsWrap.appendChild(dot);
+    });
+
+    /* ---------- HELPERS ---------- */
+    function mod(n, m) { return ((n % m) + m) % m; }
+
+    function isMobile() { return window.innerWidth <= 768; }
+
+    /* ---------- RENDER ---------- */
+    function render() {
+        const cards    = track.querySelectorAll('.pf-card');
+        const offset   = isMobile() ? 240 : SIDE_OFFSET;
+
+        cards.forEach((card, i) => {
+            const pos = mod(i - current, total);
+            let x, scale, opacity, blur, zIndex, cls;
+
+            if (pos === 0) {
+                /* Aktivní — střed */
+                x       = 0;
+                scale   = 1;
+                opacity = 1;
+                blur    = 0;
+                zIndex  = 10;
+                cls     = 'pf-card pf-active';
+            } else if (pos === 1) {
+                /* Pravá */
+                x       = offset;
+                scale   = SIDE_SCALE;
+                opacity = SIDE_OPACITY;
+                blur    = SIDE_BLUR;
+                zIndex  = 5;
+                cls     = 'pf-card pf-side';
+            } else if (pos === total - 1) {
+                /* Levá */
+                x       = -offset;
+                scale   = SIDE_SCALE;
+                opacity = SIDE_OPACITY;
+                blur    = SIDE_BLUR;
+                zIndex  = 5;
+                cls     = 'pf-card pf-side';
+            } else {
+                /* Skryté */
+                x       = pos < total / 2 ? offset * 1.6 : -offset * 1.6;
+                scale   = 0.6;
+                opacity = 0;
+                blur    = 8;
+                zIndex  = 1;
+                cls     = 'pf-card pf-hidden';
+            }
+
+            card.className = cls;
+            card.style.zIndex   = zIndex;
+            card.style.transform = `translateX(${x}px) scale(${scale})`;
+            card.style.opacity  = opacity;
+            card.style.filter   = blur > 0 ? `blur(${blur}px)` : 'none';
+        });
+
+        /* Dots */
+        dotsWrap.querySelectorAll('.pf-dot').forEach((dot, i) => {
+            dot.classList.toggle('pf-dot-active', i === current);
+        });
+    }
+
+    /* ---------- NAVIGACE ---------- */
+    function goTo(idx) {
+        current = mod(idx, total);
+        render();
+    }
+
+    function next() { goTo(current + 1); }
+    function prev() { goTo(current - 1); }
+
+    /* ---------- AUTOPLAY ---------- */
+    function startAuto() {
+        stopAuto();
+        autoTimer = setInterval(() => {
+            if (!hovered && !dragging) next();
+        }, AUTOPLAY_MS);
+    }
+
+    function stopAuto() { clearInterval(autoTimer); }
+
+    function resetAuto() { stopAuto(); startAuto(); }
+
+    /* ---------- EVENTS ---------- */
+
+    /* Šipky */
+    btnPrev.addEventListener('click', () => { prev(); resetAuto(); });
+    btnNext.addEventListener('click', () => { next(); resetAuto(); });
+
+    /* Hover — pause autoplay */
+    section.addEventListener('mouseenter', () => { hovered = true; });
+    section.addEventListener('mouseleave', () => { hovered = false; });
+
+    /* Kliknutí na vedlejší kartu → přepne na ni */
+    track.addEventListener('click', (e) => {
+        if (dragging) return;
+        const card = e.target.closest('.pf-card');
+        if (!card) return;
+        const idx = parseInt(card.dataset.index);
+        if (idx !== current) { goTo(idx); resetAuto(); }
+    });
+
+    /* Mouse drag */
+    track.addEventListener('mousedown', (e) => {
+        dragging   = false;
+        dragStartX = e.clientX;
+        dragDelta  = 0;
+    });
+    window.addEventListener('mousemove', (e) => {
+        if (e.buttons !== 1) return;
+        dragDelta = e.clientX - dragStartX;
+        if (Math.abs(dragDelta) > 8) dragging = true;
+    });
+    window.addEventListener('mouseup', () => {
+        if (dragging) {
+            if (dragDelta < -60) { next(); resetAuto(); }
+            else if (dragDelta > 60) { prev(); resetAuto(); }
+        }
+        setTimeout(() => { dragging = false; }, 50);
+        dragDelta = 0;
+    });
+
+    /* Touch swipe */
+    let touchStart = 0;
+    section.addEventListener('touchstart', (e) => {
+        touchStart = e.touches[0].clientX;
+    }, { passive: true });
+    section.addEventListener('touchend', (e) => {
+        const delta = e.changedTouches[0].clientX - touchStart;
+        if (delta < -50) { next(); resetAuto(); }
+        else if (delta > 50) { prev(); resetAuto(); }
+    }, { passive: true });
+
+    /* Klávesnice */
+    document.addEventListener('keydown', (e) => {
+        if (!isInViewport(section)) return;
+        if (e.key === 'ArrowRight') { next(); resetAuto(); }
+        if (e.key === 'ArrowLeft') { prev(); resetAuto(); }
+    });
+
+    function isInViewport(el) {
+        const r = el.getBoundingClientRect();
+        return r.top < window.innerHeight && r.bottom > 0;
+    }
+
+    /* Resize */
+    window.addEventListener('resize', render);
+
+    /* ---------- INIT ---------- */
+    render();
+    startAuto();
+
+})();
+</script>
 
         <!-- ========================================================================= -->
         <!-- NEPRŮSTŘELNÁ COOKIE LIŠTA PRO OSOBNÍ WEB (FORMULÁŘ + GOOGLE ANALYTICS) -->
