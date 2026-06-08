@@ -1,2032 +1,2045 @@
-  <!DOCTYPE html>
-        <html lang="cs">
-        <head>
-            <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-VZCXFZDMZ5"></script>
-        <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
+    <!DOCTYPE html>
+            <html lang="cs">
+            <head>
+                <!-- Google tag (gtag.js) -->
+            <script async src="https://www.googletagmanager.com/gtag/js?id=G-VZCXFZDMZ5"></script>
+            <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
 
-        gtag('config', 'G-VZCXFZDMZ5');
-        </script>
+            gtag('config', 'G-VZCXFZDMZ5');
+            </script>
 
-            <!-- Google tag (gtag.js) --> <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18206088322"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'AW-18206088322'); </script>
-            <link rel="preconnect" href="https://fonts.googleapis.com">
-            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-            <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Syne:wght@700;800&display=swap" rel="stylesheet">
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <meta name="description" content="Petr Brož — freelance webdesigner z Liberce. Tvořím weby na míru pro firmy a podnikatele. Responzivní design, rychlé weby, reálné výsledky. Zjistěte více.">
-            <title>Petr Brož | Marketing Liberec • Digitální tvorba • Branding</title>
-            <link rel="icon" type="image/png" href="favikon2.png">
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+                <!-- Google tag (gtag.js) --> <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18206088322"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'AW-18206088322'); </script>
+                <link rel="preconnect" href="https://fonts.googleapis.com">
+                <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+                <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <meta name="description" content="Petr Brož — freelance webdesigner z Liberce. Tvořím weby na míru pro firmy a podnikatele. Responzivní design, rychlé weby, reálné výsledky. Zjistěte více.">
+                <title>Petr Brož | Marketing Liberec • Digitální tvorba • Branding</title>
+                <link rel="icon" type="image/png" href="favikon2.png">
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-            <style>
-                * { margin: 0; padding: 0; box-sizing: border-box; }
+                <style>
+                    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-                :root {
-                    --primary-color: #3498db;
-                    --secondary-color: #2ecc71;
-                    --dark-color: #000000;
-                    --light-color: #f5f5f7;
-                    --gray-color: #cccccc;
-                    --card-bg: rgba(255,255,255,0.08);
-                    --transition: all 0.3s ease;
+                    :root {
+                        --primary-color: #3498db;
+                        --secondary-color: #2ecc71;
+                        --dark-color: #000000;
+                        --light-color: #f5f5f7;
+                        --gray-color: #cccccc;
+                        --card-bg: rgba(255,255,255,0.08);
+                        --transition: all 0.3s ease;
+                    }
+
+                    body {
+                        font-family: 'Plus Jakarta Sans', sans-serif;
+                        background-color: var(--dark-color);
+                        color: var(--light-color);
+                        line-height: 1.6;
+                        overflow-x: hidden;
+                    }
+
+                    
+
+                    ::-webkit-scrollbar { width: 8px; }
+                    ::-webkit-scrollbar-track { background: #111; }
+                    ::-webkit-scrollbar-thumb { background: var(--primary-color); border-radius: 5px; }
+
+                    /* HEADER */
+                    header {
+                        position: fixed; top: 0; left: 0;
+                        width: 100%; z-index: 1000;
+                        padding: 20px 0;
+                        transition: var(--transition);
+                    }
+                    header.scrolled {
+                        background-color: rgba(0,0,0,0.96);
+                        backdrop-filter: blur(12px);
+                        padding: 12px 0;
+                        box-shadow: 0 2px 20px rgba(0,0,0,0.5);
+                    }
+
+                    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+                    .nav-container { display: flex; justify-content: space-between; align-items: center; }
+
+                    .nav-logo {
+                        font-size: 1.4rem; font-weight: 700;
+                        color: var(--light-color); text-decoration: none; letter-spacing: 1px;
+                    }
+
+                    .main-nav { display: flex; gap: 35px; list-style: none; }
+                    .main-nav a {
+                        color: var(--light-color); text-decoration: none;
+                        font-size: 15px; font-weight: 500; letter-spacing: 0.5px;
+                        transition: var(--transition); position: relative;
+                    }
+                    .main-nav a:hover { color: var(--primary-color); }
+                    .main-nav a::after {
+                        content: ''; position: absolute;
+                        width: 0; height: 2px; bottom: -5px; left: 0;
+                        background-color: var(--primary-color);
+                        transition: var(--transition);
+                    }
+                    .main-nav a:hover::after { width: 100%; }
+
+                    /* HAMBURGER */
+                    .hamburger {
+                        display: none; flex-direction: column;
+                        justify-content: center; align-items: center;
+                        gap: 6px; width: 44px; height: 44px;
+                        cursor: pointer; background: none; border: none;
+                        padding: 6px; z-index: 1100;
+                    }
+                    .hamburger span {
+                        display: block; width: 28px; height: 3px;
+                        background: var(--light-color); border-radius: 3px;
+                        transition: all 0.35s ease; transform-origin: center;
+                    }
+                    .hamburger.open span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+                    .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+                    .hamburger.open span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+
+                    /* MOBILE NAV */
+                    .mobile-nav {
+                        display: none; position: fixed;
+                        top: 0; left: 0; width: 100%; height: 100%;
+                        background: rgba(0,0,0,0.97);
+                        backdrop-filter: blur(10px);
+                        z-index: 1050; flex-direction: column;
+                        justify-content: center; align-items: center;
+                        opacity: 0; pointer-events: none;
+                        transition: opacity 0.35s ease;
+                    }
+                    .mobile-nav.open { display: flex; opacity: 1; pointer-events: all; }
+                    .mobile-nav ul { list-style: none; text-align: center; }
+                    .mobile-nav ul li {
+                        margin: 10px 0; opacity: 0;
+                        transform: translateY(20px); transition: all 0.3s ease;
+                    }
+                    .mobile-nav.open ul li { opacity: 1; transform: translateY(0); }
+                    .mobile-nav.open ul li:nth-child(1) { transition-delay: 0.05s; }
+                    .mobile-nav.open ul li:nth-child(2) { transition-delay: 0.1s; }
+                    .mobile-nav.open ul li:nth-child(3) { transition-delay: 0.15s; }
+                    .mobile-nav.open ul li:nth-child(4) { transition-delay: 0.2s; }
+                    .mobile-nav.open ul li:nth-child(5) { transition-delay: 0.25s; }
+                    .mobile-nav.open ul li:nth-child(6) { transition-delay: 0.3s; }
+                    .mobile-nav.open ul li:nth-child(7) { transition-delay: 0.35s; }
+                    .mobile-nav ul li a {
+                        color: var(--light-color); text-decoration: none;
+                        font-size: 1.8rem; font-weight: 600;
+                        letter-spacing: 2px; text-transform: uppercase;
+                        display: block; padding: 12px 40px;
+                        transition: color 0.2s ease;
+                    }
+                    .mobile-nav ul li a:hover, .mobile-nav ul li a:active { color: var(--primary-color); }
+
+                    /* HERO */
+                /* HERO SEKCE S REFEKTY INTERAKTIVNÍ BATERKY */
+                .hero {
+                    height: 100vh; min-height: 600px; position: relative;
+                    display: flex; align-items: center; justify-content: center; overflow: hidden;
+                    background-color: #000;
                 }
-
-                body {
-                    font-family: 'Plus Jakarta Sans', sans-serif;
-                    background-color: var(--dark-color);
-                    color: var(--light-color);
-                    line-height: 1.6;
-                    overflow-x: hidden;
+                /* Spodní vrstva: Fotka ztmavená filtrem přímo v CSS */
+                .hero-background {
+                    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+                    background: url('umore.jpg') no-repeat center center/cover;
+                    filter: brightness(25%) contrast(90%); /* Hodně tmavé pozadí pro super kontrast */
                 }
-
+                /* Horní vrstva: Absolutní 100% jasný a barevný originál fotky */
+                .hero-background-reveal {
+                    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+                    background: url('umore.jpg') no-repeat center center/cover;
+                    filter: none; /* Žádné filtry ani ztmavení, čistý originál */
+                    pointer-events: none;
+                    /* Na začátku je maska skrytá */
+                    mask-image: radial-gradient(circle 0px at 0px 0px, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+                    -webkit-mask-image: radial-gradient(circle 0px at 0px 0px, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+                }
+                /* Jemný spodní stín pro lepší čitelnost textu a plynulý přechod do další sekce */
+                .hero-overlay {
+                    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+                    background: linear-gradient(to bottom, rgba(0,0,0,0) 60%, rgba(0,0,0,0.8) 100%);
+                    pointer-events: none;
+                    z-index: 1;
+                }
+                .hero-content {
+                    position: relative; z-index: 10;
+                    text-align: center; max-width: 800px; padding: 0 20px;
+                    pointer-events: none; /* Myš propadává skrz text přímo na pozadí */
+                }
+                .hero-title {
+                    font-size: 5.5rem; font-weight: 700; letter-spacing: 3px;
+                    margin-bottom: 20px; color: var(--light-color);
+                    text-transform: uppercase; text-shadow: 0 5px 25px rgba(0,0,0,0.9);
+                }
+                .hero-subtitle {
+                    font-size: 1.4rem; color: var(--gray-color);
+                    margin-bottom: 40px; font-weight: 300; letter-spacing: 2px;
+                    text-shadow: 0 2px 10px rgba(0,0,0,0.9);
+                }
+                .mouse-scroll {
+                    position: absolute; bottom: 40px; left: 50%;
+                    transform: translateX(-50%); z-index: 10; text-align: center;
+                }
+                .mouse {
+                    width: 30px; height: 50px;
+                    border: 2px solid rgba(255,255,255,0.6);
+                    border-radius: 20px; margin: 0 auto 10px; position: relative;
+                }
+                .wheel {
+                    width: 4px; height: 10px; background: var(--light-color);
+                    border-radius: 2px; position: absolute; top: 10px; left: 50%;
+                    transform: translateX(-50%); animation: wheel 1.5s infinite;
+                }
+                @keyframes wheel {
+                    0% { opacity: 1; transform: translateX(-50%) translateY(0); }
+                    100% { opacity: 0; transform: translateX(-50%) translateY(20px); }
+                }
+                .scroll-text { color: rgba(255,255,255,0.6); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; }
                 
+                    /* SECTIONS */
+                    section { padding: 100px 0; }
+                    .section-title {
+                        font-size: 2.5rem; text-align: center;
+                        margin-bottom: 60px; position: relative; color: var(--light-color);
+                    }
+                    .section-title::after {
+                        content: ''; position: absolute; width: 80px; height: 3px;
+                        background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+                        bottom: -15px; left: 50%; transform: translateX(-50%);
+                    }
 
-                ::-webkit-scrollbar { width: 8px; }
-                ::-webkit-scrollbar-track { background: #111; }
-                ::-webkit-scrollbar-thumb { background: var(--primary-color); border-radius: 5px; }
+                    /* JOURNEY */
+                    .journey-container { display: flex; align-items: center; gap: 60px; }
+                    .journey-images { flex: 1; position: relative; height: 500px; }
+                    .image-stack { position: relative; width: 100%; height: 100%; }
+                    .stack-image {
+                        position: absolute; width: 80%; height: 70%;
+                        object-fit: cover; border-radius: 10px;
+                        transition: var(--transition);
+                        box-shadow: 0 15px 30px rgba(0,0,0,0.4); cursor: pointer;
+                    }
+                    .stack-image-1 { top: 0; left: 0; z-index: 3; transform: rotate(-3deg); }
+                    .stack-image-2 { top: 15%; right: 0; z-index: 2; transform: rotate(2deg); }
+                    .stack-image-1:hover, .stack-image-2:hover { transform: scale(1.05) rotate(0deg); z-index: 5; }
+                    .journey-text { flex: 1; }
+                    .journey-text h2 { font-size: 2.5rem; margin-bottom: 30px; color: var(--light-color); }
+                    .journey-text p { font-size: 1.05rem; color: var(--gray-color); margin-bottom: 20px; line-height: 1.9; }
 
-                /* HEADER */
-                header {
-                    position: fixed; top: 0; left: 0;
-                    width: 100%; z-index: 1000;
-                    padding: 20px 0;
-                    transition: var(--transition);
-                }
-                header.scrolled {
-                    background-color: rgba(0,0,0,0.96);
-                    backdrop-filter: blur(12px);
-                    padding: 12px 0;
-                    box-shadow: 0 2px 20px rgba(0,0,0,0.5);
-                }
+                    /* COMPANIES */
+                    .companies-section { background: linear-gradient(to bottom, #080808, #050505); padding: 100px 0; }
+                    .companies-container {
+                        display: flex; justify-content: center;
+                        align-items: stretch; gap: 40px; flex-wrap: wrap;
+                    }
+                    .company-card {
+                        background: var(--card-bg); backdrop-filter: blur(10px);
+                        border-radius: 16px; padding: 45px 35px; text-align: center;
+                        transition: var(--transition);
+                        border: 1px solid rgba(255,255,255,0.07);
+                        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+                        width: 300px; display: flex; flex-direction: column; align-items: center;
+                    }
+                    .company-card:hover {
+                        transform: translateY(-10px);
+                        border-color: rgba(52,152,219,0.4);
+                        box-shadow: 0 20px 50px rgba(52,152,219,0.12);
+                    }
+                    .company-logo { font-size: 3rem; margin-bottom: 20px; color: var(--primary-color); }
+                    .company-card h3 { font-size: 1.8rem; margin-bottom: 15px; color: var(--light-color); }
+                    .company-card p { color: var(--gray-color); margin-bottom: 25px; line-height: 1.7; flex: 1; }
+                    .company-link {
+                        display: inline-block; background: transparent;
+                        color: var(--primary-color); border: 1px solid var(--primary-color);
+                        padding: 10px 25px; border-radius: 30px; text-decoration: none;
+                        font-weight: 500; transition: var(--transition); cursor: pointer;
+                    }
+                    .company-link:hover { background: var(--primary-color); color: #000; }
 
-                .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+                    /* SERVICES */
+                    .services-container {
+                        display: grid; grid-template-columns: repeat(auto-fill, minmax(320px,1fr));
+                        gap: 30px; margin-bottom: 50px;
+                    }
+                    .service-card {
+                        background: var(--card-bg); backdrop-filter: blur(10px);
+                        border-radius: 16px; padding: 40px 30px;
+                        transition: var(--transition);
+                        border: 1px solid rgba(255,255,255,0.06);
+                        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+                        display: flex; flex-direction: column;
+                    }
+                    .service-card:hover {
+                        transform: translateY(-8px);
+                        border-color: rgba(52,152,219,0.35);
+                        box-shadow: 0 18px 45px rgba(52,152,219,0.1);
+                    }
+                    .service-icon { font-size: 2.5rem; margin-bottom: 20px; color: var(--primary-color); }
+                    .service-card h3 { font-size: 1.5rem; margin-bottom: 12px; color: var(--light-color); }
+                    .service-card > p { color: var(--gray-color); margin-bottom: 20px; flex: 1; }
+                    .service-features { list-style: none; margin-bottom: 25px; }
+                    .service-features li {
+                        color: var(--gray-color); margin-bottom: 8px;
+                        padding-left: 22px; position: relative; font-size: 0.95rem;
+                    }
+                    .service-features li::before {
+                        content: '✓'; position: absolute; left: 0;
+                        color: var(--primary-color); font-weight: bold;
+                    }
+                    .service-btn {
+                        display: inline-block; background: transparent;
+                        color: var(--primary-color); border: 1px solid var(--primary-color);
+                        padding: 12px 25px; border-radius: 30px; text-decoration: none;
+                        font-weight: 500; transition: var(--transition);
+                        cursor: pointer; text-align: center; align-self: flex-start;
+                    }
+                    .service-btn:hover { background: var(--primary-color); color: #000; }
 
-                .nav-container { display: flex; justify-content: space-between; align-items: center; }
+                    /* ===================================================
+    PORTFOLIO CAROUSEL — nahrazuje staré .portfolio-*
+    =================================================== */
 
-                .nav-logo {
-                    font-size: 1.4rem; font-weight: 700;
-                    color: var(--light-color); text-decoration: none; letter-spacing: 1px;
-                }
+    /* Skryj starý grid layout */
+    .portfolio-container { display: none !important; }
 
-                .main-nav { display: flex; gap: 35px; list-style: none; }
-                .main-nav a {
-                    color: var(--light-color); text-decoration: none;
-                    font-size: 15px; font-weight: 500; letter-spacing: 0.5px;
-                    transition: var(--transition); position: relative;
-                }
-                .main-nav a:hover { color: var(--primary-color); }
-                .main-nav a::after {
-                    content: ''; position: absolute;
-                    width: 0; height: 2px; bottom: -5px; left: 0;
-                    background-color: var(--primary-color);
-                    transition: var(--transition);
-                }
-                .main-nav a:hover::after { width: 100%; }
+    /* Wrapper celé sekce carouselu */
+    .pf-carousel-section {
+        position: relative;
+        padding: 20px 0 60px;
+        overflow: hidden;
+    }
 
-                /* HAMBURGER */
-                .hamburger {
-                    display: none; flex-direction: column;
-                    justify-content: center; align-items: center;
-                    gap: 6px; width: 44px; height: 44px;
-                    cursor: pointer; background: none; border: none;
-                    padding: 6px; z-index: 1100;
-                }
-                .hamburger span {
-                    display: block; width: 28px; height: 3px;
-                    background: var(--light-color); border-radius: 3px;
-                    transition: all 0.35s ease; transform-origin: center;
-                }
-                .hamburger.open span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
-                .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-                .hamburger.open span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+    /* Relativní wrapper — šipky jsou uvnitř */
+    .pf-carousel-wrapper {
+        position: relative;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 760px;
+    }
 
-                /* MOBILE NAV */
-                .mobile-nav {
-                    display: none; position: fixed;
-                    top: 0; left: 0; width: 100%; height: 100%;
-                    background: rgba(0,0,0,0.97);
-                    backdrop-filter: blur(10px);
-                    z-index: 1050; flex-direction: column;
-                    justify-content: center; align-items: center;
-                    opacity: 0; pointer-events: none;
-                    transition: opacity 0.35s ease;
-                }
-                .mobile-nav.open { display: flex; opacity: 1; pointer-events: all; }
-                .mobile-nav ul { list-style: none; text-align: center; }
-                .mobile-nav ul li {
-                    margin: 10px 0; opacity: 0;
-                    transform: translateY(20px); transition: all 0.3s ease;
-                }
-                .mobile-nav.open ul li { opacity: 1; transform: translateY(0); }
-                .mobile-nav.open ul li:nth-child(1) { transition-delay: 0.05s; }
-                .mobile-nav.open ul li:nth-child(2) { transition-delay: 0.1s; }
-                .mobile-nav.open ul li:nth-child(3) { transition-delay: 0.15s; }
-                .mobile-nav.open ul li:nth-child(4) { transition-delay: 0.2s; }
-                .mobile-nav.open ul li:nth-child(5) { transition-delay: 0.25s; }
-                .mobile-nav.open ul li:nth-child(6) { transition-delay: 0.3s; }
-                .mobile-nav.open ul li:nth-child(7) { transition-delay: 0.35s; }
-                .mobile-nav ul li a {
-                    color: var(--light-color); text-decoration: none;
-                    font-size: 1.8rem; font-weight: 600;
-                    letter-spacing: 2px; text-transform: uppercase;
-                    display: block; padding: 12px 40px;
-                    transition: color 0.2s ease;
-                }
-                .mobile-nav ul li a:hover, .mobile-nav ul li a:active { color: var(--primary-color); }
+    /* Track — kontejner karet */
+    .pf-track {
+        position: relative;
+        width: 100%;
+        height: 700px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
-                /* HERO */
-            /* HERO SEKCE S REFEKTY INTERAKTIVNÍ BATERKY */
-            .hero {
-                height: 100vh; min-height: 600px; position: relative;
-                display: flex; align-items: center; justify-content: center; overflow: hidden;
-                background-color: #000;
-            }
-            /* Spodní vrstva: Fotka ztmavená filtrem přímo v CSS */
-            .hero-background {
-                position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-                background: url('umore.jpg') no-repeat center center/cover;
-                filter: brightness(25%) contrast(90%); /* Hodně tmavé pozadí pro super kontrast */
-            }
-            /* Horní vrstva: Absolutní 100% jasný a barevný originál fotky */
-            .hero-background-reveal {
-                position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-                background: url('umore.jpg') no-repeat center center/cover;
-                filter: none; /* Žádné filtry ani ztmavení, čistý originál */
-                pointer-events: none;
-                /* Na začátku je maska skrytá */
-                mask-image: radial-gradient(circle 0px at 0px 0px, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
-                -webkit-mask-image: radial-gradient(circle 0px at 0px 0px, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
-            }
-            /* Jemný spodní stín pro lepší čitelnost textu a plynulý přechod do další sekce */
-            .hero-overlay {
-                position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-                background: linear-gradient(to bottom, rgba(0,0,0,0) 60%, rgba(0,0,0,0.8) 100%);
-                pointer-events: none;
-                z-index: 1;
-            }
-            .hero-content {
-                position: relative; z-index: 10;
-                text-align: center; max-width: 800px; padding: 0 20px;
-                pointer-events: none; /* Myš propadává skrz text přímo na pozadí */
-            }
-            .hero-title {
-                font-size: 5.5rem; font-weight: 700; letter-spacing: 3px;
-                margin-bottom: 20px; color: var(--light-color);
-                text-transform: uppercase; text-shadow: 0 5px 25px rgba(0,0,0,0.9);
-            }
-            .hero-subtitle {
-                font-size: 1.4rem; color: var(--gray-color);
-                margin-bottom: 40px; font-weight: 300; letter-spacing: 2px;
-                text-shadow: 0 2px 10px rgba(0,0,0,0.9);
-            }
-            .mouse-scroll {
-                position: absolute; bottom: 40px; left: 50%;
-                transform: translateX(-50%); z-index: 10; text-align: center;
-            }
-            .mouse {
-                width: 30px; height: 50px;
-                border: 2px solid rgba(255,255,255,0.6);
-                border-radius: 20px; margin: 0 auto 10px; position: relative;
-            }
-            .wheel {
-                width: 4px; height: 10px; background: var(--light-color);
-                border-radius: 2px; position: absolute; top: 10px; left: 50%;
-                transform: translateX(-50%); animation: wheel 1.5s infinite;
-            }
-            @keyframes wheel {
-                0% { opacity: 1; transform: translateX(-50%) translateY(0); }
-                100% { opacity: 0; transform: translateX(-50%) translateY(20px); }
-            }
-            .scroll-text { color: rgba(255,255,255,0.6); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; }
-            
-                /* SECTIONS */
-                section { padding: 100px 0; }
-                .section-title {
-                    font-size: 2.5rem; text-align: center;
-                    margin-bottom: 60px; position: relative; color: var(--light-color);
-                }
-                .section-title::after {
-                    content: ''; position: absolute; width: 80px; height: 3px;
-                    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
-                    bottom: -15px; left: 50%; transform: translateX(-50%);
-                }
-
-                /* JOURNEY */
-                .journey-container { display: flex; align-items: center; gap: 60px; }
-                .journey-images { flex: 1; position: relative; height: 500px; }
-                .image-stack { position: relative; width: 100%; height: 100%; }
-                .stack-image {
-                    position: absolute; width: 80%; height: 70%;
-                    object-fit: cover; border-radius: 10px;
-                    transition: var(--transition);
-                    box-shadow: 0 15px 30px rgba(0,0,0,0.4); cursor: pointer;
-                }
-                .stack-image-1 { top: 0; left: 0; z-index: 3; transform: rotate(-3deg); }
-                .stack-image-2 { top: 15%; right: 0; z-index: 2; transform: rotate(2deg); }
-                .stack-image-1:hover, .stack-image-2:hover { transform: scale(1.05) rotate(0deg); z-index: 5; }
-                .journey-text { flex: 1; }
-                .journey-text h2 { font-size: 2.5rem; margin-bottom: 30px; color: var(--light-color); }
-                .journey-text p { font-size: 1.05rem; color: var(--gray-color); margin-bottom: 20px; line-height: 1.9; }
-
-                /* COMPANIES */
-                .companies-section { background: linear-gradient(to bottom, #080808, #050505); padding: 100px 0; }
-                .companies-container {
-                    display: flex; justify-content: center;
-                    align-items: stretch; gap: 40px; flex-wrap: wrap;
-                }
-                .company-card {
-                    background: var(--card-bg); backdrop-filter: blur(10px);
-                    border-radius: 16px; padding: 45px 35px; text-align: center;
-                    transition: var(--transition);
-                    border: 1px solid rgba(255,255,255,0.07);
-                    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-                    width: 300px; display: flex; flex-direction: column; align-items: center;
-                }
-                .company-card:hover {
-                    transform: translateY(-10px);
-                    border-color: rgba(52,152,219,0.4);
-                    box-shadow: 0 20px 50px rgba(52,152,219,0.12);
-                }
-                .company-logo { font-size: 3rem; margin-bottom: 20px; color: var(--primary-color); }
-                .company-card h3 { font-size: 1.8rem; margin-bottom: 15px; color: var(--light-color); }
-                .company-card p { color: var(--gray-color); margin-bottom: 25px; line-height: 1.7; flex: 1; }
-                .company-link {
-                    display: inline-block; background: transparent;
-                    color: var(--primary-color); border: 1px solid var(--primary-color);
-                    padding: 10px 25px; border-radius: 30px; text-decoration: none;
-                    font-weight: 500; transition: var(--transition); cursor: pointer;
-                }
-                .company-link:hover { background: var(--primary-color); color: #000; }
-
-                /* SERVICES */
-                .services-container {
-                    display: grid; grid-template-columns: repeat(auto-fill, minmax(320px,1fr));
-                    gap: 30px; margin-bottom: 50px;
-                }
-                .service-card {
-                    background: var(--card-bg); backdrop-filter: blur(10px);
-                    border-radius: 16px; padding: 40px 30px;
-                    transition: var(--transition);
-                    border: 1px solid rgba(255,255,255,0.06);
-                    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-                    display: flex; flex-direction: column;
-                }
-                .service-card:hover {
-                    transform: translateY(-8px);
-                    border-color: rgba(52,152,219,0.35);
-                    box-shadow: 0 18px 45px rgba(52,152,219,0.1);
-                }
-                .service-icon { font-size: 2.5rem; margin-bottom: 20px; color: var(--primary-color); }
-                .service-card h3 { font-size: 1.5rem; margin-bottom: 12px; color: var(--light-color); }
-                .service-card > p { color: var(--gray-color); margin-bottom: 20px; flex: 1; }
-                .service-features { list-style: none; margin-bottom: 25px; }
-                .service-features li {
-                    color: var(--gray-color); margin-bottom: 8px;
-                    padding-left: 22px; position: relative; font-size: 0.95rem;
-                }
-                .service-features li::before {
-                    content: '✓'; position: absolute; left: 0;
-                    color: var(--primary-color); font-weight: bold;
-                }
-                .service-btn {
-                    display: inline-block; background: transparent;
-                    color: var(--primary-color); border: 1px solid var(--primary-color);
-                    padding: 12px 25px; border-radius: 30px; text-decoration: none;
-                    font-weight: 500; transition: var(--transition);
-                    cursor: pointer; text-align: center; align-self: flex-start;
-                }
-                .service-btn:hover { background: var(--primary-color); color: #000; }
-
-                /* ===================================================
-   PORTFOLIO CAROUSEL — nahrazuje staré .portfolio-*
-   =================================================== */
-
-/* Skryj starý grid layout */
-.portfolio-container { display: none !important; }
-
-/* Wrapper celé sekce carouselu */
-.pf-carousel-section {
-    position: relative;
-    padding: 20px 0 60px;
-    overflow: hidden;
-}
-
-/* Relativní wrapper — šipky jsou uvnitř */
-.pf-carousel-wrapper {
-    position: relative;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 540px;
-}
-
-/* Track — kontejner karet */
-.pf-track {
-    position: relative;
-    width: 100%;
-    height: 480px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* Jednotlivá karta */
-.pf-card {
-    position: absolute;
-    width: 320px;
-    height: 440px;
-    border-radius: 22px;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.09);
-    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
-    overflow: visible;
-    display: flex;
-    flex-direction: column;
-    will-change: transform, opacity, filter;
-    /* Transition — spring-like pomocí cubic-bezier */
-    transition:
-        transform 0.6s cubic-bezier(0.34, 1.4, 0.64, 1),
-        opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1),
-        filter 0.5s ease,
-        box-shadow 0.5s ease;
-}
-
-.pf-card.pf-active {
-    box-shadow:
-        0 30px 80px rgba(0,0,0,0.6),
-        0 0 0 1px rgba(255,255,255,0.13),
-        inset 0 1px 0 rgba(255,255,255,0.08);
-    z-index: 10;
-}
-
-.pf-card.pf-side {
-    z-index: 5;
-    cursor: pointer;
-}
-
-.pf-card.pf-hidden {
-    z-index: 1;
-    pointer-events: none;
-}
-
-/* Logo klienta — překrývá horní hranu */
-.pf-logo-wrap {
-    position: absolute;
-    top: -26px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 20;
-    width: 52px;
-    height: 52px;
-    border-radius: 50%;
-    background: #0d0d0d;
-    border: 1.5px solid rgba(255,255,255,0.14);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    box-shadow:
-        0 4px 20px rgba(0,0,0,0.5),
-        0 0 0 1px rgba(255,255,255,0.06);
-    flex-shrink: 0;
-}
-
-.pf-logo-wrap img {
-    width: 32px;
-    height: 32px;
-    object-fit: contain;
-    border-radius: 50%;
-}
-
-.pf-logo-initials {
-    font-size: 13px;
-    font-weight: 700;
-    color: rgba(255,255,255,0.6);
-    letter-spacing: 0.5px;
-    display: none;
-}
-
-/* Iframe / preview area */
-.pf-preview {
-    margin: 44px 10px 0;
-    flex: 1;
-    position: relative;
-    overflow: hidden;
-    border-radius: 12px;
-    background: #080808;
-    border: 1px solid rgba(255,255,255,0.06);
-}
-
-.pf-preview iframe {
-    width: 1280px;
-    height: 900px;
-    border: none;
-    transform: scale(0.234375); /* 300 / 1280 */
-    transform-origin: top left;
-    pointer-events: none;
-    display: block;
-}
-
-/* Fallback screenshot pokud iframe blokovaný */
-.pf-preview .pf-fallback {
-    display: none;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: top;
-}
-
-.pf-preview.pf-blocked iframe { display: none; }
-.pf-preview.pf-blocked .pf-fallback { display: block; }
-
-/* Shimmer loading state */
-.pf-preview::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-        90deg,
-        rgba(255,255,255,0) 0%,
-        rgba(255,255,255,0.03) 50%,
-        rgba(255,255,255,0) 100%
-    );
-    background-size: 200% 100%;
-    animation: pf-shimmer 2s ease infinite;
-    z-index: 2;
-    pointer-events: none;
-    border-radius: 12px;
-    opacity: 1;
-    transition: opacity 0.5s ease;
-}
-.pf-preview.pf-loaded::before { opacity: 0; }
-
-@keyframes pf-shimmer {
-    0% { background-position: -200% 0; }
-    100% { background-position: 200% 0; }
-}
-
-/* Footer karty */
-.pf-footer {
-    padding: 12px 14px 14px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 9px;
-    flex-shrink: 0;
-}
-
-.pf-client-name {
-    font-size: 13px;
-    font-weight: 600;
-    color: rgba(255,255,255,0.88);
-    letter-spacing: 0.04em;
-    text-align: center;
-}
-
-.pf-visit-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    padding: 7px 18px;
-    border-radius: 100px;
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.13);
-    color: rgba(255,255,255,0.75);
-    font-size: 11.5px;
-    font-weight: 500;
-    letter-spacing: 0.04em;
-    text-decoration: none;
-    transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.2s;
-    font-family: inherit;
-}
-
-.pf-visit-btn:hover {
-    background: rgba(255,255,255,0.13);
-    border-color: rgba(255,255,255,0.28);
-    color: #fff;
-    transform: translateY(-1px);
-}
-
-.pf-visit-btn svg {
-    width: 11px;
-    height: 11px;
-    opacity: 0.65;
-    flex-shrink: 0;
-}
-
-/* Šipky navigace */
-.pf-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 30;
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.1);
-    color: rgba(255,255,255,0.6);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.2s;
-    backdrop-filter: blur(10px);
-    padding: 0;
-}
-
-.pf-arrow:hover {
-    background: rgba(255,255,255,0.12);
-    border-color: rgba(255,255,255,0.22);
-    color: #fff;
-    transform: translateY(-50%) scale(1.08);
-}
-
-.pf-arrow svg { width: 16px; height: 16px; }
-.pf-arrow-left { left: clamp(10px, 3vw, 40px); }
-.pf-arrow-right { right: clamp(10px, 3vw, 40px); }
-
-/* Dots */
-.pf-dots {
-    display: flex;
-    justify-content: center;
-    gap: 7px;
-    margin-top: 32px;
-}
-
-.pf-dot {
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.18);
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    transition: background 0.3s, transform 0.3s;
-}
-
-.pf-dot.pf-dot-active {
-    background: rgba(255,255,255,0.8);
-    transform: scale(1.4);
-}
-
-/* Mobil */
-@media (max-width: 768px) {
+    /* Jednotlivá karta */
     .pf-card {
-        width: 270px;
-        height: 390px;
+        position: absolute;
+        width: 780px;
+        height: 620px;
+        border-radius: 22px;
+        background: rgba(255,255,255,0.04);
+        border: 1px solid rgba(255,255,255,0.09);
+        box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+        overflow: visible;
+        display: flex;
+        flex-direction: column;
+        will-change: transform, opacity, filter;
+        /* Transition — spring-like pomocí cubic-bezier */
+        transition:
+            transform 0.6s cubic-bezier(0.34, 1.4, 0.64, 1),
+            opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1),
+            filter 0.5s ease,
+            box-shadow 0.5s ease;
+    }
+
+    /* NOVĚ — přidat hover */
+    .pf-card.pf-active {
+        box-shadow:
+            0 30px 80px rgba(0,0,0,0.6),
+            0 0 0 1px rgba(255,255,255,0.13),
+            inset 0 1px 0 rgba(255,255,255,0.08);
+        z-index: 10;
+    }
+    .pf-card.pf-active:hover {
+        transform: translateX(0px) scale(1.03) !important;
+        box-shadow:
+            0 40px 100px rgba(0,0,0,0.7),
+            0 0 0 1px rgba(255,255,255,0.18),
+            inset 0 1px 0 rgba(255,255,255,0.1);
+    }
+
+    .pf-card.pf-side {
+        z-index: 5;
+        cursor: pointer;
+    }
+
+    .pf-card.pf-hidden {
+        z-index: 1;
+        pointer-events: none;
+    }
+
+    /* Logo klienta — překrývá horní hranu */
+    .pf-logo-wrap {
+        position: absolute;
+        top: -26px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 20;
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        background: #0d0d0d;
+        border: 1.5px solid rgba(255,255,255,0.14);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        box-shadow:
+            0 4px 20px rgba(0,0,0,0.5),
+            0 0 0 1px rgba(255,255,255,0.06);
+        flex-shrink: 0;
+    }
+
+    .pf-logo-wrap img {
+        width: 32px;
+        height: 32px;
+        object-fit: contain;
+        border-radius: 50%;
+    }
+
+    .pf-logo-initials {
+        font-size: 13px;
+        font-weight: 700;
+        color: rgba(255,255,255,0.6);
+        letter-spacing: 0.5px;
+        display: none;
+    }
+
+    /* Iframe / preview area */
+    .pf-preview {
+        margin: 44px 8px 0;
+        flex: 1;
+        position: relative;
+        overflow: hidden;
+        border-radius: 12px;
+        background: #080808;
+        border: 1px solid rgba(255,255,255,0.06);
     }
 
     .pf-preview iframe {
         width: 1280px;
         height: 900px;
-        transform: scale(0.195); /* 250 / 1280 */
+        border: none;
+        transform: scale(0.578125); /* 740 / 1280 — preview oblast karty */
+        transform-origin: top left;
+        pointer-events: none;
+        display: block;
     }
 
-    .pf-track {
-        height: 420px;
+    /* Fallback screenshot pokud iframe blokovaný */
+    .pf-preview .pf-fallback {
+        display: none;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top;
     }
 
-    .pf-arrow-left { left: 6px; }
-    .pf-arrow-right { right: 6px; }
-}
+    .pf-preview.pf-blocked iframe { display: none; }
+    .pf-preview.pf-blocked .pf-fallback { display: block; }
 
-@media (max-width: 480px) {
-    .pf-card {
-        width: 240px;
-        height: 360px;
+    /* Shimmer loading state */
+    .pf-preview::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+            90deg,
+            rgba(255,255,255,0) 0%,
+            rgba(255,255,255,0.03) 50%,
+            rgba(255,255,255,0) 100%
+        );
+        background-size: 200% 100%;
+        animation: pf-shimmer 2s ease infinite;
+        z-index: 2;
+        pointer-events: none;
+        border-radius: 12px;
+        opacity: 1;
+        transition: opacity 0.5s ease;
+    }
+    .pf-preview.pf-loaded::before { opacity: 0; }
+
+    @keyframes pf-shimmer {
+        0% { background-position: -200% 0; }
+        100% { background-position: 200% 0; }
     }
 
-    .pf-preview iframe {
-        transform: scale(0.172);
+    /* Footer karty */
+    .pf-footer {
+        padding: 12px 14px 14px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 9px;
+        flex-shrink: 0;
     }
-}
 
-            /* NOVÝ LUXUSNÍ REFERENCE SLIDER */
-                .testimonials-section { 
-                    background: linear-gradient(to bottom, #050505, #000000); 
-                    padding: 100px 0; 
-                    overflow: hidden;
-                }
-                .testimonials-container { 
-                    position: relative; 
-                    width: 100%;
-                    padding: 20px 0;
-                    display: flex;
-                }
-                /* Nekonečný plynulý posun */
-                .testimonials-track { 
-                    display: flex; 
-                    gap: 30px; 
-                    width: max-content;
-                    animation: scrollMarquee 25s linear infinite; 
-                }
-                .testimonials-container:hover .testimonials-track { 
-                    animation-play-state: paused; 
-                }
-                @keyframes scrollMarquee {
-                    0% { transform: translateX(0); }
-                    100% { transform: translateX(-50%); } /* Posun o přesnou polovinu kvůli duplikaci karet */
-                }
-                .testimonial-card {
-                    width: 400px; 
-                    background: rgba(255, 255, 255, 0.03);
-                    backdrop-filter: blur(15px);
-                    border-radius: 20px; padding: 35px;
-                    border: 1px solid rgba(52, 152, 219, 0.15); 
-                    flex-shrink: 0;
-                    position: relative;
-                    transition: var(--transition);
-                    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-                }
-                .testimonial-card:hover {
-                    transform: translateY(-5px) scale(1.02);
-                    border-color: var(--primary-color);
-                    box-shadow: 0 15px 40px rgba(52, 152, 219, 0.15);
-                }
-                /* Designová uvozovka v pozadí */
-                .testimonial-card::before {
-                    content: '"';
-                    position: absolute;
-                    top: -10px; right: 25px;
-                    font-size: 8rem;
-                    color: rgba(52, 152, 219, 0.08);
-                    font-family: 'Georgia', serif;
-                    line-height: 1;
-                }
-                .testimonial-rating { font-size: 1.3rem; color: #ffbc00; margin-bottom: 20px; letter-spacing: 2px; }
-                .testimonial-text { font-style: italic; color: #e5e5ea; margin-bottom: 25px; line-height: 1.8; font-size: 1.05rem; }
-                .testimonial-author { display: flex; align-items: center; gap: 15px; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 20px; }
-                .author-avatar {
-                    width: 50px; height: 50px; border-radius: 50%;
-                    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-                    display: flex; align-items: center; justify-content: center;
-                    color: white; font-weight: 700; flex-shrink: 0;
-                    box-shadow: 0 0 15px rgba(52, 152, 219, 0.4);
-                }
-                .author-info h4 { color: var(--light-color); margin-bottom: 4px; font-size: 1.1rem; font-weight: 600; }
-                .author-info p { color: #8e8e93; font-size: 0.88rem; }
-
-                /* CONTACT */
-                .contact-container { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
-                .contact-form {
-                    background: var(--card-bg); backdrop-filter: blur(10px);
-                    border-radius: 16px; padding: 40px;
-                    border: 1px solid rgba(255,255,255,0.06);
-                }
-                .contact-form h3 { font-size: 1.8rem; margin-bottom: 25px; color: var(--light-color); }
-                .form-group { margin-bottom: 20px; }
-                .form-group label { display: block; margin-bottom: 8px; color: var(--gray-color); font-size: 0.95rem; }
-                .form-control {
-                    width: 100%; padding: 14px 16px;
-                    background: rgba(255,255,255,0.05);
-                    border: 1px solid rgba(255,255,255,0.12);
-                    border-radius: 8px; color: var(--light-color);
-                    font-size: 1rem; transition: var(--transition); font-family: inherit;
-                }
-                .form-control:focus { outline: none; border-color: var(--primary-color); box-shadow: 0 0 0 2px rgba(52,152,219,0.2); }
-                .form-control::placeholder { color: rgba(255,255,255,0.25); }
-                select.form-control {
-                    background: rgba(15,20,30,0.9);
-                    border: 1px solid rgba(52,152,219,0.3);
-                    appearance: none;
-                    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233498db' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-                    background-repeat: no-repeat; background-position: right 15px center;
-                    background-size: 15px; padding-right: 45px; cursor: pointer;
-                }
-                select.form-control option { background-color: #0a0a0a; color: var(--light-color); }
-                textarea.form-control { min-height: 140px; resize: vertical; }
-                .submit-btn {
-                    background: var(--primary-color); color: white; border: none;
-                    padding: 15px 30px; border-radius: 8px; font-size: 1rem;
-                    font-weight: 600; cursor: pointer; transition: var(--transition);
-                    width: 100%; display: flex; justify-content: center; align-items: center;
-                    gap: 10px; font-family: inherit;
-                }
-                .submit-btn:hover { background: #2980b9; transform: translateY(-2px); }
-                .submit-btn:active { transform: translateY(0); }
-                .submit-btn:disabled { background: #555; cursor: not-allowed; transform: none; }
-                .contact-info { padding: 10px 0; }
-                .contact-info h3 { font-size: 1.8rem; margin-bottom: 30px; color: var(--light-color); }
-                .contact-details { list-style: none; margin-bottom: 40px; }
-                .contact-details li { display: flex; align-items: center; gap: 15px; margin-bottom: 22px; color: var(--light-color); }
-                .contact-details i { font-size: 1.4rem; color: var(--primary-color); width: 30px; text-align: center; }
-                .contact-guarantee {
-                    background: rgba(52,152,219,0.08); border-radius: 12px;
-                    padding: 25px; border-left: 4px solid var(--primary-color);
-                }
-                .contact-guarantee h4 { color: var(--light-color); margin-bottom: 8px; font-size: 1.1rem; }
-                .contact-guarantee p { color: var(--gray-color); font-size: 0.95rem; }
-                .message-status {
-                    padding: 14px; border-radius: 8px; margin-top: 15px;
-                    text-align: center; display: none; font-weight: 500;
-                }
-                .message-status.sending { background: rgba(241,196,15,0.1); border: 1px solid rgba(241,196,15,0.3); color: #f1c40f; }
-                .message-status.success { background: rgba(46,204,113,0.1); border: 1px solid rgba(46,204,113,0.3); color: #2ecc71; }
-                .message-status.error { background: rgba(231,76,60,0.1); border: 1px solid rgba(231,76,60,0.3); color: #e74c3c; }
-
-                /* NOVÝ MARKETINGOVÝ BANNER MÍSTO FORMULÁŘE */
-                .contact-notice-box {
-                    background: rgba(231, 76, 60, 0.08);
-                    backdrop-filter: blur(10px);
-                    border-radius: 16px; padding: 40px;
-                    border: 2px dashed #e74c3c;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: center;
-                    text-align: center;
-                    box-shadow: 0 10px 30px rgba(231, 76, 60, 0.1);
-                }
-                .notice-icon {
-                    font-size: 3.5rem;
-                    color: #e74c3c;
-                    margin-bottom: 20px;
-                    animation: pulse 2s infinite;
-                }
-                @keyframes pulse {
-                    0% { transform: scale(1); opacity: 1; }
-                    50% { transform: scale(1.1); opacity: 0.8; }
-                    100% { transform: scale(1); opacity: 1; }
-                }
-                .contact-notice-box h3 { font-size: 2rem; margin-bottom: 15px; color: #fff; font-weight: 700; }
-                .contact-notice-box p { color: var(--gray-color); margin-bottom: 30px; font-size: 1.1rem; line-height: 1.6; }
-                .marketing-call-btn {
-                    background: #e74c3c;
-                    color: #fff;
-                    text-decoration: none;
-                    padding: 16px 35px;
-                    border-radius: 8px;
-                    font-size: 1.2rem;
-                    font-weight: 700;
-                    transition: var(--transition);
-                    display: inline-flex;
-                    align-items: center;
-                    gap: 12px;
-                    box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
-                }
-                .marketing-call-btn:hover {
-                    background: #c0392b;
-                    transform: translateY(-3px);
-                    box-shadow: 0 8px 25px rgba(231, 76, 60, 0.6);
-                }
-
-                /* FOOTER */
-                footer { background: #000; padding: 60px 0 30px; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); }
-                .footer-content { display: flex; flex-direction: column; align-items: center; }
-                .footer-logo {
-                    font-size: 2rem; font-weight: 700; margin-bottom: 15px;
-                    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
-                    -webkit-background-clip: text; background-clip: text; color: transparent;
-                }
-                .footer-tagline { color: var(--gray-color); font-size: 1rem; margin-bottom: 30px; max-width: 500px; letter-spacing: 1px; }
-                .footer-copyright {
-                    color: rgba(255,255,255,0.3); font-size: 0.85rem;
-                    margin-top: 30px; padding-top: 20px;
-                    border-top: 1px solid rgba(255,255,255,0.07); width: 100%;
-                }
-
-                /* RESPONSIVE */
-                @media (max-width: 992px) {
-                    .journey-container { flex-direction: column; }
-                    .journey-images { width: 100%; height: 380px; }
-                    .contact-container { grid-template-columns: 1fr; gap: 40px; }
-                    .hero-title { font-size: 4rem; }
-                    .companies-container { gap: 25px; }
-                }
-                @media (max-width: 768px) {
-                    .main-nav { display: none; }
-                    .hamburger { display: flex; }
-                    .nav-logo { font-size: 1.2rem; }
-                    .hero-title { font-size: 3rem; letter-spacing: 2px; }
-                    .hero-subtitle { font-size: 1.1rem; }
-                    .section-title { font-size: 2rem; }
-                    .services-container { grid-template-columns: 1fr; }
-                    .testimonial-card { min-width: 280px; }
-                    .company-card { width: 100%; max-width: 360px; }
-                    section { padding: 80px 0; }
-                    .contact-form { padding: 28px 22px; }
-                }
-                @media (max-width: 480px) {
-                    .hero-title { font-size: 2.4rem; letter-spacing: 1px; }
-                    .hero-subtitle { font-size: 1rem; letter-spacing: 1px; }
-                    .section-title { font-size: 1.7rem; }
-                    .journey-images { height: 300px; }
-                    .mobile-nav ul li a { font-size: 1.5rem; padding: 10px 30px; }
-                    section { padding: 65px 0; }
-                }
-
-                /* Styly pro postupné načítání prvků */
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-            </style>
-            <!-- =============================================
-        SCHEMA MARKUP — broz-petr.cz
-        Vložit do <head> v index.html
-        Aktualizováno: 2026-06-07
-        ============================================= -->
-
-
-    <!-- 1. PERSON SCHEMA -->
-    <script type="application/ld+json">
-    {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "@id": "https://broz-petr.cz/#person",
-    "name": "Petr Brož",
-    "givenName": "Petr",
-    "familyName": "Brož",
-    "birthDate": "2006-12-26",
-    "birthPlace": {
-        "@type": "Place",
-        "name": "Liberec",
-        "addressCountry": "CZ"
-    },
-    "jobTitle": "Freelance Webdesigner",
-    "description": "Petr Brož je český freelance webdesigner a digitální specialista z Liberce. Podniká pod značkou PEBMedia (IČO: 06696971). Specializuje se na tvorbu webových stránek na míru, Meta Ads kampaně a střih videí pro sociální sítě.",
-    "url": "https://broz-petr.cz/",
-    "email": "brozpetr.bp@gmail.com",
-    "telephone": "+420778478642",
-    "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Liberec",
-        "addressRegion": "Liberecký kraj",
-        "addressCountry": "CZ"
-    },
-    "image": "https://broz-petr.cz/petr-broz-webdesigner-liberec.jpg",
-    "knowsAbout": [
-        "Webdesign",
-        "Tvorba webových stránek",
-        "HTML",
-        "CSS",
-        "JavaScript",
-        "SEO optimalizace",
-        "Meta Ads",
-        "Facebook reklama",
-        "Instagram reklama",
-        "Střih videí",
-        "Responzivní design"
-    ],
-    "sameAs": [
-        "https://www.instagram.com/__p.brozz__/",
-        "https://www.linkedin.com/in/petr-broz-webdesigner/"
-    ],
-    "worksFor": {
-        "@id": "https://broz-petr.cz/#organization"
+    .pf-client-name {
+        font-size: 13px;
+        font-weight: 600;
+        color: rgba(255,255,255,0.88);
+        letter-spacing: 0.04em;
+        text-align: center;
     }
+
+    .pf-visit-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        padding: 7px 18px;
+        border-radius: 100px;
+        background: rgba(255,255,255,0.06);
+        border: 1px solid rgba(255,255,255,0.13);
+        color: rgba(255,255,255,0.75);
+        font-size: 11.5px;
+        font-weight: 500;
+        letter-spacing: 0.04em;
+        text-decoration: none;
+        transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.2s;
+        font-family: inherit;
     }
-    </script>
 
-
-    <!-- 2. LOCAL BUSINESS SCHEMA -->
-    <script type="application/ld+json">
-    {
-    "@context": "https://schema.org",
-    "@type": ["LocalBusiness", "ProfessionalService"],
-    "@id": "https://broz-petr.cz/#organization",
-    "name": "Petr Brož – Webdesigner",
-    "alternateName": "PEBMedia",
-    "legalName": "Petr Brož",
-    "taxID": "06696971",
-    "url": "https://broz-petr.cz/",
-    "logo": "https://broz-petr.cz/logo.png",
-    "image": "https://broz-petr.cz/petr-broz-webdesigner-liberec.jpg",
-    "description": "Tvorba webových stránek na míru, Meta Ads kampaně a střih videí pro firmy a podnikatele v Liberci a celé České republice.",
-    "telephone": "+420778478642",
-    "email": "brozpetr.bp@gmail.com",
-    "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Liberec",
-        "addressRegion": "Liberecký kraj",
-        "postalCode": "460 01",
-        "addressCountry": "CZ"
-    },
-    "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 50.7663,
-        "longitude": 15.0543
-    },
-    "areaServed": [
-        { "@type": "City", "name": "Liberec" },
-        { "@type": "City", "name": "Jablonec nad Nisou" },
-        { "@type": "City", "name": "Praha" },
-        { "@type": "Country", "name": "Česká republika" }
-    ],
-    "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "Webové služby",
-        "itemListElement": [
-        {
-            "@type": "Offer",
-            "itemOffered": {
-            "@type": "Service",
-            "name": "Tvorba webových stránek na míru",
-            "description": "Moderní weby v čistém HTML/CSS/JS, responzivní design, základní SEO."
-            }
-        },
-        {
-            "@type": "Offer",
-            "itemOffered": {
-            "@type": "Service",
-            "name": "Redesign webu",
-            "description": "Modernizace zastaralého webu se zachováním SEO hodnoty."
-            }
-        },
-        {
-            "@type": "Offer",
-            "itemOffered": {
-            "@type": "Service",
-            "name": "Meta Ads – Facebook a Instagram reklama",
-            "description": "Nastavení a správa reklamních kampaní na Facebooku a Instagramu."
-            }
-        },
-        {
-            "@type": "Offer",
-            "itemOffered": {
-            "@type": "Service",
-            "name": "Střih videí pro sociální sítě",
-            "description": "Reels, TikTok, Shorts – videa optimalizovaná pro dosah."
-            }
-        }
-        ]
-    },
-    "priceRange": "$$",
-    "currenciesAccepted": "CZK",
-    "openingHoursSpecification": {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
-        "opens": "08:00",
-        "closes": "18:00"
-    },
-    "founder": {
-        "@id": "https://broz-petr.cz/#person"
-    },
-    "sameAs": [
-        "https://www.instagram.com/__p.brozz__/",
-        "https://www.linkedin.com/in/petr-broz-webdesigner/"
-    ],
-    "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "5",
-        "reviewCount": "2",
-        "bestRating": "5",
-        "worstRating": "1"
+    .pf-visit-btn:hover {
+        background: rgba(255,255,255,0.13);
+        border-color: rgba(255,255,255,0.28);
+        color: #fff;
+        transform: translateY(-1px);
     }
+
+    .pf-visit-btn svg {
+        width: 11px;
+        height: 11px;
+        opacity: 0.65;
+        flex-shrink: 0;
     }
-    </script>
 
-
-    <!-- 3. REVIEW SCHEMA – Reference klientů -->
-    <script type="application/ld+json">
-    {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    "name": "Reference klientů – Petr Brož Webdesigner",
-    "itemListElement": [
-        {
-        "@type": "ListItem",
-        "position": 1,
-        "item": {
-            "@type": "Review",
-            "reviewRating": {
-            "@type": "Rating",
-            "ratingValue": "5",
-            "bestRating": "5"
-            },
-            "author": {
-            "@type": "Person",
-            "name": "Majitelka Studio Chilli"
-            },
-            "itemReviewed": {
-            "@id": "https://broz-petr.cz/#organization"
-            },
-            "reviewBody": "Když mě Petr oslovil s tím, že by se mi hodil nový web, tak jsem nabídku přijala a musím říct, že vůbec nelituji.",
-            "datePublished": "2025-01-01"
-        }
-        },
-        {
-        "@type": "ListItem",
-        "position": 2,
-        "item": {
-            "@type": "Review",
-            "reviewRating": {
-            "@type": "Rating",
-            "ratingValue": "5",
-            "bestRating": "5"
-            },
-            "author": {
-            "@type": "Person",
-            "name": "Majitelka Květinářství Kamila"
-            },
-            "itemReviewed": {
-            "@id": "https://broz-petr.cz/#organization"
-            },
-            "reviewBody": "Chtěla jsem web, abych měla více zakázek, a díky Petrovi se z mého snu stala realita.",
-            "datePublished": "2025-01-01"
-        }
-        }
-    ]
+    /* Šipky navigace */
+    .pf-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 30;
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.05);
+        border: 1px solid rgba(255,255,255,0.1);
+        color: rgba(255,255,255,0.6);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.2s;
+        backdrop-filter: blur(10px);
+        padding: 0;
     }
-    </script>
 
-
-    <!-- 4. FAQ SCHEMA – GEO optimalizace pro AI chatboty -->
-    <script type="application/ld+json">
-    {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-        {
-        "@type": "Question",
-        "name": "Kdo je Petr Brož?",
-        "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Petr Brož (narozen 26. 12. 2006 v Liberci) je český freelance webdesigner a digitální specialista. Podniká pod značkou PEBMedia (IČO: 06696971). Tvoří webové stránky na míru pro firmy a podnikatele v Liberci a celé České republice. Realizované projekty: Studio Chilli, Květinářství Kamila, CHS Crystal Valley. Kontakt: brozpetr.bp@gmail.com, +420 778 478 642."
-        }
-        },
-        {
-        "@type": "Question",
-        "name": "Kolik stojí tvorba webu u Petra Brože?",
-        "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Jednostránkový web (landing page) začíná od 8 000 Kč, kompletní firemní web od 15 000 Kč, e-shop od 25 000 Kč. Cena zahrnuje responzivní design, základní SEO optimalizaci a zaškolení na správu obsahu. Konzultace je zdarma a nezávazná."
-        }
-        },
-        {
-        "@type": "Question",
-        "name": "Jak dlouho trvá vytvoření webu?",
-        "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Jednostránkový web je hotový za 7–10 pracovních dní. Kompletní firemní web za 3–5 týdnů. Termín je vždy dohodnut písemně před zahájením projektu."
-        }
-        },
-        {
-        "@type": "Question",
-        "name": "Proč zvolit freelancera Petra Brože místo webové agentury?",
-        "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "S Petrem Brožem komunikujete přímo – bez project managerů a čekacích dob. Cena je 30–50 % nižší než u agentur stejné kvality. Každý web je psán v čistém HTML/CSS/JavaScript kódu – rychlejší a bezpečnější než WordPress šablony."
-        }
-        },
-        {
-        "@type": "Question",
-        "name": "Jak probíhá redesign webu?",
-        "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Redesign začíná analýzou stávajícího webu. Následuje návrh nové struktury a designu ke schválení, kódování, testování a spuštění se správnými přesměrováními pro zachování SEO hodnoty. Celý proces trvá 4–8 týdnů."
-        }
-        },
-        {
-        "@type": "Question",
-        "name": "Dělá Petr Brož weby jen v Liberci?",
-        "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Ne. Petr Brož tvoří weby pro klienty po celé České republice i ze zahraničí. Primárně působí v Liberci a Libereckém kraji, spolupracuje ale i s klienty z Prahy a dalších měst. Konzultace jsou možné osobně v Liberci nebo přes videohovor."
-        }
-        },
-        {
-        "@type": "Question",
-        "name": "Jaké technologie Petr Brož používá při tvorbě webů?",
-        "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Petr Brož tvoří weby v čistém HTML5, CSS3 a JavaScriptu. Weby jsou hostovány na platformě Vercel s globálním CDN, automatickým SSL certifikátem a rychlým načítáním. Weby splňují standardy Core Web Vitals a jsou optimalizovány pro Google Search."
-        }
-        },
-        {
-        "@type": "Question",
-        "name": "Nabízí Petr Brož správu webu po spuštění?",
-        "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Ano. Po spuštění webu nabízí Petr Brož měsíční správu obsahu, technické aktualizace a monitoring výkonu. Prvních 30 dní jsou drobné opravy zdarma."
-        }
-        }
-    ]
+    .pf-arrow:hover {
+        background: rgba(255,255,255,0.12);
+        border-color: rgba(255,255,255,0.22);
+        color: #fff;
+        transform: translateY(-50%) scale(1.08);
     }
-    </script>
 
+    .pf-arrow svg { width: 16px; height: 16px; }
+    .pf-arrow-left { left: clamp(10px, 3vw, 40px); }
+    .pf-arrow-right { right: clamp(10px, 3vw, 40px); }
 
-    <!-- 5. WEBSITE SCHEMA -->
-    <script type="application/ld+json">
-    {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "@id": "https://broz-petr.cz/#website",
-    "url": "https://broz-petr.cz/",
-    "name": "Petr Brož – Webdesigner Liberec",
-    "description": "Osobní web Petra Brože – freelance webdesignera z Liberce specializujícího se na tvorbu webů na míru.",
-    "publisher": {
-        "@id": "https://broz-petr.cz/#person"
-    },
-    "inLanguage": "cs-CZ",
-    "potentialAction": {
-        "@type": "SearchAction",
-        "target": {
-        "@type": "EntryPoint",
-        "urlTemplate": "https://broz-petr.cz/?q={search_term_string}"
-        },
-        "query-input": "required name=search_term_string"
+    /* Dots */
+    .pf-dots {
+        display: flex;
+        justify-content: center;
+        gap: 7px;
+        margin-top: 32px;
     }
+
+    .pf-dot {
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.18);
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        transition: background 0.3s, transform 0.3s;
     }
-    </script>
 
+    .pf-dot.pf-dot-active {
+        background: rgba(255,255,255,0.8);
+        transform: scale(1.4);
+    }
 
-    <!-- 6. BREADCRUMB SCHEMA -->
-    <script type="application/ld+json">
-    {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-        {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Petr Brož – Webdesigner Liberec",
-        "item": "https://broz-petr.cz/"
+    /* Mobil */
+    @media (max-width: 768px) {
+        .pf-card {
+            width: 320px;
+            height: 480px;
         }
-    ]
-    }
-    </script>
-        </head>
-        <body>
-
-            <!-- Hero Section -->
-            <section class="hero" id="home">
-            <div class="hero-background"></div>
-            
-            <div class="hero-background-reveal" id="heroReveal"></div>
-            
-            <canvas id="dustCanvas" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 2; pointer-events: none;"></canvas>
-            
-            <div class="hero-overlay"></div>
-            
-            <div class="hero-content">
-                <h1 class="hero-title">PETR BROŽ</h1>
-                <p class="hero-subtitle">Marketing &nbsp;·&nbsp; Digitální tvorba &nbsp;·&nbsp; Branding</p>
-            </div>
-            <div class="mouse-scroll">
-                <div class="mouse"><div class="wheel"></div></div>
-                <div class="scroll-text">Scrollujte</div>
-            </div>
-        </section>
-
-            <!-- Header -->
-            <header id="main-header">
-                <div class="container">
-                    <div class="nav-container">
-                        <a href="#home" class="nav-logo">Petr Brož</a>
-                        <ul class="main-nav">
-                            <li><a href="#home">Domů</a></li>
-                            <li><a href="#journey">Moje cesta</a></li>
-                        
-                            <li><a href="#services">Služby</a></li>
-                            <li><a href="#portfolio">Portfolio</a></li>
-                            <li><a href="#testimonials">Reference</a></li>
-                            <li><a href="#contact">Kontakt</a></li>
-                        </ul>
-                        <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </button>
-                    </div>
-                </div>
-            </header>
-
-            <!-- Mobile Menu -->
-            <nav class="mobile-nav" id="mobileNav" aria-hidden="true">
-                <ul>
-                    <li><a href="#home" class="mobile-link">Domů</a></li>
-                    <li><a href="#journey" class="mobile-link">Moje cesta</a></li>
-                    <li><a href="#services" class="mobile-link">Služby</a></li>
-                    <li><a href="#portfolio" class="mobile-link">Portfolio</a></li>
-                    <li><a href="#testimonials" class="mobile-link">Reference</a></li>
-                    <li><a href="#contact" class="mobile-link">Kontakt</a></li>
-                </ul>
-            </nav>
-
-            <!-- Journey Section -->
-            <section id="journey">
-                <div class="container reveal">
-                    <h2 class="section-title">Moje cesta</h2>
-                    <div class="journey-container">
-                        <div class="journey-images">
-                            <div class="image-stack">
-                                <img src="zezadu u kaplicky.jpg" alt="Petr Brož" class="stack-image stack-image-1">
-                                <img src="v bandi.jpg" alt="Petr Brož pracuje" class="stack-image stack-image-2">
-                            </div>
-                        </div>
-                        <div class="journey-text reveal">
-                            <h2>Můj příběh</h2>
-                            <p>Petr Brož se narodil 26. prosince 2006 v Liberci, v obyčejné české rodině. Už od mala měl jasno v jedné věci: nechce čekat, až mu někdo něco dá, ale chce si to vybudovat sám. Jakmile to bylo možné, začal pracovat. Začínal v kuchyni McDonaldu, později si vyzkoušel i práci na stavbě, u výrobní linky, v Tescu i jako pomocná síla při větších akcích.</p>
-                            <p>Každá zkušenost pro něj byla cenná – nešlo jen o peníze, ale hlavně o disciplínu, zodpovědnost a pochopení skutečné hodnoty práce. Současně se při studiu strojírenství a CAD/CAM technologií začal intenzivně zajímat o podnikání, digitální svět a možnosti, které dnes nabízí online prostředí.</p>
-                            <p>Petr věří, že i bez kontaktů nebo výjimečných podmínek může člověk uspět – pokud má silný důvod, disciplínu a odvahu tvořit vlastní cestu.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-
-            <!-- Services Section -->
-            <section id="services">
-                <div class="container">
-                    <h2 class="section-title">Co nabízím</h2>
-                    <div class="services-container">
-                        <div class="service-card reveal">
-                            <div class="service-icon"><i class="fas fa-code"></i></div>
-                            <h3>Tvorba webových stránek</h3>
-                            <p>Od nuly, nebo redesign. Moderní weby, které prodávají a reprezentují vaši značku.</p>
-                            <ul class="service-features">
-                                <li>Responsivní design</li>
-                                <li>Rychlý web</li>
-                                <li>Správa obsahu</li>
-                            </ul>
-                            <a href="#contact" class="service-btn">Více informací</a>
-                        </div>
-                        <div class="service-card reveal">
-                            <div class="service-icon"><i class="fas fa-video"></i></div>
-                            <h3>Střih videí</h3>
-                            <p>Reels, TikTok, Shorts — videa, která chytí pozornost a mají dosah.</p>
-                            <ul class="service-features">
-                                <li>Kreativní střih</li>
-                                <li>Úprava zvuku</li>
-                                <li>Optimalizace pro platformy</li>
-                            </ul>
-                            <a href="#contact" class="service-btn">Více informací</a>
-                        </div>
-                        <div class="service-card reveal">
-                            <div class="service-icon"><i class="fas fa-ad"></i></div>
-                            <h3>Reklamy (Meta Ads)</h3>
-                            <p>Facebook a Instagram reklamy s přesným cílením a reálnými výsledky.</p>
-                            <ul class="service-features">
-                                <li>Nastavení kampaní</li>
-                                <li>Optimalizace rozpočtu</li>
-                                <li>Měsíční reporting</li>
-                            </ul>
-                            <a href="#contact" class="service-btn">Více informací</a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Portfolio Section -->
-            <section id="portfolio" style="background:#050505;">
-                <div class="container reveal">
-                    <h2 class="section-title">Ukázky práce</h2>
-                    <div class="services-container portfolio-container">
-                        <div class="portfolio-item">
-                            <div class="portfolio-image" style="background: url('KvetinartsviKamilalogo.png') no-repeat center center/cover;"></div>
-                            <div class="portfolio-content">
-                                <h3>Web pro Květinářství Kamila</h3>
-                                <p>Kompletní tvorba webových stránek pro místní květinářství s funkcí online objednání.</p>
-                                <div class="portfolio-stats">
-                                    <div class="stat">+35% konverzí</div>
-                                    <div class="stat">Moderní design</div>
-                                </div>
-                                <a href="https://www.kvetinarstvikamila.cz" target="_blank" rel="noopener" class="service-btn">Navštívit web</a>
-                            </div>
-                        </div>
-                        <div class="portfolio-item">
-                            <div class="portfolio-image" style="background: url('studiochillilogo.png') no-repeat center center/cover;"></div>
-                            <div class="portfolio-content">
-                                <h3>Web pro Studio Chilli</h3>
-                                <p>Kompletní tvorba webových stránek pro Studio Chilli</p>
-                                <div class="portfolio-stats">
-                                    <div class="stat">+60% dosah</div>
-                                    <div class="stat">53% zhlédnutí</div>
-                                </div>
-                                <a href="https://www.studiochilli.cz/" target="_blank" rel="noopener" class="service-btn">Navštívit web</a>
-                            </div>
-                        </div>
-                        <div class="portfolio-item">
-                            <div class="portfolio-image" style="background: url('CHScrystalvalleylogo.png') no-repeat center center/cover;"></div>
-                            <div class="portfolio-content">
-                                <h3>Web pro CHS Crystal Valley</h3>
-                                <p>Kompletní tvorba webových stránek pro CHS Crystal Valley </p>
-                                <div class="portfolio-stats">
-                                    <div class="stat">+60% návštěvnost</div>
-                                    <div class="stat">Moderni design</div>
-                                </div>
-                                <a href="https://www.crystalvalley.cat/" target="_blank" rel="noopener" class="service-btn">Navštívit web</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- ===== PORTFOLIO CAROUSEL ===== -->
-<div class="pf-carousel-section" id="pfCarouselSection">
-    <div class="pf-carousel-wrapper">
-        
-        <button class="pf-arrow pf-arrow-left" id="pfPrev" aria-label="Předchozí projekt">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M15 18l-6-6 6-6"/>
-            </svg>
-        </button>
-
-        <div class="pf-track" id="pfTrack"></div>
-
-        <button class="pf-arrow pf-arrow-right" id="pfNext" aria-label="Další projekt">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M9 18l6-6-6-6"/>
-            </svg>
-        </button>
-
-    </div>
-    <div class="pf-dots" id="pfDots"></div>
-</div>
-<!-- ===== KONEC PORTFOLIO CAROUSEL ===== -->
-                </div>
-            </section>
-
-        <!-- Testimonials Section -->
-            <section class="testimonials-section" id="testimonials">
-                <div class="container">
-                    <h2 class="section-title">Co říkají klienti</h2>
-                    <div class="testimonials-container">
-                        <div class="testimonials-track">
-                            
-                            <!-- 1. Recenze -->
-                            <div class="testimonial-card">
-                                <div class="testimonial-rating">★★★★★</div>
-                                <p class="testimonial-text">"Když mě Petr oslovil s tím, že by se mi hodil nový web, tak jsem nabídku přijala a musím říct, že vůbec nelituji."</p>
-                                <div class="testimonial-author">
-                                    <div class="author-avatar">MK</div>
-                                    <div class="author-info"><h4>Anonym</h4><p>Majitelka StudiaChilli</p></div>
-                                </div>
-                            </div>
-                            
-                            <!-- 2. Recenze -->
-                            <div class="testimonial-card">
-                                <div class="testimonial-rating">★★★★★</div>
-                                <p class="testimonial-text">"Chtěla jsem web, abych měla více zakázek, a díky Petrovi se z mého snu stala realita."</p>
-                                <div class="testimonial-author">
-                                    <div class="author-avatar">KK</div>
-                                    <div class="author-info"><h4>Květinářství Kamila</h4><p>Majitelka květinářství</p></div>
-                                </div>
-                            </div>
-
-                            <!-- DUPLIKÁT PRO NEKONEČNÝ EFEKT (NEMAŽ) -->
-                            <div class="testimonial-card">
-                                <div class="testimonial-rating">★★★★★</div>
-                                <p class="testimonial-text">"Když mě Petr oslovil s tím, že by se mi hodil nový web, tak jsem nabídku přijala a musím říct, že vůbec nelituji."</p>
-                                <div class="testimonial-author">
-                                    <div class="author-avatar">MK</div>
-                                    <div class="author-info"><h4>Anonym</h4><p>Majitelka StudiaChilli</p></div>
-                                </div>
-                            </div>
-                            
-                            <div class="testimonial-card">
-                                <div class="testimonial-rating">★★★★★</div>
-                                <p class="testimonial-text">"Chtěla jsem web, abych měla více zakázek, a díky Petrovi se z mého snu stala realita."</p>
-                                <div class="testimonial-author">
-                                    <div class="author-avatar">KK</div>
-                                    <div class="author-info"><h4>Květinářství Kamila</h4><p>Majitelka květinářství</p></div>
-                                </div>
-                            </div>
-                            <!-- KONEC DUPLIKÁTU -->
-
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Contact Section -->
-            <section id="contact">
-                <div class="container">
-                    <h2 class="section-title">Pojďme spolupracovat</h2>
-                    <div class="contact-container">
-                        <div class="contact-form">
-                            
-                        <!-- Červený box s marketingovým textem místo nefunkčního formuláře -->
-                        <div class="contact-notice-box">
-                            <div class="notice-icon"><i class="fas fa-circle-xmark"></i></div>
-                            <h3>Kapacita formuláře je momentálně plná</h3>
-                            <p>Omlouvám se, ale kvůli extrémnímu vytížení a probíhající údržbě systémů je odesílání přes formulář dočasně mimo provoz. Pokud chcete svůj projekt začít řešit hned a získat náskok před konkurencí, nečekejte a zavolejte mi přímo!</p>
-                            <a href="tel:+420778478642" class="marketing-call-btn">
-                                <i class="fas fa-phone-volume"></i> VOLEJTE HNED: +420 778 478 642
-                            </a>
-                        </div>
-                            </form>
-                            <div id="messageStatus" class="message-status"></div>
-                        </div>
-                        <div class="contact-info">
-                            <h3>Kontaktní informace</h3>
-                            <ul class="contact-details">
-                                <li>
-                                    <i class="fas fa-building"></i>
-                                <span><strong>IČO:</strong> 29592844</span> </li>
-                            <li>
-                                    <i class="fas fa-envelope"></i>
-                                    <span>brozpetr.bp@gmail.com</span>
-                                </li>
-                                <li>
-                                    <i class="fas fa-phone"></i>
-                                    <span>+420 778 478 642</span>
-                                </li>
-                                <li>
-                                    <i class="fab fa-instagram"></i>
-                                    <span>@__p.brozz__</span>
-                                </li>
-                                <li>
-                                    <i class="fab fa-tiktok"></i>
-                                    <span>@p.brozz</span>
-                                </li>
-                                <li>
-                                    <i class="fab fa-whatsapp"></i>
-                                    <span>WhatsApp: +420 778 478 642</span>
-                                </li>
-                            </ul>
-                            <div class="contact-guarantee">
-                                <h4>Garantuji rychlou odpověď</h4>
-                                <p>Obvykle odpovídám do 24 hodin. Na urgentní dotazy volejte.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Footer -->
-            <footer>
-                <div class="container">
-                    <div class="footer-content">
-                        <div class="footer-logo">Petr Brož</div>
-                        <p class="footer-tagline">Marketing • Digitální tvorba • Branding</p>
-                        <div class="footer-copyright">© 2025 Petr Brož. Všechna práva vyhrazena.</div>
-                    </div>
-                </div>
-            </footer>
-
-            <script>
-                // HAMBURGER MENU
-                const hamburger = document.getElementById('hamburger');
-                const mobileNav = document.getElementById('mobileNav');
-
-                function openMenu() {
-                    hamburger.classList.add('open');
-                    mobileNav.classList.add('open');
-                    hamburger.setAttribute('aria-expanded', 'true');
-                    mobileNav.setAttribute('aria-hidden', 'false');
-                    document.body.style.overflow = 'hidden';
-                }
-                function closeMenu() {
-                    hamburger.classList.remove('open');
-                    mobileNav.classList.remove('open');
-                    hamburger.setAttribute('aria-expanded', 'false');
-                    mobileNav.setAttribute('aria-hidden', 'true');
-                    document.body.style.overflow = '';
-                }
-                hamburger.addEventListener('click', () => mobileNav.classList.contains('open') ? closeMenu() : openMenu());
-                document.addEventListener('keydown', e => e.key === 'Escape' && closeMenu());
-
-                document.querySelectorAll('.mobile-link').forEach(link => {
-                    link.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        const targetId = this.getAttribute('href');
-                        closeMenu();
-                        setTimeout(() => {
-                            const target = document.querySelector(targetId);
-                            if (target) window.scrollTo({ top: target.offsetTop - 70, behavior: 'smooth' });
-                        }, 200);
-                    });
-                });
-
-                // HEADER SCROLL
-                window.addEventListener('scroll', () => {
-                    document.getElementById('main-header').classList.toggle('scrolled', window.scrollY > 80);
-                });
-
-                // SMOOTH SCROLL desktop nav
-                document.querySelectorAll('.main-nav a[href^="#"]').forEach(a => {
-                    a.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        const target = document.querySelector(this.getAttribute('href'));
-                        if (target) window.scrollTo({ top: target.offsetTop - 70, behavior: 'smooth' });
-                    });
-                });
-                document.querySelector('.nav-logo').addEventListener('click', e => {
-                    e.preventDefault();
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                });
-
-                // IMAGE HOVER
-                document.querySelectorAll('.stack-image').forEach(img => {
-                    img.addEventListener('mouseenter', function() {
-                        this.style.transform = 'scale(1.05) rotate(0deg)';
-                        this.style.boxShadow = '0 20px 40px rgba(0,0,0,0.5)';
-                    });
-                    img.addEventListener('mouseleave', function() {
-                        this.style.transform = this.classList.contains('stack-image-1') ? 'rotate(-3deg)' : 'rotate(2deg)';
-                        this.style.boxShadow = '0 15px 30px rgba(0,0,0,0.4)';
-                    });
-                });
-
-                // Funkce pro postupné načítání prvků při scrollu
-        function revealElements() {
-            const reveals = document.querySelectorAll('.reveal');
-            reveals.forEach(element => {
-                const windowHeight = window.innerHeight;
-                const elementTop = element.getBoundingClientRect().top;
-                const elementVisible = 100; // prvek se zobrazí, když je 100px v zorném poli
-
-                if (elementTop < windowHeight - elementVisible) {
-                    element.classList.add('active');
-                }
-            });
+        .pf-preview iframe {
+            width: 1280px;
+            height: 900px;
+            transform: scale(0.234);
         }
-        window.addEventListener('scroll', revealElements);
-        // Spustit jednou i při načtení, kdyby byl uživatel už odscrollovaný
-        document.addEventListener('DOMContentLoaded', revealElements);
+        .pf-track {
+            height: 540px;
+        }
+        .pf-carousel-wrapper {
+            min-height: 590px;
+        }
+        .pf-arrow-left { left: 6px; }
+        .pf-arrow-right { right: 6px; }
+    }
 
-    // JAVASCRIPT PRO OSTRÝ KUŽEL BATERKY UKAZUJÍCÍ ORIGINÁL FOTKY
-            const heroSection = document.getElementById('home');
-            const heroReveal = document.getElementById('heroReveal');
-            const canvas = document.getElementById('dustCanvas');
-            const ctx = canvas.getContext('2d');
+    @media (max-width: 480px) {
+        .pf-card {
+            width: 290px;
+            height: 440px;
+        }
+        .pf-preview iframe {
+            transform: scale(0.211);
+        }
+        .pf-track {
+            height: 500px;
+        }
+        .pf-carousel-wrapper {
+            min-height: 550px;
+        }
+    }
 
-            let mouse = { x: -1000, y: -1000, active: false };
-            
-            // Velikost kruhu baterky (130px dává ideální přesný kužel)
-            const spotlightRadius = 130; 
-
-            function resizeCanvas() {
-                canvas.width = heroSection.offsetWidth;
-                canvas.height = heroSection.offsetHeight;
-            }
-            resizeCanvas();
-            window.addEventListener('resize', resizeCanvas);
-
-            if (heroSection && heroReveal) {
-                heroSection.addEventListener('mousemove', (e) => {
-                    const rect = heroSection.getBoundingClientRect();
-                    mouse.x = e.clientX - rect.left;
-                    mouse.y = e.clientY - rect.top;
-                    mouse.active = true;
-
-                    // Maska upravená pro maximální jas (čistý originál) ve středu kužele
-                    const maskStyle = `radial-gradient(circle ${spotlightRadius}px at ${mouse.x}px ${mouse.y}px, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 100%)`;
-                    heroReveal.style.maskImage = maskStyle;
-                    heroReveal.style.webkitMaskImage = maskStyle;
-                });
-
-                heroSection.addEventListener('mouseleave', () => {
-                    mouse.active = false;
-                    const hiddenMask = `radial-gradient(circle 0px at 0px 0px, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%)`;
-                    heroReveal.style.maskImage = hiddenMask;
-                    heroReveal.style.webkitMaskImage = hiddenMask;
-                });
-            }
-
-            // --- LOGIKA PRO ČÁSTICE PRACHU ---
-            const particlesArray = [];
-            const numberOfParticles = 35;
-
-            class Particle {
-                constructor() {
-                    this.x = Math.random() * canvas.width;
-                    this.y = Math.random() * canvas.height;
-                    this.size = Math.random() * 1.8 + 0.5;
-                    this.speedX = Math.random() * 0.3 - 0.15;
-                    this.speedY = Math.random() * -0.4 - 0.1;
-                }
-                update() {
-                    this.x += this.speedX;
-                    this.y += this.speedY;
-
-                    if (this.y < 0) {
-                        this.y = canvas.height;
-                        this.x = Math.random() * canvas.width;
+                /* NOVÝ LUXUSNÍ REFERENCE SLIDER */
+                    .testimonials-section { 
+                        background: linear-gradient(to bottom, #050505, #000000); 
+                        padding: 100px 0; 
+                        overflow: hidden;
                     }
-                    if (this.x < 0 || this.x > canvas.width) this.speedX = -this.speedX;
+                    .testimonials-container { 
+                        position: relative; 
+                        width: 100%;
+                        padding: 20px 0;
+                        display: flex;
+                    }
+                    /* Nekonečný plynulý posun */
+                    .testimonials-track { 
+                        display: flex; 
+                        gap: 30px; 
+                        width: max-content;
+                        animation: scrollMarquee 25s linear infinite; 
+                    }
+                    .testimonials-container:hover .testimonials-track { 
+                        animation-play-state: paused; 
+                    }
+                    @keyframes scrollMarquee {
+                        0% { transform: translateX(0); }
+                        100% { transform: translateX(-50%); } /* Posun o přesnou polovinu kvůli duplikaci karet */
+                    }
+                    .testimonial-card {
+                        width: 400px; 
+                        background: rgba(255, 255, 255, 0.03);
+                        backdrop-filter: blur(15px);
+                        border-radius: 20px; padding: 35px;
+                        border: 1px solid rgba(52, 152, 219, 0.15); 
+                        flex-shrink: 0;
+                        position: relative;
+                        transition: var(--transition);
+                        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+                    }
+                    .testimonial-card:hover {
+                        transform: translateY(-5px) scale(1.02);
+                        border-color: var(--primary-color);
+                        box-shadow: 0 15px 40px rgba(52, 152, 219, 0.15);
+                    }
+                    /* Designová uvozovka v pozadí */
+                    .testimonial-card::before {
+                        content: '"';
+                        position: absolute;
+                        top: -10px; right: 25px;
+                        font-size: 8rem;
+                        color: rgba(52, 152, 219, 0.08);
+                        font-family: 'Georgia', serif;
+                        line-height: 1;
+                    }
+                    .testimonial-rating { font-size: 1.3rem; color: #ffbc00; margin-bottom: 20px; letter-spacing: 2px; }
+                    .testimonial-text { font-style: italic; color: #e5e5ea; margin-bottom: 25px; line-height: 1.8; font-size: 1.05rem; }
+                    .testimonial-author { display: flex; align-items: center; gap: 15px; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 20px; }
+                    .author-avatar {
+                        width: 50px; height: 50px; border-radius: 50%;
+                        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+                        display: flex; align-items: center; justify-content: center;
+                        color: white; font-weight: 700; flex-shrink: 0;
+                        box-shadow: 0 0 15px rgba(52, 152, 219, 0.4);
+                    }
+                    .author-info h4 { color: var(--light-color); margin-bottom: 4px; font-size: 1.1rem; font-weight: 600; }
+                    .author-info p { color: #8e8e93; font-size: 0.88rem; }
 
-                    if (mouse.active) {
+                    /* CONTACT */
+                    .contact-container { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+                    .contact-form {
+                        background: var(--card-bg); backdrop-filter: blur(10px);
+                        border-radius: 16px; padding: 40px;
+                        border: 1px solid rgba(255,255,255,0.06);
+                    }
+                    .contact-form h3 { font-size: 1.8rem; margin-bottom: 25px; color: var(--light-color); }
+                    .form-group { margin-bottom: 20px; }
+                    .form-group label { display: block; margin-bottom: 8px; color: var(--gray-color); font-size: 0.95rem; }
+                    .form-control {
+                        width: 100%; padding: 14px 16px;
+                        background: rgba(255,255,255,0.05);
+                        border: 1px solid rgba(255,255,255,0.12);
+                        border-radius: 8px; color: var(--light-color);
+                        font-size: 1rem; transition: var(--transition); font-family: inherit;
+                    }
+                    .form-control:focus { outline: none; border-color: var(--primary-color); box-shadow: 0 0 0 2px rgba(52,152,219,0.2); }
+                    .form-control::placeholder { color: rgba(255,255,255,0.25); }
+                    select.form-control {
+                        background: rgba(15,20,30,0.9);
+                        border: 1px solid rgba(52,152,219,0.3);
+                        appearance: none;
+                        background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233498db' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+                        background-repeat: no-repeat; background-position: right 15px center;
+                        background-size: 15px; padding-right: 45px; cursor: pointer;
+                    }
+                    select.form-control option { background-color: #0a0a0a; color: var(--light-color); }
+                    textarea.form-control { min-height: 140px; resize: vertical; }
+                    .submit-btn {
+                        background: var(--primary-color); color: white; border: none;
+                        padding: 15px 30px; border-radius: 8px; font-size: 1rem;
+                        font-weight: 600; cursor: pointer; transition: var(--transition);
+                        width: 100%; display: flex; justify-content: center; align-items: center;
+                        gap: 10px; font-family: inherit;
+                    }
+                    .submit-btn:hover { background: #2980b9; transform: translateY(-2px); }
+                    .submit-btn:active { transform: translateY(0); }
+                    .submit-btn:disabled { background: #555; cursor: not-allowed; transform: none; }
+                    .contact-info { padding: 10px 0; }
+                    .contact-info h3 { font-size: 1.8rem; margin-bottom: 30px; color: var(--light-color); }
+                    .contact-details { list-style: none; margin-bottom: 40px; }
+                    .contact-details li { display: flex; align-items: center; gap: 15px; margin-bottom: 22px; color: var(--light-color); }
+                    .contact-details i { font-size: 1.4rem; color: var(--primary-color); width: 30px; text-align: center; }
+                    .contact-guarantee {
+                        background: rgba(52,152,219,0.08); border-radius: 12px;
+                        padding: 25px; border-left: 4px solid var(--primary-color);
+                    }
+                    .contact-guarantee h4 { color: var(--light-color); margin-bottom: 8px; font-size: 1.1rem; }
+                    .contact-guarantee p { color: var(--gray-color); font-size: 0.95rem; }
+                    .message-status {
+                        padding: 14px; border-radius: 8px; margin-top: 15px;
+                        text-align: center; display: none; font-weight: 500;
+                    }
+                    .message-status.sending { background: rgba(241,196,15,0.1); border: 1px solid rgba(241,196,15,0.3); color: #f1c40f; }
+                    .message-status.success { background: rgba(46,204,113,0.1); border: 1px solid rgba(46,204,113,0.3); color: #2ecc71; }
+                    .message-status.error { background: rgba(231,76,60,0.1); border: 1px solid rgba(231,76,60,0.3); color: #e74c3c; }
+
+                    /* NOVÝ MARKETINGOVÝ BANNER MÍSTO FORMULÁŘE */
+                    .contact-notice-box {
+                        background: rgba(231, 76, 60, 0.08);
+                        backdrop-filter: blur(10px);
+                        border-radius: 16px; padding: 40px;
+                        border: 2px dashed #e74c3c;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                        text-align: center;
+                        box-shadow: 0 10px 30px rgba(231, 76, 60, 0.1);
+                    }
+                    .notice-icon {
+                        font-size: 3.5rem;
+                        color: #e74c3c;
+                        margin-bottom: 20px;
+                        animation: pulse 2s infinite;
+                    }
+                    @keyframes pulse {
+                        0% { transform: scale(1); opacity: 1; }
+                        50% { transform: scale(1.1); opacity: 0.8; }
+                        100% { transform: scale(1); opacity: 1; }
+                    }
+                    .contact-notice-box h3 { font-size: 2rem; margin-bottom: 15px; color: #fff; font-weight: 700; }
+                    .contact-notice-box p { color: var(--gray-color); margin-bottom: 30px; font-size: 1.1rem; line-height: 1.6; }
+                    .marketing-call-btn {
+                        background: #e74c3c;
+                        color: #fff;
+                        text-decoration: none;
+                        padding: 16px 35px;
+                        border-radius: 8px;
+                        font-size: 1.2rem;
+                        font-weight: 700;
+                        transition: var(--transition);
+                        display: inline-flex;
+                        align-items: center;
+                        gap: 12px;
+                        box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+                    }
+                    .marketing-call-btn:hover {
+                        background: #c0392b;
+                        transform: translateY(-3px);
+                        box-shadow: 0 8px 25px rgba(231, 76, 60, 0.6);
+                    }
+
+                    /* FOOTER */
+                    footer { background: #000; padding: 60px 0 30px; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); }
+                    .footer-content { display: flex; flex-direction: column; align-items: center; }
+                    .footer-logo {
+                        font-size: 2rem; font-weight: 700; margin-bottom: 15px;
+                        background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+                        -webkit-background-clip: text; background-clip: text; color: transparent;
+                    }
+                    .footer-tagline { color: var(--gray-color); font-size: 1rem; margin-bottom: 30px; max-width: 500px; letter-spacing: 1px; }
+                    .footer-copyright {
+                        color: rgba(255,255,255,0.3); font-size: 0.85rem;
+                        margin-top: 30px; padding-top: 20px;
+                        border-top: 1px solid rgba(255,255,255,0.07); width: 100%;
+                    }
+
+                    /* RESPONSIVE */
+                    @media (max-width: 992px) {
+                        .journey-container { flex-direction: column; }
+                        .journey-images { width: 100%; height: 380px; }
+                        .contact-container { grid-template-columns: 1fr; gap: 40px; }
+                        .hero-title { font-size: 4rem; }
+                        .companies-container { gap: 25px; }
+                    }
+                    @media (max-width: 768px) {
+                        .main-nav { display: none; }
+                        .hamburger { display: flex; }
+                        .nav-logo { font-size: 1.2rem; }
+                        .hero-title { font-size: 3rem; letter-spacing: 2px; }
+                        .hero-subtitle { font-size: 1.1rem; }
+                        .section-title { font-size: 2rem; }
+                        .services-container { grid-template-columns: 1fr; }
+                        .testimonial-card { min-width: 280px; }
+                        .company-card { width: 100%; max-width: 360px; }
+                        section { padding: 80px 0; }
+                        .contact-form { padding: 28px 22px; }
+                    }
+                    @media (max-width: 480px) {
+                        .hero-title { font-size: 2.4rem; letter-spacing: 1px; }
+                        .hero-subtitle { font-size: 1rem; letter-spacing: 1px; }
+                        .section-title { font-size: 1.7rem; }
+                        .journey-images { height: 300px; }
+                        .mobile-nav ul li a { font-size: 1.5rem; padding: 10px 30px; }
+                        section { padding: 65px 0; }
+                    }
+
+                    /* Styly pro postupné načítání prvků */
+            .reveal {
+                opacity: 0;
+                transform: translateY(40px);
+                transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            }
+            .reveal.active {
+                opacity: 1;
+                transform: translateY(0);
+            }
+                </style>
+                <!-- =============================================
+            SCHEMA MARKUP — broz-petr.cz
+            Vložit do <head> v index.html
+            Aktualizováno: 2026-06-07
+            ============================================= -->
+
+
+        <!-- 1. PERSON SCHEMA -->
+        <script type="application/ld+json">
+        {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "@id": "https://broz-petr.cz/#person",
+        "name": "Petr Brož",
+        "givenName": "Petr",
+        "familyName": "Brož",
+        "birthDate": "2006-12-26",
+        "birthPlace": {
+            "@type": "Place",
+            "name": "Liberec",
+            "addressCountry": "CZ"
+        },
+        "jobTitle": "Freelance Webdesigner",
+        "description": "Petr Brož je český freelance webdesigner a digitální specialista z Liberce. Podniká pod značkou PEBMedia (IČO: 06696971). Specializuje se na tvorbu webových stránek na míru, Meta Ads kampaně a střih videí pro sociální sítě.",
+        "url": "https://broz-petr.cz/",
+        "email": "brozpetr.bp@gmail.com",
+        "telephone": "+420778478642",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Liberec",
+            "addressRegion": "Liberecký kraj",
+            "addressCountry": "CZ"
+        },
+        "image": "https://broz-petr.cz/petr-broz-webdesigner-liberec.jpg",
+        "knowsAbout": [
+            "Webdesign",
+            "Tvorba webových stránek",
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "SEO optimalizace",
+            "Meta Ads",
+            "Facebook reklama",
+            "Instagram reklama",
+            "Střih videí",
+            "Responzivní design"
+        ],
+        "sameAs": [
+            "https://www.instagram.com/__p.brozz__/",
+            "https://www.linkedin.com/in/petr-broz-webdesigner/"
+        ],
+        "worksFor": {
+            "@id": "https://broz-petr.cz/#organization"
+        }
+        }
+        </script>
+
+
+        <!-- 2. LOCAL BUSINESS SCHEMA -->
+        <script type="application/ld+json">
+        {
+        "@context": "https://schema.org",
+        "@type": ["LocalBusiness", "ProfessionalService"],
+        "@id": "https://broz-petr.cz/#organization",
+        "name": "Petr Brož – Webdesigner",
+        "alternateName": "PEBMedia",
+        "legalName": "Petr Brož",
+        "taxID": "06696971",
+        "url": "https://broz-petr.cz/",
+        "logo": "https://broz-petr.cz/logo.png",
+        "image": "https://broz-petr.cz/petr-broz-webdesigner-liberec.jpg",
+        "description": "Tvorba webových stránek na míru, Meta Ads kampaně a střih videí pro firmy a podnikatele v Liberci a celé České republice.",
+        "telephone": "+420778478642",
+        "email": "brozpetr.bp@gmail.com",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Liberec",
+            "addressRegion": "Liberecký kraj",
+            "postalCode": "460 01",
+            "addressCountry": "CZ"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 50.7663,
+            "longitude": 15.0543
+        },
+        "areaServed": [
+            { "@type": "City", "name": "Liberec" },
+            { "@type": "City", "name": "Jablonec nad Nisou" },
+            { "@type": "City", "name": "Praha" },
+            { "@type": "Country", "name": "Česká republika" }
+        ],
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Webové služby",
+            "itemListElement": [
+            {
+                "@type": "Offer",
+                "itemOffered": {
+                "@type": "Service",
+                "name": "Tvorba webových stránek na míru",
+                "description": "Moderní weby v čistém HTML/CSS/JS, responzivní design, základní SEO."
+                }
+            },
+            {
+                "@type": "Offer",
+                "itemOffered": {
+                "@type": "Service",
+                "name": "Redesign webu",
+                "description": "Modernizace zastaralého webu se zachováním SEO hodnoty."
+                }
+            },
+            {
+                "@type": "Offer",
+                "itemOffered": {
+                "@type": "Service",
+                "name": "Meta Ads – Facebook a Instagram reklama",
+                "description": "Nastavení a správa reklamních kampaní na Facebooku a Instagramu."
+                }
+            },
+            {
+                "@type": "Offer",
+                "itemOffered": {
+                "@type": "Service",
+                "name": "Střih videí pro sociální sítě",
+                "description": "Reels, TikTok, Shorts – videa optimalizovaná pro dosah."
+                }
+            }
+            ]
+        },
+        "priceRange": "$$",
+        "currenciesAccepted": "CZK",
+        "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+            "opens": "08:00",
+            "closes": "18:00"
+        },
+        "founder": {
+            "@id": "https://broz-petr.cz/#person"
+        },
+        "sameAs": [
+            "https://www.instagram.com/__p.brozz__/",
+            "https://www.linkedin.com/in/petr-broz-webdesigner/"
+        ],
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "5",
+            "reviewCount": "2",
+            "bestRating": "5",
+            "worstRating": "1"
+        }
+        }
+        </script>
+
+
+        <!-- 3. REVIEW SCHEMA – Reference klientů -->
+        <script type="application/ld+json">
+        {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "Reference klientů – Petr Brož Webdesigner",
+        "itemListElement": [
+            {
+            "@type": "ListItem",
+            "position": 1,
+            "item": {
+                "@type": "Review",
+                "reviewRating": {
+                "@type": "Rating",
+                "ratingValue": "5",
+                "bestRating": "5"
+                },
+                "author": {
+                "@type": "Person",
+                "name": "Majitelka Studio Chilli"
+                },
+                "itemReviewed": {
+                "@id": "https://broz-petr.cz/#organization"
+                },
+                "reviewBody": "Když mě Petr oslovil s tím, že by se mi hodil nový web, tak jsem nabídku přijala a musím říct, že vůbec nelituji.",
+                "datePublished": "2025-01-01"
+            }
+            },
+            {
+            "@type": "ListItem",
+            "position": 2,
+            "item": {
+                "@type": "Review",
+                "reviewRating": {
+                "@type": "Rating",
+                "ratingValue": "5",
+                "bestRating": "5"
+                },
+                "author": {
+                "@type": "Person",
+                "name": "Majitelka Květinářství Kamila"
+                },
+                "itemReviewed": {
+                "@id": "https://broz-petr.cz/#organization"
+                },
+                "reviewBody": "Chtěla jsem web, abych měla více zakázek, a díky Petrovi se z mého snu stala realita.",
+                "datePublished": "2025-01-01"
+            }
+            }
+        ]
+        }
+        </script>
+
+
+        <!-- 4. FAQ SCHEMA – GEO optimalizace pro AI chatboty -->
+        <script type="application/ld+json">
+        {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+            "@type": "Question",
+            "name": "Kdo je Petr Brož?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Petr Brož (narozen 26. 12. 2006 v Liberci) je český freelance webdesigner a digitální specialista. Podniká pod značkou PEBMedia (IČO: 06696971). Tvoří webové stránky na míru pro firmy a podnikatele v Liberci a celé České republice. Realizované projekty: Studio Chilli, Květinářství Kamila, CHS Crystal Valley. Kontakt: brozpetr.bp@gmail.com, +420 778 478 642."
+            }
+            },
+            {
+            "@type": "Question",
+            "name": "Kolik stojí tvorba webu u Petra Brože?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Jednostránkový web (landing page) začíná od 8 000 Kč, kompletní firemní web od 15 000 Kč, e-shop od 25 000 Kč. Cena zahrnuje responzivní design, základní SEO optimalizaci a zaškolení na správu obsahu. Konzultace je zdarma a nezávazná."
+            }
+            },
+            {
+            "@type": "Question",
+            "name": "Jak dlouho trvá vytvoření webu?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Jednostránkový web je hotový za 7–10 pracovních dní. Kompletní firemní web za 3–5 týdnů. Termín je vždy dohodnut písemně před zahájením projektu."
+            }
+            },
+            {
+            "@type": "Question",
+            "name": "Proč zvolit freelancera Petra Brože místo webové agentury?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "S Petrem Brožem komunikujete přímo – bez project managerů a čekacích dob. Cena je 30–50 % nižší než u agentur stejné kvality. Každý web je psán v čistém HTML/CSS/JavaScript kódu – rychlejší a bezpečnější než WordPress šablony."
+            }
+            },
+            {
+            "@type": "Question",
+            "name": "Jak probíhá redesign webu?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Redesign začíná analýzou stávajícího webu. Následuje návrh nové struktury a designu ke schválení, kódování, testování a spuštění se správnými přesměrováními pro zachování SEO hodnoty. Celý proces trvá 4–8 týdnů."
+            }
+            },
+            {
+            "@type": "Question",
+            "name": "Dělá Petr Brož weby jen v Liberci?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Ne. Petr Brož tvoří weby pro klienty po celé České republice i ze zahraničí. Primárně působí v Liberci a Libereckém kraji, spolupracuje ale i s klienty z Prahy a dalších měst. Konzultace jsou možné osobně v Liberci nebo přes videohovor."
+            }
+            },
+            {
+            "@type": "Question",
+            "name": "Jaké technologie Petr Brož používá při tvorbě webů?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Petr Brož tvoří weby v čistém HTML5, CSS3 a JavaScriptu. Weby jsou hostovány na platformě Vercel s globálním CDN, automatickým SSL certifikátem a rychlým načítáním. Weby splňují standardy Core Web Vitals a jsou optimalizovány pro Google Search."
+            }
+            },
+            {
+            "@type": "Question",
+            "name": "Nabízí Petr Brož správu webu po spuštění?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Ano. Po spuštění webu nabízí Petr Brož měsíční správu obsahu, technické aktualizace a monitoring výkonu. Prvních 30 dní jsou drobné opravy zdarma."
+            }
+            }
+        ]
+        }
+        </script>
+
+
+        <!-- 5. WEBSITE SCHEMA -->
+        <script type="application/ld+json">
+        {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "@id": "https://broz-petr.cz/#website",
+        "url": "https://broz-petr.cz/",
+        "name": "Petr Brož – Webdesigner Liberec",
+        "description": "Osobní web Petra Brože – freelance webdesignera z Liberce specializujícího se na tvorbu webů na míru.",
+        "publisher": {
+            "@id": "https://broz-petr.cz/#person"
+        },
+        "inLanguage": "cs-CZ",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "https://broz-petr.cz/?q={search_term_string}"
+            },
+            "query-input": "required name=search_term_string"
+        }
+        }
+        </script>
+
+
+        <!-- 6. BREADCRUMB SCHEMA -->
+        <script type="application/ld+json">
+        {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Petr Brož – Webdesigner Liberec",
+            "item": "https://broz-petr.cz/"
+            }
+        ]
+        }
+        </script>
+            </head>
+            <body>
+
+                <!-- Hero Section -->
+                <section class="hero" id="home">
+                <div class="hero-background"></div>
+                
+                <div class="hero-background-reveal" id="heroReveal"></div>
+                
+                <canvas id="dustCanvas" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 2; pointer-events: none;"></canvas>
+                
+                <div class="hero-overlay"></div>
+                
+                <div class="hero-content">
+                    <h1 class="hero-title">PETR BROŽ</h1>
+                    <p class="hero-subtitle">Marketing &nbsp;·&nbsp; Digitální tvorba &nbsp;·&nbsp; Branding</p>
+                </div>
+                <div class="mouse-scroll">
+                    <div class="mouse"><div class="wheel"></div></div>
+                    <div class="scroll-text">Scrollujte</div>
+                </div>
+            </section>
+
+                <!-- Header -->
+                <header id="main-header">
+                    <div class="container">
+                        <div class="nav-container">
+                            <a href="#home" class="nav-logo">Petr Brož</a>
+                            <ul class="main-nav">
+                                <li><a href="#home">Domů</a></li>
+                                <li><a href="#journey">Moje cesta</a></li>
+                            
+                                <li><a href="#services">Služby</a></li>
+                                <li><a href="#portfolio">Portfolio</a></li>
+                                <li><a href="#testimonials">Reference</a></li>
+                                <li><a href="#contact">Kontakt</a></li>
+                            </ul>
+                            <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </button>
+                        </div>
+                    </div>
+                </header>
+
+                <!-- Mobile Menu -->
+                <nav class="mobile-nav" id="mobileNav" aria-hidden="true">
+                    <ul>
+                        <li><a href="#home" class="mobile-link">Domů</a></li>
+                        <li><a href="#journey" class="mobile-link">Moje cesta</a></li>
+                        <li><a href="#services" class="mobile-link">Služby</a></li>
+                        <li><a href="#portfolio" class="mobile-link">Portfolio</a></li>
+                        <li><a href="#testimonials" class="mobile-link">Reference</a></li>
+                        <li><a href="#contact" class="mobile-link">Kontakt</a></li>
+                    </ul>
+                </nav>
+
+                <!-- Journey Section -->
+                <section id="journey">
+                    <div class="container reveal">
+                        <h2 class="section-title">Moje cesta</h2>
+                        <div class="journey-container">
+                            <div class="journey-images">
+                                <div class="image-stack">
+                                    <img src="zezadu u kaplicky.jpg" alt="Petr Brož" class="stack-image stack-image-1">
+                                    <img src="v bandi.jpg" alt="Petr Brož pracuje" class="stack-image stack-image-2">
+                                </div>
+                            </div>
+                            <div class="journey-text reveal">
+                                <h2>Můj příběh</h2>
+                                <p>Petr Brož se narodil 26. prosince 2006 v Liberci, v obyčejné české rodině. Už od mala měl jasno v jedné věci: nechce čekat, až mu někdo něco dá, ale chce si to vybudovat sám. Jakmile to bylo možné, začal pracovat. Začínal v kuchyni McDonaldu, později si vyzkoušel i práci na stavbě, u výrobní linky, v Tescu i jako pomocná síla při větších akcích.</p>
+                                <p>Každá zkušenost pro něj byla cenná – nešlo jen o peníze, ale hlavně o disciplínu, zodpovědnost a pochopení skutečné hodnoty práce. Současně se při studiu strojírenství a CAD/CAM technologií začal intenzivně zajímat o podnikání, digitální svět a možnosti, které dnes nabízí online prostředí.</p>
+                                <p>Petr věří, že i bez kontaktů nebo výjimečných podmínek může člověk uspět – pokud má silný důvod, disciplínu a odvahu tvořit vlastní cestu.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+
+                <!-- Services Section -->
+                <section id="services">
+                    <div class="container">
+                        <h2 class="section-title">Co nabízím</h2>
+                        <div class="services-container">
+                            <div class="service-card reveal">
+                                <div class="service-icon"><i class="fas fa-code"></i></div>
+                                <h3>Tvorba webových stránek</h3>
+                                <p>Od nuly, nebo redesign. Moderní weby, které prodávají a reprezentují vaši značku.</p>
+                                <ul class="service-features">
+                                    <li>Responsivní design</li>
+                                    <li>Rychlý web</li>
+                                    <li>Správa obsahu</li>
+                                </ul>
+                                <a href="#contact" class="service-btn">Více informací</a>
+                            </div>
+                            <div class="service-card reveal">
+                                <div class="service-icon"><i class="fas fa-video"></i></div>
+                                <h3>Střih videí</h3>
+                                <p>Reels, TikTok, Shorts — videa, která chytí pozornost a mají dosah.</p>
+                                <ul class="service-features">
+                                    <li>Kreativní střih</li>
+                                    <li>Úprava zvuku</li>
+                                    <li>Optimalizace pro platformy</li>
+                                </ul>
+                                <a href="#contact" class="service-btn">Více informací</a>
+                            </div>
+                            <div class="service-card reveal">
+                                <div class="service-icon"><i class="fas fa-ad"></i></div>
+                                <h3>Reklamy (Meta Ads)</h3>
+                                <p>Facebook a Instagram reklamy s přesným cílením a reálnými výsledky.</p>
+                                <ul class="service-features">
+                                    <li>Nastavení kampaní</li>
+                                    <li>Optimalizace rozpočtu</li>
+                                    <li>Měsíční reporting</li>
+                                </ul>
+                                <a href="#contact" class="service-btn">Více informací</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Portfolio Section -->
+                <section id="portfolio" style="background:#050505;">
+                    <div class="container reveal">
+                        <h2 class="section-title">Ukázky práce</h2>
+                        <div class="services-container portfolio-container">
+                            <div class="portfolio-item">
+                                <div class="portfolio-image" style="background: url('KvetinartsviKamilalogo.png') no-repeat center center/cover;"></div>
+                                <div class="portfolio-content">
+                                    <h3>Web pro Květinářství Kamila</h3>
+                                    <p>Kompletní tvorba webových stránek pro místní květinářství s funkcí online objednání.</p>
+                                    <div class="portfolio-stats">
+                                        <div class="stat">+35% konverzí</div>
+                                        <div class="stat">Moderní design</div>
+                                    </div>
+                                    <a href="https://www.kvetinarstvikamila.cz" target="_blank" rel="noopener" class="service-btn">Navštívit web</a>
+                                </div>
+                            </div>
+                            <div class="portfolio-item">
+                                <div class="portfolio-image" style="background: url('studiochillilogo.png') no-repeat center center/cover;"></div>
+                                <div class="portfolio-content">
+                                    <h3>Web pro Studio Chilli</h3>
+                                    <p>Kompletní tvorba webových stránek pro Studio Chilli</p>
+                                    <div class="portfolio-stats">
+                                        <div class="stat">+60% dosah</div>
+                                        <div class="stat">53% zhlédnutí</div>
+                                    </div>
+                                    <a href="https://www.studiochilli.cz/" target="_blank" rel="noopener" class="service-btn">Navštívit web</a>
+                                </div>
+                            </div>
+                            <div class="portfolio-item">
+                                <div class="portfolio-image" style="background: url('CHScrystalvalleylogo.png') no-repeat center center/cover;"></div>
+                                <div class="portfolio-content">
+                                    <h3>Web pro CHS Crystal Valley</h3>
+                                    <p>Kompletní tvorba webových stránek pro CHS Crystal Valley </p>
+                                    <div class="portfolio-stats">
+                                        <div class="stat">+60% návštěvnost</div>
+                                        <div class="stat">Moderni design</div>
+                                    </div>
+                                    <a href="https://www.crystalvalley.cat/" target="_blank" rel="noopener" class="service-btn">Navštívit web</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ===== PORTFOLIO CAROUSEL ===== -->
+    <div class="pf-carousel-section" id="pfCarouselSection">
+        <div class="pf-carousel-wrapper">
+            
+            <button class="pf-arrow pf-arrow-left" id="pfPrev" aria-label="Předchozí projekt">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M15 18l-6-6 6-6"/>
+                </svg>
+            </button>
+
+            <div class="pf-track" id="pfTrack"></div>
+
+            <button class="pf-arrow pf-arrow-right" id="pfNext" aria-label="Další projekt">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 18l6-6-6-6"/>
+                </svg>
+            </button>
+
+        </div>
+        <div class="pf-dots" id="pfDots"></div>
+    </div>
+    <!-- ===== KONEC PORTFOLIO CAROUSEL ===== -->
+                    </div>
+                </section>
+
+            <!-- Testimonials Section -->
+                <section class="testimonials-section" id="testimonials">
+                    <div class="container">
+                        <h2 class="section-title">Co říkají klienti</h2>
+                        <div class="testimonials-container">
+                            <div class="testimonials-track">
+                                
+                                <!-- 1. Recenze -->
+                                <div class="testimonial-card">
+                                    <div class="testimonial-rating">★★★★★</div>
+                                    <p class="testimonial-text">"Když mě Petr oslovil s tím, že by se mi hodil nový web, tak jsem nabídku přijala a musím říct, že vůbec nelituji."</p>
+                                    <div class="testimonial-author">
+                                        <div class="author-avatar">MK</div>
+                                        <div class="author-info"><h4>Anonym</h4><p>Majitelka StudiaChilli</p></div>
+                                    </div>
+                                </div>
+                                
+                                <!-- 2. Recenze -->
+                                <div class="testimonial-card">
+                                    <div class="testimonial-rating">★★★★★</div>
+                                    <p class="testimonial-text">"Chtěla jsem web, abych měla více zakázek, a díky Petrovi se z mého snu stala realita."</p>
+                                    <div class="testimonial-author">
+                                        <div class="author-avatar">KK</div>
+                                        <div class="author-info"><h4>Květinářství Kamila</h4><p>Majitelka květinářství</p></div>
+                                    </div>
+                                </div>
+
+                                <!-- DUPLIKÁT PRO NEKONEČNÝ EFEKT (NEMAŽ) -->
+                                <div class="testimonial-card">
+                                    <div class="testimonial-rating">★★★★★</div>
+                                    <p class="testimonial-text">"Když mě Petr oslovil s tím, že by se mi hodil nový web, tak jsem nabídku přijala a musím říct, že vůbec nelituji."</p>
+                                    <div class="testimonial-author">
+                                        <div class="author-avatar">MK</div>
+                                        <div class="author-info"><h4>Anonym</h4><p>Majitelka StudiaChilli</p></div>
+                                    </div>
+                                </div>
+                                
+                                <div class="testimonial-card">
+                                    <div class="testimonial-rating">★★★★★</div>
+                                    <p class="testimonial-text">"Chtěla jsem web, abych měla více zakázek, a díky Petrovi se z mého snu stala realita."</p>
+                                    <div class="testimonial-author">
+                                        <div class="author-avatar">KK</div>
+                                        <div class="author-info"><h4>Květinářství Kamila</h4><p>Majitelka květinářství</p></div>
+                                    </div>
+                                </div>
+                                <!-- KONEC DUPLIKÁTU -->
+
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Contact Section -->
+                <section id="contact">
+                    <div class="container">
+                        <h2 class="section-title">Pojďme spolupracovat</h2>
+                        <div class="contact-container">
+                            <div class="contact-form">
+                                
+                            <!-- Červený box s marketingovým textem místo nefunkčního formuláře -->
+                            <div class="contact-notice-box">
+                                <div class="notice-icon"><i class="fas fa-circle-xmark"></i></div>
+                                <h3>Kapacita formuláře je momentálně plná</h3>
+                                <p>Omlouvám se, ale kvůli extrémnímu vytížení a probíhající údržbě systémů je odesílání přes formulář dočasně mimo provoz. Pokud chcete svůj projekt začít řešit hned a získat náskok před konkurencí, nečekejte a zavolejte mi přímo!</p>
+                                <a href="tel:+420778478642" class="marketing-call-btn">
+                                    <i class="fas fa-phone-volume"></i> VOLEJTE HNED: +420 778 478 642
+                                </a>
+                            </div>
+                                </form>
+                                <div id="messageStatus" class="message-status"></div>
+                            </div>
+                            <div class="contact-info">
+                                <h3>Kontaktní informace</h3>
+                                <ul class="contact-details">
+                                    <li>
+                                        <i class="fas fa-building"></i>
+                                    <span><strong>IČO:</strong> 29592844</span> </li>
+                                <li>
+                                        <i class="fas fa-envelope"></i>
+                                        <span>brozpetr.bp@gmail.com</span>
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-phone"></i>
+                                        <span>+420 778 478 642</span>
+                                    </li>
+                                    <li>
+                                        <i class="fab fa-instagram"></i>
+                                        <span>@__p.brozz__</span>
+                                    </li>
+                                    <li>
+                                        <i class="fab fa-tiktok"></i>
+                                        <span>@p.brozz</span>
+                                    </li>
+                                    <li>
+                                        <i class="fab fa-whatsapp"></i>
+                                        <span>WhatsApp: +420 778 478 642</span>
+                                    </li>
+                                </ul>
+                                <div class="contact-guarantee">
+                                    <h4>Garantuji rychlou odpověď</h4>
+                                    <p>Obvykle odpovídám do 24 hodin. Na urgentní dotazy volejte.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Footer -->
+                <footer>
+                    <div class="container">
+                        <div class="footer-content">
+                            <div class="footer-logo">Petr Brož</div>
+                            <p class="footer-tagline">Marketing • Digitální tvorba • Branding</p>
+                            <div class="footer-copyright">© 2025 Petr Brož. Všechna práva vyhrazena.</div>
+                        </div>
+                    </div>
+                </footer>
+
+                <script>
+                    // HAMBURGER MENU
+                    const hamburger = document.getElementById('hamburger');
+                    const mobileNav = document.getElementById('mobileNav');
+
+                    function openMenu() {
+                        hamburger.classList.add('open');
+                        mobileNav.classList.add('open');
+                        hamburger.setAttribute('aria-expanded', 'true');
+                        mobileNav.setAttribute('aria-hidden', 'false');
+                        document.body.style.overflow = 'hidden';
+                    }
+                    function closeMenu() {
+                        hamburger.classList.remove('open');
+                        mobileNav.classList.remove('open');
+                        hamburger.setAttribute('aria-expanded', 'false');
+                        mobileNav.setAttribute('aria-hidden', 'true');
+                        document.body.style.overflow = '';
+                    }
+                    hamburger.addEventListener('click', () => mobileNav.classList.contains('open') ? closeMenu() : openMenu());
+                    document.addEventListener('keydown', e => e.key === 'Escape' && closeMenu());
+
+                    document.querySelectorAll('.mobile-link').forEach(link => {
+                        link.addEventListener('click', function(e) {
+                            e.preventDefault();
+                            const targetId = this.getAttribute('href');
+                            closeMenu();
+                            setTimeout(() => {
+                                const target = document.querySelector(targetId);
+                                if (target) window.scrollTo({ top: target.offsetTop - 70, behavior: 'smooth' });
+                            }, 200);
+                        });
+                    });
+
+                    // HEADER SCROLL
+                    window.addEventListener('scroll', () => {
+                        document.getElementById('main-header').classList.toggle('scrolled', window.scrollY > 80);
+                    });
+
+                    // SMOOTH SCROLL desktop nav
+                    document.querySelectorAll('.main-nav a[href^="#"]').forEach(a => {
+                        a.addEventListener('click', function(e) {
+                            e.preventDefault();
+                            const target = document.querySelector(this.getAttribute('href'));
+                            if (target) window.scrollTo({ top: target.offsetTop - 70, behavior: 'smooth' });
+                        });
+                    });
+                    document.querySelector('.nav-logo').addEventListener('click', e => {
+                        e.preventDefault();
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    });
+
+                    // IMAGE HOVER
+                    document.querySelectorAll('.stack-image').forEach(img => {
+                        img.addEventListener('mouseenter', function() {
+                            this.style.transform = 'scale(1.05) rotate(0deg)';
+                            this.style.boxShadow = '0 20px 40px rgba(0,0,0,0.5)';
+                        });
+                        img.addEventListener('mouseleave', function() {
+                            this.style.transform = this.classList.contains('stack-image-1') ? 'rotate(-3deg)' : 'rotate(2deg)';
+                            this.style.boxShadow = '0 15px 30px rgba(0,0,0,0.4)';
+                        });
+                    });
+
+                    // Funkce pro postupné načítání prvků při scrollu
+            function revealElements() {
+                const reveals = document.querySelectorAll('.reveal');
+                reveals.forEach(element => {
+                    const windowHeight = window.innerHeight;
+                    const elementTop = element.getBoundingClientRect().top;
+                    const elementVisible = 100; // prvek se zobrazí, když je 100px v zorném poli
+
+                    if (elementTop < windowHeight - elementVisible) {
+                        element.classList.add('active');
+                    }
+                });
+            }
+            window.addEventListener('scroll', revealElements);
+            // Spustit jednou i při načtení, kdyby byl uživatel už odscrollovaný
+            document.addEventListener('DOMContentLoaded', revealElements);
+
+        // JAVASCRIPT PRO OSTRÝ KUŽEL BATERKY UKAZUJÍCÍ ORIGINÁL FOTKY
+                const heroSection = document.getElementById('home');
+                const heroReveal = document.getElementById('heroReveal');
+                const canvas = document.getElementById('dustCanvas');
+                const ctx = canvas.getContext('2d');
+
+                let mouse = { x: -1000, y: -1000, active: false };
+                
+                // Velikost kruhu baterky (130px dává ideální přesný kužel)
+                const spotlightRadius = 130; 
+
+                function resizeCanvas() {
+                    canvas.width = heroSection.offsetWidth;
+                    canvas.height = heroSection.offsetHeight;
+                }
+                resizeCanvas();
+                window.addEventListener('resize', resizeCanvas);
+
+                if (heroSection && heroReveal) {
+                    heroSection.addEventListener('mousemove', (e) => {
+                        const rect = heroSection.getBoundingClientRect();
+                        mouse.x = e.clientX - rect.left;
+                        mouse.y = e.clientY - rect.top;
+                        mouse.active = true;
+
+                        // Maska upravená pro maximální jas (čistý originál) ve středu kužele
+                        const maskStyle = `radial-gradient(circle ${spotlightRadius}px at ${mouse.x}px ${mouse.y}px, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 100%)`;
+                        heroReveal.style.maskImage = maskStyle;
+                        heroReveal.style.webkitMaskImage = maskStyle;
+                    });
+
+                    heroSection.addEventListener('mouseleave', () => {
+                        mouse.active = false;
+                        const hiddenMask = `radial-gradient(circle 0px at 0px 0px, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%)`;
+                        heroReveal.style.maskImage = hiddenMask;
+                        heroReveal.style.webkitMaskImage = hiddenMask;
+                    });
+                }
+
+                // --- LOGIKA PRO ČÁSTICE PRACHU ---
+                const particlesArray = [];
+                const numberOfParticles = 35;
+
+                class Particle {
+                    constructor() {
+                        this.x = Math.random() * canvas.width;
+                        this.y = Math.random() * canvas.height;
+                        this.size = Math.random() * 1.8 + 0.5;
+                        this.speedX = Math.random() * 0.3 - 0.15;
+                        this.speedY = Math.random() * -0.4 - 0.1;
+                    }
+                    update() {
+                        this.x += this.speedX;
+                        this.y += this.speedY;
+
+                        if (this.y < 0) {
+                            this.y = canvas.height;
+                            this.x = Math.random() * canvas.width;
+                        }
+                        if (this.x < 0 || this.x > canvas.width) this.speedX = -this.speedX;
+
+                        if (mouse.active) {
+                            let dx = this.x - mouse.x;
+                            let dy = this.y - mouse.y;
+                            let distance = Math.sqrt(dx * dx + dy * dy);
+
+                            if (distance < spotlightRadius) {
+                                let force = (spotlightRadius - distance) / spotlightRadius;
+                                this.x += (dx / distance) * force * 1.2;
+                                this.y += (dy / distance) * force * 1.2;
+                            }
+                        }
+                    }
+                    draw() {
+                        if (!mouse.active) return;
+
                         let dx = this.x - mouse.x;
                         let dy = this.y - mouse.y;
                         let distance = Math.sqrt(dx * dx + dy * dy);
 
                         if (distance < spotlightRadius) {
-                            let force = (spotlightRadius - distance) / spotlightRadius;
-                            this.x += (dx / distance) * force * 1.2;
-                            this.y += (dy / distance) * force * 1.2;
+                            let lightFactor = (spotlightRadius - distance) / spotlightRadius;
+                            let opacity = lightFactor * 0.8; 
+
+                            ctx.fillStyle = `rgba(255, 255, 255, ${opacity})`;
+                            ctx.beginPath();
+                            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                            ctx.closePath();
+                            ctx.fill();
                         }
                     }
                 }
-                draw() {
-                    if (!mouse.active) return;
 
-                    let dx = this.x - mouse.x;
-                    let dy = this.y - mouse.y;
-                    let distance = Math.sqrt(dx * dx + dy * dy);
-
-                    if (distance < spotlightRadius) {
-                        let lightFactor = (spotlightRadius - distance) / spotlightRadius;
-                        let opacity = lightFactor * 0.8; 
-
-                        ctx.fillStyle = `rgba(255, 255, 255, ${opacity})`;
-                        ctx.beginPath();
-                        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                        ctx.closePath();
-                        ctx.fill();
+                function init() {
+                    for (let i = 0; i < numberOfParticles; i++) {
+                        particlesArray.push(new Particle());
                     }
                 }
-            }
+                init();
 
-            function init() {
-                for (let i = 0; i < numberOfParticles; i++) {
-                    particlesArray.push(new Particle());
-                }
-            }
-            init();
-
-            function animateDust() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                for (let i = 0; i < particlesArray.length; i++) {
-                    particlesArray[i].update();
-                    particlesArray[i].draw();
-                }
-                requestAnimationFrame(animateDust);
-            }
-            animateDust();
-
-            </script>
-
-        <script>
-/* ============================================================
-   PORTFOLIO CAROUSEL
-   ============================================================ */
-(function () {
-
-    /* ---------- DATA — uprav dle potřeby ---------- */
-    const PROJECTS = [
-        {
-            name:       'Květinářství Kamila',
-            url:        'https://www.kvetinarstvikamila.cz',
-            logo:       'KvetinartsviKamilalogo.png',  /* lokální soubor z repo */
-            initials:   'KK'
-        },
-        {
-            name:       'Studio Chilli',
-            url:        'https://www.studiochilli.cz',
-            logo:       'studiochillilogo.png',
-            initials:   'SC'
-        },
-        {
-            name:       'CHS Crystal Valley',
-            url:        'https://www.crystalvalley.cat',
-            logo:       'CHScrystalvalleylogo.png',
-            initials:   'CV'
-        }
-        /* Sem přidej další projekty stejnou syntaxí */
-    ];
-
-    /* ---------- CONFIG ---------- */
-    const AUTOPLAY_MS   = 5000;
-    /* Offset vedlejší karty od středu (px) — zvětši pokud se překrývají */
-    const SIDE_OFFSET   = 290;
-    /* Scale vedlejší karty */
-    const SIDE_SCALE    = 0.80;
-    /* Opacity vedlejší karty */
-    const SIDE_OPACITY  = 0.50;
-    /* Blur vedlejší karty (px) */
-    const SIDE_BLUR     = 3;
-
-    /* ---------- STATE ---------- */
-    let current     = 0;
-    let autoTimer   = null;
-    let hovered     = false;
-    let dragging    = false;
-    let dragStartX  = 0;
-    let dragDelta   = 0;
-    const total     = PROJECTS.length;
-
-    /* ---------- DOM ---------- */
-    const track     = document.getElementById('pfTrack');
-    const dotsWrap  = document.getElementById('pfDots');
-    const btnPrev   = document.getElementById('pfPrev');
-    const btnNext   = document.getElementById('pfNext');
-    const section   = document.getElementById('pfCarouselSection');
-
-    if (!track) return;
-
-    /* ---------- VYTVOŘ KARTY ---------- */
-    PROJECTS.forEach((p, i) => {
-        const card = document.createElement('div');
-        card.className = 'pf-card';
-        card.dataset.index = i;
-
-        card.innerHTML = `
-            <div class="pf-logo-wrap">
-                <img 
-                    src="${p.logo}" 
-                    alt="${p.name} logo"
-                    onerror="this.style.display='none';this.nextElementSibling.style.display='block'"
-                />
-                <span class="pf-logo-initials">${p.initials}</span>
-            </div>
-
-            <div class="pf-preview" id="pfPreview_${i}">
-                <iframe
-                    src="${p.url}"
-                    title="${p.name} — náhled webu"
-                    loading="lazy"
-                    scrolling="no"
-                    sandbox="allow-scripts allow-same-origin"
-                    onload="pfIframeLoaded(this, ${i})"
-                    onerror="pfIframeError(this, ${i})"
-                ></iframe>
-                <img 
-                    class="pf-fallback"
-                    src="assets/screenshots/${p.initials.toLowerCase()}.jpg"
-                    alt="${p.name} screenshot"
-                    onerror="this.style.display='none'"
-                />
-            </div>
-
-            <div class="pf-footer">
-                <span class="pf-client-name">${p.name}</span>
-                <a class="pf-visit-btn" href="${p.url}" target="_blank" rel="noopener noreferrer">
-                    Navštívit web
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
-                        <polyline points="15 3 21 3 21 9"/>
-                        <line x1="10" y1="14" x2="21" y2="3"/>
-                    </svg>
-                </a>
-            </div>
-        `;
-
-        track.appendChild(card);
-    });
-
-    /* ---------- IFRAME CALLBACKS ---------- */
-    window.pfIframeLoaded = function (iframe, idx) {
-        /* Zkusíme detekovat X-Frame-Options blok */
-        try {
-            /* Cross-origin = načetlo se OK (dostaneme security error) */
-            const doc = iframe.contentDocument;
-            /* Stejná doména — zkontrolujeme prázdný title jako signál chyby */
-            if (doc && !doc.title && doc.body && doc.body.innerHTML === '') {
-                pfIframeError(iframe, idx);
-                return;
-            }
-        } catch (e) {
-            /* Cross-origin = iframe se načetl, vše OK */
-        }
-        const wrap = document.getElementById('pfPreview_' + idx);
-        if (wrap) wrap.classList.add('pf-loaded');
-    };
-
-    window.pfIframeError = function (iframe, idx) {
-        const wrap = document.getElementById('pfPreview_' + idx);
-        if (wrap) {
-            wrap.classList.add('pf-blocked', 'pf-loaded');
-        }
-    };
-
-    /* ---------- DOTS ---------- */
-    PROJECTS.forEach((_, i) => {
-        const dot = document.createElement('button');
-        dot.className = 'pf-dot' + (i === 0 ? ' pf-dot-active' : '');
-        dot.setAttribute('aria-label', 'Projekt ' + (i + 1));
-        dot.addEventListener('click', () => goTo(i));
-        dotsWrap.appendChild(dot);
-    });
-
-    /* ---------- HELPERS ---------- */
-    function mod(n, m) { return ((n % m) + m) % m; }
-
-    function isMobile() { return window.innerWidth <= 768; }
-
-    /* ---------- RENDER ---------- */
-    function render() {
-        const cards    = track.querySelectorAll('.pf-card');
-        const offset   = isMobile() ? 240 : SIDE_OFFSET;
-
-        cards.forEach((card, i) => {
-            const pos = mod(i - current, total);
-            let x, scale, opacity, blur, zIndex, cls;
-
-            if (pos === 0) {
-                /* Aktivní — střed */
-                x       = 0;
-                scale   = 1;
-                opacity = 1;
-                blur    = 0;
-                zIndex  = 10;
-                cls     = 'pf-card pf-active';
-            } else if (pos === 1) {
-                /* Pravá */
-                x       = offset;
-                scale   = SIDE_SCALE;
-                opacity = SIDE_OPACITY;
-                blur    = SIDE_BLUR;
-                zIndex  = 5;
-                cls     = 'pf-card pf-side';
-            } else if (pos === total - 1) {
-                /* Levá */
-                x       = -offset;
-                scale   = SIDE_SCALE;
-                opacity = SIDE_OPACITY;
-                blur    = SIDE_BLUR;
-                zIndex  = 5;
-                cls     = 'pf-card pf-side';
-            } else {
-                /* Skryté */
-                x       = pos < total / 2 ? offset * 1.6 : -offset * 1.6;
-                scale   = 0.6;
-                opacity = 0;
-                blur    = 8;
-                zIndex  = 1;
-                cls     = 'pf-card pf-hidden';
-            }
-
-            card.className = cls;
-            card.style.zIndex   = zIndex;
-            card.style.transform = `translateX(${x}px) scale(${scale})`;
-            card.style.opacity  = opacity;
-            card.style.filter   = blur > 0 ? `blur(${blur}px)` : 'none';
-        });
-
-        /* Dots */
-        dotsWrap.querySelectorAll('.pf-dot').forEach((dot, i) => {
-            dot.classList.toggle('pf-dot-active', i === current);
-        });
-    }
-
-    /* ---------- NAVIGACE ---------- */
-    function goTo(idx) {
-        current = mod(idx, total);
-        render();
-    }
-
-    function next() { goTo(current + 1); }
-    function prev() { goTo(current - 1); }
-
-    /* ---------- AUTOPLAY ---------- */
-    function startAuto() {
-        stopAuto();
-        autoTimer = setInterval(() => {
-            if (!hovered && !dragging) next();
-        }, AUTOPLAY_MS);
-    }
-
-    function stopAuto() { clearInterval(autoTimer); }
-
-    function resetAuto() { stopAuto(); startAuto(); }
-
-    /* ---------- EVENTS ---------- */
-
-    /* Šipky */
-    btnPrev.addEventListener('click', () => { prev(); resetAuto(); });
-    btnNext.addEventListener('click', () => { next(); resetAuto(); });
-
-    /* Hover — pause autoplay */
-    section.addEventListener('mouseenter', () => { hovered = true; });
-    section.addEventListener('mouseleave', () => { hovered = false; });
-
-    /* Kliknutí na vedlejší kartu → přepne na ni */
-    track.addEventListener('click', (e) => {
-        if (dragging) return;
-        const card = e.target.closest('.pf-card');
-        if (!card) return;
-        const idx = parseInt(card.dataset.index);
-        if (idx !== current) { goTo(idx); resetAuto(); }
-    });
-
-    /* Mouse drag */
-    track.addEventListener('mousedown', (e) => {
-        dragging   = false;
-        dragStartX = e.clientX;
-        dragDelta  = 0;
-    });
-    window.addEventListener('mousemove', (e) => {
-        if (e.buttons !== 1) return;
-        dragDelta = e.clientX - dragStartX;
-        if (Math.abs(dragDelta) > 8) dragging = true;
-    });
-    window.addEventListener('mouseup', () => {
-        if (dragging) {
-            if (dragDelta < -60) { next(); resetAuto(); }
-            else if (dragDelta > 60) { prev(); resetAuto(); }
-        }
-        setTimeout(() => { dragging = false; }, 50);
-        dragDelta = 0;
-    });
-
-    /* Touch swipe */
-    let touchStart = 0;
-    section.addEventListener('touchstart', (e) => {
-        touchStart = e.touches[0].clientX;
-    }, { passive: true });
-    section.addEventListener('touchend', (e) => {
-        const delta = e.changedTouches[0].clientX - touchStart;
-        if (delta < -50) { next(); resetAuto(); }
-        else if (delta > 50) { prev(); resetAuto(); }
-    }, { passive: true });
-
-    /* Klávesnice */
-    document.addEventListener('keydown', (e) => {
-        if (!isInViewport(section)) return;
-        if (e.key === 'ArrowRight') { next(); resetAuto(); }
-        if (e.key === 'ArrowLeft') { prev(); resetAuto(); }
-    });
-
-    function isInViewport(el) {
-        const r = el.getBoundingClientRect();
-        return r.top < window.innerHeight && r.bottom > 0;
-    }
-
-    /* Resize */
-    window.addEventListener('resize', render);
-
-    /* ---------- INIT ---------- */
-    render();
-    startAuto();
-
-})();
-</script>
-
-        <!-- ========================================================================= -->
-        <!-- NEPRŮSTŘELNÁ COOKIE LIŠTA PRO OSOBNÍ WEB (FORMULÁŘ + GOOGLE ANALYTICS) -->
-        <!-- ========================================================================= -->
-        <div id="cookie-bar-container" style="display: none; position: fixed; bottom: 0; left: 0; width: 100%; background-color: #111111; box-shadow: 0 -4px 20px rgba(0,0,0,0.3); padding: 25px 40px; z-index: 999999; font-family: sans-serif; box-sizing: border-box; border-top: 1px solid #222;">
-            <div style="max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
-                
-                <!-- Text na míru tvému osobnímu webu -->
-                <div style="flex: 1; min-width: 300px; max-width: 800px;">
-                    <h3 style="margin-top: 0; margin-bottom: 8px; color: #ffffff; font-size: 18px; font-weight: bold; letter-spacing: 0.5px;">Nastavení ochrany soukromí</h3>
-                    <p style="margin: 0; font-size: 14px; color: #bbbbbb; line-height: 1.5;">
-                        Tento web používá nezbytné prvky pro fungování kontaktního formuláře a anonymní statistiky Google Analytics pro měření návštěvnosti. Kliknutím na „Přijmout vše“ vyjadřujete souhlas s měřením návštěvnosti.
-                    </p>
-                </div>
-
-                <!-- Tlačítka splňující přísnou legislativu -->
-                <div style="display: flex; align-items: center; gap: 15px; flex-wrap: wrap;">
-                    <button onclick="cookieManager.rejectAll()" style="background-color: transparent; color: #ffffff; border: 1px solid #333333; padding: 12px 24px; font-size: 13px; font-weight: bold; text-transform: uppercase; border-radius: 4px; cursor: pointer; letter-spacing: 0.5px;">Odmítnout vše</button>
-                    <button onclick="cookieManager.acceptAll()" style="background-color: #3a9ced; color: #ffffff; border: none; padding: 12px 28px; font-size: 13px; font-weight: bold; text-transform: uppercase; border-radius: 4px; cursor: pointer; letter-spacing: 0.5px;">PŘIJMOUT VŠE</button>
-                </div>
-
-            </div>
-        </div>
-
-        <script>
-            // ZDE ZADEJ SVÉ ČÍSLO MĚŘENÍ GOOGLE ANALYTICS (např. G-12345678)
-            const GA_MEASUREMENT_ID = 'G-VZCXFZDMZ5';
-
-            const cookieManager = {
-                init: function() {
-                    // Kontrola paměti pro aktuální návštěvu (session)
-                    const consent = sessionStorage.getItem('personal_cookie_consent');
-                    if (!consent) {
-                        document.getElementById('cookie-bar-container').style.display = 'block';
-                    } else if (consent === 'granted') {
-                        this.loadGoogleAnalytics();
+                function animateDust() {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    for (let i = 0; i < particlesArray.length; i++) {
+                        particlesArray[i].update();
+                        particlesArray[i].draw();
                     }
-                },
-                
-                acceptAll: function() {
-                    sessionStorage.setItem('personal_cookie_consent', 'granted');
-                    document.getElementById('cookie-bar-container').style.display = 'none';
-                    this.loadGoogleAnalytics();
-                },
-                
-                rejectAll: function() {
-                    sessionStorage.setItem('personal_cookie_consent', 'denied');
-                    document.getElementById('cookie-bar-container').style.display = 'none';
-                    // Analytika se nenačte, web je čistý a bezpečný
-                },
-
-                loadGoogleAnalytics: function() {
-                    if (GA_MEASUREMENT_ID === 'SEM_VLOŽ_SVOJE_ČÍSLO_MERENI' || !GA_MEASUREMENT_ID) return;
-
-                    // Dynamické a bezpečné načtení Google Analytics skriptu až po souhlasu
-                    const gaScript = document.createElement('script');
-                    gaScript.async = true;
-                    gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_MEASUREMENT_ID;
-                    document.head.appendChild(gaScript);
-
-                    window.dataLayer = window.dataLayer || [];
-                    function gtag(){dataLayer.push(arguments);}
-                    gtag('js', new Date());
-                    gtag('config', GA_MEASUREMENT_ID);
-                    
-                    console.log('Google Analytics byl úspěšně spuštěn na základě souhlasu.');
+                    requestAnimationFrame(animateDust);
                 }
-            };
+                animateDust();
 
-            document.addEventListener('DOMContentLoaded', function() {
-                cookieManager.init();
+                </script>
+
+            <script>
+    /* ============================================================
+    PORTFOLIO CAROUSEL
+    ============================================================ */
+    (function () {
+
+        /* ---------- DATA — uprav dle potřeby ---------- */
+        const PROJECTS = [
+            {
+                name:       'Květinářství Kamila',
+                url:        'https://www.kvetinarstvikamila.cz',
+                logo:       'KvetinartsviKamilalogo.png',  /* lokální soubor z repo */
+                initials:   'KK'
+            },
+            {
+                name:       'Studio Chilli',
+                url:        'https://www.studiochilli.cz',
+                logo:       'studiochillilogo.png',
+                initials:   'SC'
+            },
+            {
+                name:       'CHS Crystal Valley',
+                url:        'https://www.crystalvalley.cat',
+                logo:       'CHScrystalvalleylogo.png',
+                initials:   'CV'
+            }
+            /* Sem přidej další projekty stejnou syntaxí */
+        ];
+
+        /* ---------- CONFIG ---------- */
+        const AUTOPLAY_MS   = 5000;
+        /* Offset vedlejší karty od středu (px) — zvětši pokud se překrývají */
+        const SIDE_OFFSET   = 580;
+        /* Scale vedlejší karty */
+        const SIDE_SCALE    = 0.68;
+        /* Opacity vedlejší karty */
+        const SIDE_OPACITY  = 0.50;
+        /* Blur vedlejší karty (px) */
+        const SIDE_BLUR     = 3;
+
+        /* ---------- STATE ---------- */
+        let current     = 0;
+        let autoTimer   = null;
+        let hovered     = false;
+        let dragging    = false;
+        let dragStartX  = 0;
+        let dragDelta   = 0;
+        const total     = PROJECTS.length;
+
+        /* ---------- DOM ---------- */
+        const track     = document.getElementById('pfTrack');
+        const dotsWrap  = document.getElementById('pfDots');
+        const btnPrev   = document.getElementById('pfPrev');
+        const btnNext   = document.getElementById('pfNext');
+        const section   = document.getElementById('pfCarouselSection');
+
+        if (!track) return;
+
+        /* ---------- VYTVOŘ KARTY ---------- */
+        PROJECTS.forEach((p, i) => {
+            const card = document.createElement('div');
+            card.className = 'pf-card';
+            card.dataset.index = i;
+
+            card.innerHTML = `
+                <div class="pf-logo-wrap">
+                    <img 
+                        src="${p.logo}" 
+                        alt="${p.name} logo"
+                        onerror="this.style.display='none';this.nextElementSibling.style.display='block'"
+                    />
+                    <span class="pf-logo-initials">${p.initials}</span>
+                </div>
+
+                <div class="pf-preview" id="pfPreview_${i}">
+                    <iframe
+                        src="${p.url}"
+                        title="${p.name} — náhled webu"
+                        loading="lazy"
+                        scrolling="no"
+                        sandbox="allow-scripts allow-same-origin"
+                        onload="pfIframeLoaded(this, ${i})"
+                        onerror="pfIframeError(this, ${i})"
+                    ></iframe>
+                    <img 
+                        class="pf-fallback"
+                        src="assets/screenshots/${p.initials.toLowerCase()}.jpg"
+                        alt="${p.name} screenshot"
+                        onerror="this.style.display='none'"
+                    />
+                </div>
+
+                <div class="pf-footer">
+                    <span class="pf-client-name">${p.name}</span>
+                    <a class="pf-visit-btn" href="${p.url}" target="_blank" rel="noopener noreferrer">
+                        Navštívit web
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+                            <polyline points="15 3 21 3 21 9"/>
+                            <line x1="10" y1="14" x2="21" y2="3"/>
+                        </svg>
+                    </a>
+                </div>
+            `;
+
+            track.appendChild(card);
+        });
+
+        /* ---------- IFRAME CALLBACKS ---------- */
+        window.pfIframeLoaded = function (iframe, idx) {
+            /* Zkusíme detekovat X-Frame-Options blok */
+            try {
+                /* Cross-origin = načetlo se OK (dostaneme security error) */
+                const doc = iframe.contentDocument;
+                /* Stejná doména — zkontrolujeme prázdný title jako signál chyby */
+                if (doc && !doc.title && doc.body && doc.body.innerHTML === '') {
+                    pfIframeError(iframe, idx);
+                    return;
+                }
+            } catch (e) {
+                /* Cross-origin = iframe se načetl, vše OK */
+            }
+            const wrap = document.getElementById('pfPreview_' + idx);
+            if (wrap) wrap.classList.add('pf-loaded');
+        };
+
+        window.pfIframeError = function (iframe, idx) {
+            const wrap = document.getElementById('pfPreview_' + idx);
+            if (wrap) {
+                wrap.classList.add('pf-blocked', 'pf-loaded');
+            }
+        };
+
+        /* ---------- DOTS ---------- */
+        PROJECTS.forEach((_, i) => {
+            const dot = document.createElement('button');
+            dot.className = 'pf-dot' + (i === 0 ? ' pf-dot-active' : '');
+            dot.setAttribute('aria-label', 'Projekt ' + (i + 1));
+            dot.addEventListener('click', () => goTo(i));
+            dotsWrap.appendChild(dot);
+        });
+
+        /* ---------- HELPERS ---------- */
+        function mod(n, m) { return ((n % m) + m) % m; }
+
+        function isMobile() { return window.innerWidth <= 768; }
+
+        /* ---------- RENDER ---------- */
+        function render() {
+            const cards    = track.querySelectorAll('.pf-card');
+            const offset   = isMobile() ? 240 : SIDE_OFFSET;
+
+            cards.forEach((card, i) => {
+                const pos = mod(i - current, total);
+                let x, scale, opacity, blur, zIndex, cls;
+
+                if (pos === 0) {
+                    /* Aktivní — střed */
+                    x       = 0;
+                    scale   = 1;
+                    opacity = 1;
+                    blur    = 0;
+                    zIndex  = 10;
+                    cls     = 'pf-card pf-active';
+                } else if (pos === 1) {
+                    /* Pravá */
+                    x       = offset;
+                    scale   = SIDE_SCALE;
+                    opacity = SIDE_OPACITY;
+                    blur    = SIDE_BLUR;
+                    zIndex  = 5;
+                    cls     = 'pf-card pf-side';
+                } else if (pos === total - 1) {
+                    /* Levá */
+                    x       = -offset;
+                    scale   = SIDE_SCALE;
+                    opacity = SIDE_OPACITY;
+                    blur    = SIDE_BLUR;
+                    zIndex  = 5;
+                    cls     = 'pf-card pf-side';
+                } else {
+                    /* Skryté */
+                    x       = pos < total / 2 ? offset * 1.6 : -offset * 1.6;
+                    scale   = 0.6;
+                    opacity = 0;
+                    blur    = 8;
+                    zIndex  = 1;
+                    cls     = 'pf-card pf-hidden';
+                }
+
+                card.className = cls;
+                card.style.zIndex   = zIndex;
+                card.style.transform = `translateX(${x}px) scale(${scale})`;
+                card.style.opacity  = opacity;
+                card.style.filter   = blur > 0 ? `blur(${blur}px)` : 'none';
             });
-        </script>
-        <!-- ========================================================================= -->
-        <!-- KONEC COOKIE LIŠTY -->
-        <!-- ========================================================================= -->
-        </body>
-        </html>
+
+            /* Dots */
+            dotsWrap.querySelectorAll('.pf-dot').forEach((dot, i) => {
+                dot.classList.toggle('pf-dot-active', i === current);
+            });
+        }
+
+        /* ---------- NAVIGACE ---------- */
+        function goTo(idx) {
+            current = mod(idx, total);
+            render();
+        }
+
+        function next() { goTo(current + 1); }
+        function prev() { goTo(current - 1); }
+
+        /* ---------- AUTOPLAY ---------- */
+        function startAuto() {
+            stopAuto();
+            autoTimer = setInterval(() => {
+                if (!hovered && !dragging) next();
+            }, AUTOPLAY_MS);
+        }
+
+        function stopAuto() { clearInterval(autoTimer); }
+
+        function resetAuto() { stopAuto(); startAuto(); }
+
+        /* ---------- EVENTS ---------- */
+
+        /* Šipky */
+        btnPrev.addEventListener('click', () => { prev(); resetAuto(); });
+        btnNext.addEventListener('click', () => { next(); resetAuto(); });
+
+        /* Hover — pause autoplay */
+        section.addEventListener('mouseenter', () => { hovered = true; });
+        section.addEventListener('mouseleave', () => { hovered = false; });
+
+        /* Kliknutí na vedlejší kartu → přepne na ni */
+        track.addEventListener('click', (e) => {
+            if (dragging) return;
+            const card = e.target.closest('.pf-card');
+            if (!card) return;
+            const idx = parseInt(card.dataset.index);
+            if (idx !== current) { goTo(idx); resetAuto(); }
+        });
+
+        /* Mouse drag */
+        track.addEventListener('mousedown', (e) => {
+            dragging   = false;
+            dragStartX = e.clientX;
+            dragDelta  = 0;
+        });
+        window.addEventListener('mousemove', (e) => {
+            if (e.buttons !== 1) return;
+            dragDelta = e.clientX - dragStartX;
+            if (Math.abs(dragDelta) > 8) dragging = true;
+        });
+        window.addEventListener('mouseup', () => {
+            if (dragging) {
+                if (dragDelta < -60) { next(); resetAuto(); }
+                else if (dragDelta > 60) { prev(); resetAuto(); }
+            }
+            setTimeout(() => { dragging = false; }, 50);
+            dragDelta = 0;
+        });
+
+        /* Touch swipe */
+        let touchStart = 0;
+        section.addEventListener('touchstart', (e) => {
+            touchStart = e.touches[0].clientX;
+        }, { passive: true });
+        section.addEventListener('touchend', (e) => {
+            const delta = e.changedTouches[0].clientX - touchStart;
+            if (delta < -50) { next(); resetAuto(); }
+            else if (delta > 50) { prev(); resetAuto(); }
+        }, { passive: true });
+
+        /* Klávesnice */
+        document.addEventListener('keydown', (e) => {
+            if (!isInViewport(section)) return;
+            if (e.key === 'ArrowRight') { next(); resetAuto(); }
+            if (e.key === 'ArrowLeft') { prev(); resetAuto(); }
+        });
+
+        function isInViewport(el) {
+            const r = el.getBoundingClientRect();
+            return r.top < window.innerHeight && r.bottom > 0;
+        }
+
+        /* Resize */
+        window.addEventListener('resize', render);
+
+        /* ---------- INIT ---------- */
+        render();
+        startAuto();
+
+    })();
+    </script>
+
+            <!-- ========================================================================= -->
+            <!-- NEPRŮSTŘELNÁ COOKIE LIŠTA PRO OSOBNÍ WEB (FORMULÁŘ + GOOGLE ANALYTICS) -->
+            <!-- ========================================================================= -->
+            <div id="cookie-bar-container" style="display: none; position: fixed; bottom: 0; left: 0; width: 100%; background-color: #111111; box-shadow: 0 -4px 20px rgba(0,0,0,0.3); padding: 25px 40px; z-index: 999999; font-family: sans-serif; box-sizing: border-box; border-top: 1px solid #222;">
+                <div style="max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+                    
+                    <!-- Text na míru tvému osobnímu webu -->
+                    <div style="flex: 1; min-width: 300px; max-width: 800px;">
+                        <h3 style="margin-top: 0; margin-bottom: 8px; color: #ffffff; font-size: 18px; font-weight: bold; letter-spacing: 0.5px;">Nastavení ochrany soukromí</h3>
+                        <p style="margin: 0; font-size: 14px; color: #bbbbbb; line-height: 1.5;">
+                            Tento web používá nezbytné prvky pro fungování kontaktního formuláře a anonymní statistiky Google Analytics pro měření návštěvnosti. Kliknutím na „Přijmout vše“ vyjadřujete souhlas s měřením návštěvnosti.
+                        </p>
+                    </div>
+
+                    <!-- Tlačítka splňující přísnou legislativu -->
+                    <div style="display: flex; align-items: center; gap: 15px; flex-wrap: wrap;">
+                        <button onclick="cookieManager.rejectAll()" style="background-color: transparent; color: #ffffff; border: 1px solid #333333; padding: 12px 24px; font-size: 13px; font-weight: bold; text-transform: uppercase; border-radius: 4px; cursor: pointer; letter-spacing: 0.5px;">Odmítnout vše</button>
+                        <button onclick="cookieManager.acceptAll()" style="background-color: #3a9ced; color: #ffffff; border: none; padding: 12px 28px; font-size: 13px; font-weight: bold; text-transform: uppercase; border-radius: 4px; cursor: pointer; letter-spacing: 0.5px;">PŘIJMOUT VŠE</button>
+                    </div>
+
+                </div>
+            </div>
+
+            <script>
+                // ZDE ZADEJ SVÉ ČÍSLO MĚŘENÍ GOOGLE ANALYTICS (např. G-12345678)
+                const GA_MEASUREMENT_ID = 'G-VZCXFZDMZ5';
+
+                const cookieManager = {
+                    init: function() {
+                        // Kontrola paměti pro aktuální návštěvu (session)
+                        const consent = sessionStorage.getItem('personal_cookie_consent');
+                        if (!consent) {
+                            document.getElementById('cookie-bar-container').style.display = 'block';
+                        } else if (consent === 'granted') {
+                            this.loadGoogleAnalytics();
+                        }
+                    },
+                    
+                    acceptAll: function() {
+                        sessionStorage.setItem('personal_cookie_consent', 'granted');
+                        document.getElementById('cookie-bar-container').style.display = 'none';
+                        this.loadGoogleAnalytics();
+                    },
+                    
+                    rejectAll: function() {
+                        sessionStorage.setItem('personal_cookie_consent', 'denied');
+                        document.getElementById('cookie-bar-container').style.display = 'none';
+                        // Analytika se nenačte, web je čistý a bezpečný
+                    },
+
+                    loadGoogleAnalytics: function() {
+                        if (GA_MEASUREMENT_ID === 'SEM_VLOŽ_SVOJE_ČÍSLO_MERENI' || !GA_MEASUREMENT_ID) return;
+
+                        // Dynamické a bezpečné načtení Google Analytics skriptu až po souhlasu
+                        const gaScript = document.createElement('script');
+                        gaScript.async = true;
+                        gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_MEASUREMENT_ID;
+                        document.head.appendChild(gaScript);
+
+                        window.dataLayer = window.dataLayer || [];
+                        function gtag(){dataLayer.push(arguments);}
+                        gtag('js', new Date());
+                        gtag('config', GA_MEASUREMENT_ID);
+                        
+                        console.log('Google Analytics byl úspěšně spuštěn na základě souhlasu.');
+                    }
+                };
+
+                document.addEventListener('DOMContentLoaded', function() {
+                    cookieManager.init();
+                });
+            </script>
+            <!-- ========================================================================= -->
+            <!-- KONEC COOKIE LIŠTY -->
+            <!-- ========================================================================= -->
+            </body>
+            </html>
