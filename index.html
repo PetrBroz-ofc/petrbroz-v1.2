@@ -657,6 +657,8 @@
                         position: relative;
                         transition: var(--transition);
                         box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+                        display: flex;
+                        flex-direction: column;
                     }
                     .testimonial-card:hover {
                         transform: translateY(-5px) scale(1.02);
@@ -674,7 +676,7 @@
                         line-height: 1;
                     }
                     .testimonial-rating { font-size: 1.3rem; color: #ffbc00; margin-bottom: 20px; letter-spacing: 2px; }
-                    .testimonial-text { font-style: italic; color: #e5e5ea; margin-bottom: 25px; line-height: 1.8; font-size: 1.05rem; }
+                    .testimonial-text { font-style: italic; color: #e5e5ea; margin-bottom: 25px; line-height: 1.8; font-size: 1.05rem; flex: 1; }
                     .testimonial-author { display: flex; align-items: center; gap: 15px; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 20px; }
                     .author-avatar {
                         width: 50px; height: 50px; border-radius: 50%;
@@ -685,6 +687,45 @@
                     }
                     .author-info h4 { color: var(--light-color); margin-bottom: 4px; font-size: 1.1rem; font-weight: 600; }
                     .author-info p { color: #8e8e93; font-size: 0.88rem; }
+
+                    /* Contact clickable links */
+                    .contact-link { display: flex; align-items: center; gap: 15px; color: var(--light-color); text-decoration: none; transition: color 0.2s, transform 0.2s; width: 100%; }
+                    .contact-link:hover { color: var(--primary-color); }
+                    .contact-link:hover i { transform: scale(1.15); }
+
+                    /* Footer legal links */
+                    .footer-legal { display: flex; gap: 6px; align-items: center; margin-bottom: 18px; flex-wrap: wrap; justify-content: center; }
+                    .footer-legal-link { background: none; border: 1px solid rgba(255,255,255,0.08); color: rgba(255,255,255,0.35); font-size: 0.82rem; cursor: pointer; font-family: inherit; transition: all 0.2s; padding: 5px 14px; border-radius: 20px; }
+                    .footer-legal-link:hover { color: var(--primary-color); border-color: rgba(52,152,219,0.35); }
+                    .footer-legal-sep { color: rgba(255,255,255,0.12); font-size: 0.82rem; }
+
+                    /* GDPR Phone Modal */
+                    .gdpr-overlay { display: none; position: fixed; inset: 0; z-index: 99998; background: rgba(0,0,0,0.88); backdrop-filter: blur(12px); align-items: center; justify-content: center; }
+                    .gdpr-overlay.open { display: flex; animation: gdprFadeIn 0.25s ease; }
+                    @keyframes gdprFadeIn { from { opacity: 0; } to { opacity: 1; } }
+                    @keyframes gdprSlideUp { from { transform: translateY(60px) scale(0.94); opacity: 0; } to { transform: translateY(0) scale(1); opacity: 1; } }
+                    .gdpr-phone { width: 360px; max-height: 88vh; background: #080808; border-radius: 48px; border: 2px solid rgba(255,255,255,0.09); box-shadow: 0 0 0 7px #111, 0 40px 100px rgba(0,0,0,0.95), 0 0 80px rgba(52,152,219,0.06); display: flex; flex-direction: column; overflow: hidden; animation: gdprSlideUp 0.45s cubic-bezier(0.34,1.4,0.64,1); }
+                    .gdpr-island { width: 114px; height: 32px; background: #000; border-radius: 0 0 24px 24px; margin: 0 auto; border: 2px solid rgba(255,255,255,0.06); border-top: none; flex-shrink: 0; display: flex; align-items: center; justify-content: center; gap: 9px; }
+                    .gdpr-island-mic { width: 48px; height: 5px; border-radius: 3px; background: #161616; }
+                    .gdpr-island-cam { width: 9px; height: 9px; border-radius: 50%; background: #181818; border: 1.5px solid rgba(255,255,255,0.1); }
+                    .gdpr-screen { flex: 1; overflow-y: auto; padding: 0 22px 26px; background: linear-gradient(180deg,#0d0d0d 0%,#080808 100%); scrollbar-width: thin; scrollbar-color: rgba(52,152,219,0.2) transparent; }
+                    .gdpr-screen::-webkit-scrollbar { width: 3px; }
+                    .gdpr-screen::-webkit-scrollbar-thumb { background: rgba(52,152,219,0.2); border-radius: 2px; }
+                    .gdpr-screen-head { display: flex; justify-content: space-between; align-items: center; padding: 18px 0 14px; border-bottom: 1px solid rgba(255,255,255,0.06); margin-bottom: 16px; position: sticky; top: 0; background: #0d0d0d; z-index: 2; }
+                    .gdpr-screen-title { font-size: 0.92rem; font-weight: 700; color: #fff; }
+                    .gdpr-close-btn { width: 28px; height: 28px; border-radius: 50%; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.09); color: rgba(255,255,255,0.45); display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 12px; transition: all 0.2s; flex-shrink: 0; }
+                    .gdpr-close-btn:hover { background: rgba(231,76,60,0.15); border-color: rgba(231,76,60,0.3); color: #e74c3c; }
+                    .gdpr-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(52,152,219,0.07); border: 1px solid rgba(52,152,219,0.16); border-radius: 20px; padding: 4px 12px; font-size: 0.72rem; color: rgba(52,152,219,0.85); margin-bottom: 14px; }
+                    .gdpr-sec { margin-bottom: 14px; }
+                    .gdpr-sec h4 { font-size: 0.7rem; font-weight: 700; color: var(--primary-color); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 5px; }
+                    .gdpr-sec p { font-size: 0.79rem; color: rgba(255,255,255,0.55); line-height: 1.75; margin: 0; }
+                    .gdpr-sec ul { list-style: none; padding: 0; margin: 0; }
+                    .gdpr-sec li { font-size: 0.79rem; color: rgba(255,255,255,0.55); line-height: 1.75; padding-left: 12px; position: relative; }
+                    .gdpr-sec li::before { content: '·'; position: absolute; left: 2px; color: var(--primary-color); font-weight: 700; }
+                    .gdpr-divider { height: 1px; background: rgba(255,255,255,0.05); margin: 12px 0; }
+                    .gdpr-home { height: 34px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; background: #080808; }
+                    .gdpr-home-bar { width: 100px; height: 4px; background: rgba(255,255,255,0.14); border-radius: 2px; }
+                    @media (max-width: 400px) { .gdpr-phone { width: calc(100vw - 28px); border-radius: 32px; } }
 
                     /* CONTACT */
                     .contact-container { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
@@ -1438,7 +1479,7 @@
                             <div class="contact-form">
                                 <h3>Napište mi</h3>
                                 <form id="contactForm" novalidate>
-                                    <input type="hidden" name="access_key" value="VLOŽ_SVŮJ_WEB3FORMS_KLÍČ">
+                                    <input type="hidden" name="access_key" value="8a00ea99-79bb-43f2-b28d-320cff5d707d">
                                     <input type="hidden" name="subject" value="Nová poptávka z webu broz-petr.cz">
                                     <input type="hidden" name="from_name" value="Kontaktní formulář">
                                     <input type="checkbox" name="botcheck" style="display:none">
@@ -1480,26 +1521,37 @@
                                 <ul class="contact-details">
                                     <li>
                                         <i class="fas fa-building"></i>
-                                    <span><strong>IČO:</strong> 29592844</span> </li>
-                                <li>
-                                        <i class="fas fa-envelope"></i>
-                                        <span>brozpetr.bp@gmail.com</span>
+                                        <span><strong>IČO:</strong> 29592844</span>
                                     </li>
                                     <li>
-                                        <i class="fas fa-phone"></i>
-                                        <span>+420 778 478 642</span>
+                                        <a href="mailto:brozpetr.bp@gmail.com" class="contact-link">
+                                            <i class="fas fa-envelope"></i>
+                                            <span>brozpetr.bp@gmail.com</span>
+                                        </a>
                                     </li>
                                     <li>
-                                        <i class="fab fa-instagram"></i>
-                                        <span>@__p.brozz__</span>
+                                        <a href="tel:+420778478642" class="contact-link">
+                                            <i class="fas fa-phone"></i>
+                                            <span>+420 778 478 642</span>
+                                        </a>
                                     </li>
                                     <li>
-                                        <i class="fab fa-tiktok"></i>
-                                        <span>@p.brozz</span>
+                                        <a href="https://www.instagram.com/__p.brozz__/" target="_blank" rel="noopener" class="contact-link">
+                                            <i class="fab fa-instagram"></i>
+                                            <span>@__p.brozz__</span>
+                                        </a>
                                     </li>
                                     <li>
-                                        <i class="fab fa-whatsapp"></i>
-                                        <span>WhatsApp: +420 778 478 642</span>
+                                        <a href="https://www.tiktok.com/@p.brozz" target="_blank" rel="noopener" class="contact-link">
+                                            <i class="fab fa-tiktok"></i>
+                                            <span>@p.brozz</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://wa.me/420778478642" target="_blank" rel="noopener" class="contact-link">
+                                            <i class="fab fa-whatsapp"></i>
+                                            <span>WhatsApp: +420 778 478 642</span>
+                                        </a>
                                     </li>
                                 </ul>
                                 <div class="contact-guarantee">
@@ -1517,10 +1569,106 @@
                         <div class="footer-content">
                             <div class="footer-logo">Petr Brož</div>
                             <p class="footer-tagline">Marketing • Digitální tvorba • Branding</p>
+                            <div class="footer-legal">
+                                <button onclick="document.getElementById('cookie-bar-container').style.display='block'" class="footer-legal-link"><i class="fas fa-cookie-bite" style="margin-right:5px;font-size:0.75rem;"></i>Nastavení cookies</button>
+                                <span class="footer-legal-sep">·</span>
+                                <button onclick="openGdpr()" class="footer-legal-link"><i class="fas fa-shield-alt" style="margin-right:5px;font-size:0.75rem;"></i>GDPR & Ochrana dat</button>
+                            </div>
                             <div class="footer-copyright">© 2025 Petr Brož. Všechna práva vyhrazena.</div>
                         </div>
                     </div>
                 </footer>
+
+                <!-- GDPR Phone Modal -->
+                <div class="gdpr-overlay" id="gdprOverlay" onclick="if(event.target===this)closeGdpr()">
+                    <div class="gdpr-phone">
+                        <div class="gdpr-island">
+                            <div class="gdpr-island-mic"></div>
+                            <div class="gdpr-island-cam"></div>
+                        </div>
+                        <div class="gdpr-screen" id="gdprScreen">
+                            <div class="gdpr-screen-head">
+                                <span class="gdpr-screen-title">🔒 Ochrana osobních údajů</span>
+                                <button class="gdpr-close-btn" onclick="closeGdpr()" aria-label="Zavřít">✕</button>
+                            </div>
+
+                            <div class="gdpr-badge"><i class="fas fa-shield-alt"></i> GDPR · Nařízení EU 2016/679</div>
+
+                            <div class="gdpr-sec">
+                                <h4>Správce osobních údajů</h4>
+                                <p>Petr Brož, IČO: 29592844<br>
+                                Liberec, Česká republika<br>
+                                brozpetr.bp@gmail.com &nbsp;·&nbsp; +420 778 478 642</p>
+                            </div>
+                            <div class="gdpr-divider"></div>
+
+                            <div class="gdpr-sec">
+                                <h4>Jaké údaje zpracovávám</h4>
+                                <ul>
+                                    <li>Jméno a příjmení</li>
+                                    <li>E-mailová adresa</li>
+                                    <li>Telefonní číslo</li>
+                                    <li>Obsah zprávy / poptávky</li>
+                                    <li>Anonymní data o návštěvnosti (Google Analytics)</li>
+                                </ul>
+                            </div>
+                            <div class="gdpr-divider"></div>
+
+                            <div class="gdpr-sec">
+                                <h4>Účel a právní základ zpracování</h4>
+                                <ul>
+                                    <li>Vyřízení poptávky — plnění smlouvy (čl. 6 odst. 1 písm. b) GDPR)</li>
+                                    <li>Statistiky návštěvnosti — souhlas uživatele (čl. 6 odst. 1 písm. a) GDPR)</li>
+                                </ul>
+                            </div>
+                            <div class="gdpr-divider"></div>
+
+                            <div class="gdpr-sec">
+                                <h4>Doba uchování údajů</h4>
+                                <p>Osobní údaje uchovávám po dobu nezbytně nutnou pro vyřízení poptávky, resp. po dobu trvání smluvního vztahu + 3 roky. Analytická data jsou anonymizována.</p>
+                            </div>
+                            <div class="gdpr-divider"></div>
+
+                            <div class="gdpr-sec">
+                                <h4>Příjemci osobních údajů</h4>
+                                <ul>
+                                    <li>Google LLC — analytické služby (anonymní data)</li>
+                                    <li>Web3Forms — zprostředkování odesílání formuláře</li>
+                                    <li>Třetím stranám údaje neprodávám ani neposkytují</li>
+                                </ul>
+                            </div>
+                            <div class="gdpr-divider"></div>
+
+                            <div class="gdpr-sec">
+                                <h4>Vaše práva (zákon č. 110/2019 Sb. + GDPR)</h4>
+                                <ul>
+                                    <li>Právo na přístup k osobním údajům</li>
+                                    <li>Právo na opravu nepřesných údajů</li>
+                                    <li>Právo na výmaz („právo být zapomenut")</li>
+                                    <li>Právo na omezení zpracování</li>
+                                    <li>Právo na přenositelnost údajů</li>
+                                    <li>Právo vznést námitku proti zpracování</li>
+                                    <li>Právo odvolat souhlas kdykoli</li>
+                                </ul>
+                            </div>
+                            <div class="gdpr-divider"></div>
+
+                            <div class="gdpr-sec">
+                                <h4>Soubory cookie</h4>
+                                <p>Web používá analytické cookies (Google Analytics) pouze po vašem souhlasu. Souhlas lze kdykoli odvolat kliknutím na „Nastavení cookies" v patičce webu.</p>
+                            </div>
+                            <div class="gdpr-divider"></div>
+
+                            <div class="gdpr-sec">
+                                <h4>Stížnosti — Dozorový úřad</h4>
+                                <p>Úřad pro ochranu osobních údajů (ÚOOÚ)<br>
+                                Pplk. Sochora 27, 170 00 Praha 7<br>
+                                www.uoou.cz &nbsp;·&nbsp; posta@uoou.cz</p>
+                            </div>
+                        </div>
+                        <div class="gdpr-home"><div class="gdpr-home-bar"></div></div>
+                    </div>
+                </div>
 
                 <script>
                     // HAMBURGER MENU
@@ -1554,6 +1702,20 @@
                                 if (target) window.scrollTo({ top: target.offsetTop - 70, behavior: 'smooth' });
                             }, 200);
                         });
+                    });
+
+                    // GDPR MODAL
+                    function openGdpr() {
+                        document.getElementById('gdprOverlay').classList.add('open');
+                        document.getElementById('gdprScreen').scrollTop = 0;
+                        document.body.style.overflow = 'hidden';
+                    }
+                    function closeGdpr() {
+                        document.getElementById('gdprOverlay').classList.remove('open');
+                        document.body.style.overflow = '';
+                    }
+                    document.addEventListener('keydown', function(e) {
+                        if (e.key === 'Escape') closeGdpr();
                     });
 
                     // HEADER SCROLL
