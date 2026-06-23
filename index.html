@@ -1214,13 +1214,14 @@
         </script>
 
     <!-- ============================================================
-         PRÉMIOVÉ ANIMACE — CDN knihovny
+         PRÉMIOVÉ ANIMACE — CDN knihovny (pořadí je důležité!)
+         1. GSAP jádro — musí být první
+         2. ScrollTrigger — závisí na GSAP
+         3. Lenis — nezávislý, může být kdekoliv
          ============================================================ -->
-    <!-- Lenis smooth scroll (@studio-freight/lenis 1.0.42 — ověřená stabilní verze) -->
-    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
-    <!-- GSAP + ScrollTrigger plugin -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
 
             </head>
             <body>
@@ -2302,13 +2303,13 @@
     (function () {
       'use strict';
 
-      /* --- Ochrana: pokud GSAP není k dispozici, tiše ukončíme --- */
-      if (typeof gsap === 'undefined') return;
+      /* Ochrana: GSAP i ScrollTrigger musí být načteny */
+      if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
 
-      /* --- 1. GSAP plugin --- */
+      /* 1. Registrace pluginu — MUSÍ být před jakoukoliv animací */
       gsap.registerPlugin(ScrollTrigger);
 
-      /* --- 2. LENIS SMOOTH SCROLL (volitelné — při selhání CDN GSAP běží dál) --- */
+      /* 2. Lenis smooth scroll (volitelné — GSAP funguje i bez něj) */
       try {
         var lenis = new Lenis({
           duration: 1.4,
@@ -2319,259 +2320,151 @@
         lenis.on('scroll', ScrollTrigger.update);
         gsap.ticker.add(function (time) { lenis.raf(time * 1000); });
         gsap.ticker.lagSmoothing(0);
-      } catch (e) {
-        /* Lenis se nenačetl — scroll funguje nativně, animace GSAP jedou normálně */
-      }
+      } catch (e) { /* Lenis se nenačetl — scroll funguje nativně */ }
 
-      /* --- 3. DEAKTIVUJ STARÝ CSS REVEAL SYSTÉM ---
-         Přidáme .active na všechny .reveal prvky. GSAP pak přes inline styly
-         (vyšší priorita než CSS třídy) ovládá animace sám. */
+      /* 3. Deaktivuj starý CSS .reveal systém (opacity:0 v CSS)
+            Přidáme .active okamžitě → všechny prvky jsou viditelné.
+            GSAP pak animaci řídí sám přes onEnter callback. */
       document.querySelectorAll('.reveal').forEach(function (el) {
         el.classList.add('active');
       });
 
       /* ----------------------------------------------------------------
-         4. HERO ANIMACE — plynulý vstup nadpisu při načtení stránky
+         KLÍČOVÝ HELPER: show()
+         ---
+         Proč ne gsap.from() se scrollTrigger?
+         gsap.from() okamžitě nastaví opacity:0 jako inline styl.
+         Pokud ScrollTrigger trigger selže, prvek zůstane natrvalo skrytý.
+
+         Správný vzor: ScrollTrigger.create({ onEnter }) + gsap.fromTo()
+         - Prvky jsou viditelné dokud nevstoupí do viewportu
+         - Teprve pak GSAP aplikuje počáteční stav a spustí animaci
+         - Selže-li trigger, prvek zůstane viditelný (safe fallback)
          ---------------------------------------------------------------- */
-      gsap.timeline({ delay: 0.25 })
-        .from('.hero-title', {
-          y: 90,
-          opacity: 0,
-          duration: 1.7,
-          ease: 'power4.out',
-        })
-        .from('.hero-subtitle', {
-          y: 55,
-          opacity: 0,
-          duration: 1.3,
-          ease: 'power3.out',
-        }, '-=1.1')
-        .from('.mouse-scroll', {
-          y: 30,
-          opacity: 0,
-          duration: 1.0,
-          ease: 'power2.out',
-        }, '-=0.7');
+      function show(targets, trigger, start, fromX, fromY, duration, ease, stagger, delay) {
+        ScrollTrigger.create({
+          trigger: trigger,
+          start:   start || 'top 85%',
+          once:    true,
+          onEnter: function () {
+            gsap.fromTo(
+              targets,
+              { opacity: 0, x: fromX || 0, y: fromY || 0 },
+              {
+                opacity:  1,
+                x:        0,
+                y:        0,
+                duration: duration || 1.0,
+                ease:     ease     || 'power3.out',
+                stagger:  stagger  || 0,
+                delay:    delay    || 0,
+              }
+            );
+          },
+        });
+      }
 
       /* ----------------------------------------------------------------
-         5. SECTION TITLES — každý nadpis sekce se odkryje při scrollu
+         4. HERO — animace při načtení (žádný ScrollTrigger)
+            gsap.from() je zde správné — hero je vždy ve viewportu
+         ---------------------------------------------------------------- */
+      gsap.timeline({ delay: 0.25 })
+        .from('.hero-title',    { y: 90, opacity: 0, duration: 1.7, ease: 'power4.out' })
+        .from('.hero-subtitle', { y: 55, opacity: 0, duration: 1.3, ease: 'power3.out' }, '-=1.1')
+        .from('.mouse-scroll',  { y: 30, opacity: 0, duration: 1.0, ease: 'power2.out' }, '-=0.7');
+
+      /* ----------------------------------------------------------------
+         5. SECTION TITLES
          ---------------------------------------------------------------- */
       gsap.utils.toArray('.section-title').forEach(function (el) {
-        gsap.from(el, {
-          scrollTrigger: { trigger: el, start: 'top 88%' },
-          y: 70,
-          opacity: 0,
-          duration: 1.2,
-          ease: 'power4.out',
-        });
+        show(el, el, 'top 88%', 0, 70, 1.2, 'power4.out');
       });
 
       /* ----------------------------------------------------------------
-         6. JOURNEY SEKCE — obrázky a text jedou ze stran (Apple-style)
+         6. JOURNEY — obrázky zleva, text zprava
          ---------------------------------------------------------------- */
       if (document.querySelector('.journey-container')) {
-        gsap.from('.journey-images', {
-          scrollTrigger: { trigger: '.journey-container', start: 'top 82%' },
-          x: -90,
-          opacity: 0,
-          duration: 1.4,
-          ease: 'power3.out',
-        });
-        gsap.from('.journey-text', {
-          scrollTrigger: { trigger: '.journey-container', start: 'top 82%' },
-          x: 90,
-          opacity: 0,
-          duration: 1.4,
-          ease: 'power3.out',
-        });
-        /* Odstavce se odkrývají postupně (stagger) */
-        gsap.from('.journey-text p', {
-          scrollTrigger: { trigger: '.journey-text', start: 'top 80%' },
-          y: 38,
-          opacity: 0,
-          duration: 0.9,
-          stagger: 0.22,
-          ease: 'power2.out',
-          delay: 0.45,
-        });
+        show('.journey-images', '.journey-container', 'top 82%', -90, 0,  1.4, 'power3.out');
+        show('.journey-text',   '.journey-container', 'top 82%',  90, 0,  1.4, 'power3.out');
+        show('.journey-text p', '.journey-container', 'top 82%',  0,  38, 0.9, 'power2.out', 0.22, 0.55);
       }
 
       /* ----------------------------------------------------------------
-         7. SERVICE CARDS — postupné odkrývání karet (stagger)
+         7. SERVICE CARDS — stagger zdola
          ---------------------------------------------------------------- */
-      var serviceCards = gsap.utils.toArray('.service-card');
-      if (serviceCards.length) {
-        gsap.from(serviceCards, {
-          scrollTrigger: { trigger: '#services', start: 'top 82%' },
-          y: 90,
-          opacity: 0,
-          duration: 1.05,
-          stagger: { each: 0.18, ease: 'power1.inOut' },
-          ease: 'power3.out',
-        });
+      var sCards = gsap.utils.toArray('.service-card');
+      if (sCards.length) {
+        show(sCards, '#services', 'top 82%', 0, 90, 1.05, 'power3.out', 0.18);
       }
 
       /* ----------------------------------------------------------------
-         8. COMPANY CARDS — stagger odkrývání
+         8. COMPANY CARDS — stagger zdola
          ---------------------------------------------------------------- */
-      var companyCards = gsap.utils.toArray('.company-card');
-      if (companyCards.length) {
-        gsap.from(companyCards, {
-          scrollTrigger: { trigger: '.companies-container', start: 'top 82%' },
-          y: 85,
-          opacity: 0,
-          duration: 1.0,
-          stagger: { each: 0.18, ease: 'power1.inOut' },
-          ease: 'power3.out',
-        });
+      var cCards = gsap.utils.toArray('.company-card');
+      if (cCards.length) {
+        show(cCards, '.companies-container', 'top 82%', 0, 85, 1.0, 'power3.out', 0.18);
       }
 
       /* ----------------------------------------------------------------
-         9. PORTFOLIO CAROUSEL — elegantní vstup zdola
+         9. PORTFOLIO CAROUSEL
          ---------------------------------------------------------------- */
       if (document.querySelector('.pf-carousel-wrapper')) {
-        gsap.from('.pf-carousel-wrapper', {
-          scrollTrigger: { trigger: '#portfolio', start: 'top 82%' },
-          y: 85,
-          opacity: 0,
-          duration: 1.3,
-          ease: 'power3.out',
-        });
+        show('.pf-carousel-wrapper', '#portfolio', 'top 82%', 0, 85, 1.3, 'power3.out');
       }
 
       /* ----------------------------------------------------------------
          10. KONTAKT — formulář zleva, info zprava
          ---------------------------------------------------------------- */
       if (document.querySelector('.contact-container')) {
-        gsap.from('.contact-form', {
-          scrollTrigger: { trigger: '.contact-container', start: 'top 82%' },
-          x: -65,
-          opacity: 0,
-          duration: 1.2,
-          ease: 'power3.out',
-        });
-        gsap.from('.contact-info', {
-          scrollTrigger: { trigger: '.contact-container', start: 'top 82%' },
-          x: 65,
-          opacity: 0,
-          duration: 1.2,
-          ease: 'power3.out',
-          delay: 0.18,
-        });
-        /* Formulářová pole jedno po druhém */
-        gsap.from('.form-group', {
-          scrollTrigger: { trigger: '.contact-form', start: 'top 80%' },
-          y: 28,
-          opacity: 0,
-          duration: 0.7,
-          stagger: 0.1,
-          ease: 'power2.out',
-          delay: 0.5,
-        });
-        /* Záruční box */
-        gsap.from('.contact-guarantee', {
-          scrollTrigger: { trigger: '.contact-guarantee', start: 'top 88%' },
-          y: 32,
-          opacity: 0,
-          duration: 0.8,
-          ease: 'power2.out',
-        });
+        show('.contact-form',      '.contact-container',  'top 82%', -65, 0,  1.2, 'power3.out', 0, 0);
+        show('.contact-info',      '.contact-container',  'top 82%',  65, 0,  1.2, 'power3.out', 0, 0.18);
+        show('.form-group',        '.contact-form',       'top 80%',  0,  28, 0.7, 'power2.out', 0.1, 0.5);
+        show('.contact-guarantee', '.contact-guarantee',  'top 88%',  0,  32, 0.8, 'power2.out');
       }
 
       /* ----------------------------------------------------------------
-         11. FOOTER — postupné odkrývání prvků
+         11. FOOTER
          ---------------------------------------------------------------- */
-      gsap.from('.footer-content > *', {
-        scrollTrigger: { trigger: 'footer', start: 'top 90%' },
-        y: 40,
-        opacity: 0,
-        duration: 0.9,
-        stagger: 0.13,
-        ease: 'power2.out',
-      });
+      show('.footer-content > *', 'footer', 'top 90%', 0, 40, 0.9, 'power2.out', 0.13);
 
       /* ----------------------------------------------------------------
-         12. PARALLAX EFEKTY — pouze na desktopu (šetří výkon mobilů)
+         12. PARALLAX — hero pozadí (desktop only, gsap.to = žádné opacity)
          ---------------------------------------------------------------- */
       gsap.matchMedia().add('(min-width: 769px)', function () {
-
-        /* Hero pozadí — posun o 28 % při scrollování mimo viewport */
         gsap.to(['.hero-background', '.hero-background-reveal'], {
-          scrollTrigger: {
-            trigger: '.hero',
-            start: 'top top',
-            end: 'bottom top',
-            scrub: 2,
-          },
+          scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 2 },
           y: '28%',
           ease: 'none',
         });
-
-        /* Journey obrázky — subtilní protiběžný pohyb */
-        gsap.to('.stack-image-1', {
-          scrollTrigger: {
-            trigger: '.journey-images',
-            start: 'top bottom',
-            end: 'bottom top',
-            scrub: 1.8,
-          },
-          y: -55,
-          ease: 'none',
-        });
-        gsap.to('.stack-image-2', {
-          scrollTrigger: {
-            trigger: '.journey-images',
-            start: 'top bottom',
-            end: 'bottom top',
-            scrub: 1.8,
-          },
-          y: 55,
-          ease: 'none',
-        });
-
       });
 
       /* ----------------------------------------------------------------
-         13. MAGNETICKÁ TLAČÍTKA + HOVER MIKRO-INTERAKCE
-             Pouze na zařízeních s myší (hover: hover)
+         13. MAGNETICKÁ TLAČÍTKA + HOVER MIKRO-INTERAKCE (jen myš)
          ---------------------------------------------------------------- */
       if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
 
-        /* Magnetický efekt — tlačítko se "přitahuje" k myši */
-        var magnetBtns = document.querySelectorAll(
-          '.service-btn, .company-link, .submit-btn, .marketing-call-btn'
-        );
-        magnetBtns.forEach(function (btn) {
+        document.querySelectorAll('.service-btn, .company-link, .submit-btn, .marketing-call-btn').forEach(function (btn) {
           btn.addEventListener('mousemove', function (e) {
-            var rect = this.getBoundingClientRect();
-            var dx = (e.clientX - rect.left - rect.width  / 2) * 0.32;
-            var dy = (e.clientY - rect.top  - rect.height / 2) * 0.32;
-            gsap.to(this, { x: dx, y: dy, duration: 0.35, ease: 'power2.out' });
+            var r = this.getBoundingClientRect();
+            gsap.to(this, {
+              x: (e.clientX - r.left - r.width  / 2) * 0.32,
+              y: (e.clientY - r.top  - r.height / 2) * 0.32,
+              duration: 0.35, ease: 'power2.out',
+            });
           });
           btn.addEventListener('mouseleave', function () {
-            /* Elastický návrat — gumové "odskočení" */
             gsap.to(this, { x: 0, y: 0, duration: 0.8, ease: 'elastic.out(1, 0.45)' });
           });
         });
 
-        /* Hover micro-interakce na kartách — plynulý zdvih + odpružení */
         document.querySelectorAll('.service-card, .company-card').forEach(function (card) {
-          card.addEventListener('mouseenter', function () {
-            gsap.to(this, { y: -12, duration: 0.35, ease: 'power2.out' });
-          });
-          card.addEventListener('mouseleave', function () {
-            gsap.to(this, { y: 0, duration: 0.65, ease: 'elastic.out(1, 0.5)' });
-          });
+          card.addEventListener('mouseenter', function () { gsap.to(this, { y: -12, duration: 0.35, ease: 'power2.out' }); });
+          card.addEventListener('mouseleave', function () { gsap.to(this, {  y:   0, duration: 0.65, ease: 'elastic.out(1, 0.5)' }); });
         });
 
-        /* Nav linky — jemný pohyb nahoru při hoveru */
         document.querySelectorAll('.main-nav a').forEach(function (a) {
-          a.addEventListener('mouseenter', function () {
-            gsap.to(this, { y: -3, duration: 0.22, ease: 'power2.out' });
-          });
-          a.addEventListener('mouseleave', function () {
-            gsap.to(this, { y: 0, duration: 0.35, ease: 'power2.inOut' });
-          });
+          a.addEventListener('mouseenter', function () { gsap.to(this, { y: -3, duration: 0.22, ease: 'power2.out' }); });
+          a.addEventListener('mouseleave', function () { gsap.to(this, {  y:  0, duration: 0.35, ease: 'power2.inOut' }); });
         });
 
       }
